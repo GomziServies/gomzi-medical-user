@@ -7,6 +7,7 @@ import AddToCart from "./pages/add-to-cart";
 import NotFoundPage from "./pages/404";
 import ScrollRestoration from "./components/scroll-restoration";
 import MedicineCheckOut from "./pages/medicine-check-out";
+import RequireMedicineCheckOut from "./pages/require-medicine-check-out";
 
 function App() {
   return (
@@ -16,6 +17,10 @@ function App() {
         <Route path="/add-to-cart" element={<AddToCart />} />
         <Route path="/404" element={<NotFoundPage />} />
         <Route path="/aas-check-out" element={<MedicineCheckOut />} />
+        <Route
+          path="/require-medicine-check-out"
+          element={<RequireMedicineCheckOut />}
+        />
       </Routes>
       <ScrollRestoration />
     </>

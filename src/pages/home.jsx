@@ -9,6 +9,7 @@ import "../assets/css/magnific-popup.css";
 import "../assets/css/odometer.css";
 import "../assets/css/slick.css";
 import "../assets/css/style.css";
+import { Link } from "react-router-dom";
 
 const products = [
   {
@@ -413,6 +414,22 @@ function Home() {
                   </div>
                 </div>
               ))}
+              <div className="col"></div>
+              <div className="col-md-6 mt-5">
+                <div className="ingredients-content">
+                  <h5 className="title">
+                    If you have any other medicine requirements, please click
+                    the button below and submit the form.
+                  </h5>
+                  <Link
+                    to="/require-medicine-check-out"
+                    className="cart-btn text-white m-0"
+                  >
+                    View FOrm
+                  </Link>
+                </div>
+              </div>
+              <div className="col"></div>
             </div>
           </div>
         </section>
