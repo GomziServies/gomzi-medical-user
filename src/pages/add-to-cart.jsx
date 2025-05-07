@@ -12,7 +12,6 @@ import "../assets/css/slick.css";
 import "../assets/css/style.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import HomeNutritionFooter from "../components/partials/Footer/footer";
 import { axiosInstance, publicAxiosInstance } from "../assets/js/config/api";
 import LoginModal from "../assets/js/popup/login";
 import LoadingComponent from "../components/loadingComponent";
@@ -20,20 +19,15 @@ import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
-import MoreProduct from "../components/MoreProduct";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { Link } from "react-router-dom";
 
 function AddToCart() {
   const canonicalUrl = window.location.href;
   const [loading, setLoading] = useState(false);
   const [loading1, setLoading1] = useState(false);
-  const [productData, setProductData] = useState([]);
-  const [totalAmount, setTotalAmount] = useState(0);
   const [serverDataID, setServerDataID] = useState("");
   const [productDataGet, setProductDataGet] = useState([]);
   const [previousProductData, setPreviousProductData] = useState([]);
-  const [totalMRP, setTotalMRP] = React.useState(0);
   const [showModal, setShowModal] = useState(false);
   const [cartDataClick, setCartDataClick] = useState(false);
 
@@ -49,7 +43,7 @@ function AddToCart() {
     setLoading(true);
     try {
       const response = await axiosInstance.get(
-        "/order-cart/get-carts?item_type=PURE_GO_MEAL_PRODUCT&is_purchase=true"
+        "/order-cart/get-carts?item_type=MEDICAL_PRODUCT&is_purchase=true"
       );
       const serverData = response.data.data[0];
       setServerDataID(serverData._id);
@@ -81,7 +75,6 @@ function AddToCart() {
         };
       });
 
-      console.log("itemDataForGetImgName :- ", itemDataForGetImgName);
       const updatedServerData = combinedData.map((product) => {
         return {
           ...product,
@@ -89,10 +82,7 @@ function AddToCart() {
         };
       });
       setPreviousProductData(updatedServerData);
-      setProductData(updatedServerData);
-      totalAmountCalculation(updatedServerData);
       setProductDataGet(updatedServerData);
-      totalMRPCalculation(updatedServerData);
 
       setCartDataClick(false);
     } catch (error) {
@@ -110,14 +100,6 @@ function AddToCart() {
     }
   }, [cartDataClick]);
 
-  const totalAmountCalculation = (data) => {
-    const amount = data.reduce(
-      (sum, product) => sum + product.price * product.quantity,
-      0
-    );
-    setTotalAmount(amount || 0);
-  };
-
   const handleRemoveProduct = async (cart_id, product_id) => {
     try {
       await axiosInstance.delete(
@@ -133,21 +115,10 @@ function AddToCart() {
         (product) => product.product_id !== product_id
       );
       localStorage.setItem("addItemInCart", JSON.stringify(existingData));
-      fetchProductData();
       setCartDataClick(true);
     } catch (error) {
       console.error("Error removing product:", error);
     }
-  };
-
-  const totalMRPCalculation = (data) => {
-    const totalMrp = data.map((product) => {
-      const mrp = product.mrpPrice * product.quantity;
-      return mrp;
-    });
-    const amount = totalMrp.reduce((sum, product) => sum + product, 0);
-    setTotalMRP(amount || 0);
-    return amount;
   };
 
   const minusQuantity = (productId) => {
@@ -161,8 +132,6 @@ function AddToCart() {
         const originalProduct = prevData.find((p) => p._id === product._id);
         return originalProduct && originalProduct.quantity !== product.quantity;
       });
-      totalAmountCalculation(updatedData);
-      totalMRPCalculation(updatedData);
       setTimeout(async () => {
         handleUpdateCart(changedProducts);
       }, 1000);
@@ -182,9 +151,6 @@ function AddToCart() {
         const originalProduct = prevData.find((p) => p._id === product._id);
         return originalProduct && originalProduct.quantity !== product.quantity;
       });
-
-      totalAmountCalculation(updatedData);
-      totalMRPCalculation(updatedData);
 
       setTimeout(() => {
         handleUpdateCart(changedProducts);
@@ -232,12 +198,10 @@ function AddToCart() {
             "productsData",
             JSON.stringify({
               products,
-              totalAmount,
-              totalMRP,
             })
           );
 
-          window.location.href = `/check-out`;
+          window.location.href = `/aas-check-out`;
         }
       } else {
         const products = productDataGet.map((product) => ({
@@ -249,128 +213,17 @@ function AddToCart() {
           "productsData",
           JSON.stringify({
             products,
-            totalAmount,
-            totalMRP,
           })
         );
 
         localStorage.setItem("serverDataID", serverDataID);
 
-        window.location.href = `/check-out`;
+        window.location.href = `/aas-check-out`;
       }
     } catch (error) {
       console.error("Error adding to cart:", error);
     }
     setLoading1(false);
-  };
-
-  const [cartItemName, setCartItemName] = useState([]);
-  const [productsId, setProductsId] = useState([
-    "67e7749163f930dcc6a2715d",
-    "67e774a963f930dcc6a2715f",
-    "67e774c463f930dcc6a27161",
-    "67e7745f63f930dcc6a2715b",
-    "67e7740363f930dcc6a27157",
-    "67e7742d63f930dcc6a27159",
-    "67e773f463f930dcc6a27155",
-  ]);
-  const [productReviewsData, setProductReviewsData] = useState([]);
-
-  const fetchProductData = async () => {
-    try {
-      const response = await axiosInstance.get(
-        "/order-cart/get-carts?item_type=PURE_GO_MEAL_PRODUCT&is_purchase=true"
-      );
-      const cartData = response.data.data[0];
-      const cartItemData = cartData.items_details.map((data) => data.name);
-      setCartItemName(cartItemData);
-      productsId.map((data) => fetchProductRatingData(data));
-    } catch (error) {
-      console.error("Error fetching product data:", error);
-    }
-  };
-
-  const fetchProductRatingData = (product_id) => {
-    publicAxiosInstance
-      .get(`/feedback/products?product_id=${product_id}`)
-      .then((response) => {
-        const { data } = response;
-        if (data && data.status === 200) {
-          const feedback = data.data;
-          if (feedback && feedback.length > 0) {
-            let totalPoints = 0;
-            let feedbackCount = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
-
-            feedback.forEach((feedbackItem) => {
-              totalPoints += feedbackItem.feedback_point;
-              feedbackCount[feedbackItem.feedback_point]++;
-            });
-            const averagePoints = totalPoints / feedback.length;
-
-            setProductReviewsData((prevData) => {
-              const filteredData = prevData.filter(
-                (item) => item._id !== product_id
-              );
-              const newEntry = {
-                _id: product_id,
-                average_points: averagePoints.toFixed(1),
-                total_count: feedback.length,
-              };
-              return [...filteredData, newEntry];
-            });
-          }
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching product feedback:", error);
-        Swal.fire({
-          title: "Error",
-          text: "Failed to fetch product feedback. Please try again later.",
-          icon: "error",
-        });
-      });
-  };
-
-  useEffect(() => {
-    const isLogin = localStorage.getItem("fg_group_user_authorization");
-    if (isLogin) {
-      fetchProductData();
-    }
-  }, []);
-
-  const options = {
-    loop: true,
-    dots: false,
-    dotsEach: true,
-    nav: false,
-    autoplayTimeout: 3000,
-    smartSpeed: 500,
-    responsive: {
-      0: { items: 1 },
-      600: { items: 3 },
-      1000: { items: 4 },
-    },
-  };
-
-  const addProductInCart = async (product_id) => {
-    try {
-      const isLogin = localStorage.getItem("fg_group_user_authorization");
-      if (!isLogin) {
-        return openModal();
-      }
-      const response = await axiosInstance.post("/order-cart/add-item", {
-        item_id: product_id,
-        quantity: 1,
-        item_type: "PURE_GO_MEAL_PRODUCT",
-      });
-      if (response.data.response === "OK") {
-        toast.success("Product added in cart.");
-        fetchProductData();
-        fetchProductCartData();
-      }
-    } catch (error) {
-      console.error(error);
-    }
   };
 
   return (
@@ -519,18 +372,18 @@ function AddToCart() {
                       })}
                     </tbody>
                   </table>
+                  {productDataGet.length === 0 && (
+                    <h5 className="text-center mt-3">No items found</h5>
+                  )}
                   <div className="text-center">
-                    <Link
-                      to="/aas-check-out"
+                    <button
+                      onClick={handleAddToCart}
                       className="cart-btn text-white m-0"
                     >
                       Checkout
-                    </Link>
+                    </button>
                   </div>
                 </div>
-                {productDataGet.length === 0 && (
-                  <h5 className="text-center mt-3">No items found</h5>
-                )}
               </div>
             </div>
           </div>

@@ -18,7 +18,7 @@ function NutritionHeader({ productDataGet, cartItemName, cartDataClick }) {
   const fetchProductData = async () => {
     try {
       const response = await axiosInstance.get(
-        "/order-cart/get-carts?item_type=PURE_GO_MEAL_PRODUCT&is_purchase=true"
+        "/order-cart/get-carts?item_type=MEDICAL_PRODUCT&is_purchase=true"
       );
       const cartData = response.data.data[0];
       setCartCount(cartData.items.length);

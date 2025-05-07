@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../assets/css/animate.min.css";
@@ -10,6 +10,8 @@ import "../assets/css/odometer.css";
 import "../assets/css/slick.css";
 import "../assets/css/style.css";
 import { Link } from "react-router-dom";
+import { axiosInstance } from "../assets/js/config/api";
+import LoginModal from "../assets/js/popup/login";
 
 const products = [
   {
@@ -350,6 +352,59 @@ const products = [
 ];
 
 function Home() {
+  const [productData, setProductData] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const authorization = localStorage.getItem("fg_group_user_authorization");
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  useEffect(() => {
+    if (!authorization) {
+      openModal();
+    }
+  }, [authorization]);
+
+  const getProductData = async () => {
+    try {
+      const response = await axiosInstance.get("/medical-product/get");
+      const userData = response.data.data;
+      if (userData) {
+        setProductData(userData);
+      }
+    } catch (error) {
+      console.error("Error in getProductData:", error);
+    }
+  };
+
+  useEffect(() => {
+    getProductData();
+  }, []);
+
+  const addProductInCart = async (product_id) => {
+    try {
+      const isLogin = localStorage.getItem("fg_group_user_authorization");
+      if (!isLogin) {
+        return openModal();
+      }
+      const response = await axiosInstance.post("/order-cart/add-item", {
+        item_id: product_id,
+        quantity: 1,
+        item_type: "MEDICAL_PRODUCT",
+      });
+      if (response.data.response === "OK") {
+        window.location.href = "/add-to-cart";
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
       <Helmet>
@@ -367,6 +422,7 @@ function Home() {
           content="https://www.purego.gomzilifesciences.in/assets/images/nutrition-logo.png"
         />
       </Helmet>
+      {showModal && <LoginModal onClose={closeModal} />}
 
       <main className="main-area">
         <section className="features-products">
@@ -375,24 +431,21 @@ function Home() {
           </div>
           <div className="container text-center">
             <div className="row">
-              {products.map((product) => (
-                <div
-                  className="col-lg-4 col-sm-6 text-start mt-3"
-                  key={product.id}
-                >
+              {productData.map((product, index) => (
+                <div className="col-lg-4 col-sm-6 text-start mt-3" key={index}>
                   <div className="item-card">
                     <div className="item-img-sec text-center">
                       <div className="d-flex justify-content-center">
                         <img
                           className="lazy"
-                          src={product.image}
-                          alt={product.title}
+                          src={`https://files.fggroup.in/${product.display_image}`}
+                          alt={product.name}
                         />
                       </div>
                     </div>
                     <div className="item-card-detail">
                       <div>
-                        <div className="item-title">{product.title}</div>
+                        <div className="item-title">{product.name}</div>
                         <p className="item-description">
                           {product.description}
                         </p>
@@ -401,10 +454,10 @@ function Home() {
                         <div className="item-desc">
                           <div className="d-flex align-items-center mb-3">
                             <span className="variant-price">
-                              {product.details}
+                              1 Box, {product.unit}
                             </span>
                           </div>
-                          <button className="product-btn item-view-btn w-100 m-0">
+                          <button className="product-btn item-view-btn w-100 m-0" onClick={() => addProductInCart(product._id)}>
                             <i className="fa-solid fa-cart-shopping me-2"></i>
                             Add to Cart
                           </button>
@@ -414,8 +467,9 @@ function Home() {
                   </div>
                 </div>
               ))}
-              <div className="col"></div>
-              <div className="col-md-6 mt-5">
+            </div>
+            <div className="row justify-content-center">
+              <div className="col-md-6 mt-5 mb-4">
                 <div className="ingredients-content">
                   <h5 className="title">
                     If you have any other medicine requirements, please click
@@ -429,7 +483,6 @@ function Home() {
                   </Link>
                 </div>
               </div>
-              <div className="col"></div>
             </div>
           </div>
         </section>
@@ -439,9 +492,9 @@ function Home() {
           <form>
             <div className="row">
               <div className="form-group col-12">
-                <button type="submit" class="cart-btn m-0">
+                <Link to="add-to-cart" class="cart-btn m-0">
                   View Cart
-                </button>
+                </Link>
               </div>
             </div>
           </form>

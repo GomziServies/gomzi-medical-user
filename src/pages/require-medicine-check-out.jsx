@@ -1,28 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import { useLocation } from "react-router";
 import { Helmet } from "react-helmet";
 import { axiosInstance } from "../assets/js/config/api";
-import { createPaymentProduct } from "../assets/js/utils/product";
-import NutritionHeader from "../components/partials/Header/nutritionsheader";
 import LoginModal from "../assets/js/popup/login";
 import LoadingComponent from "../components/loadingComponent";
 
 function RequireMedicineCheckOut() {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const item_id = searchParams.get("item_id");
-  const [totalPrice, setTotalPrice] = useState();
-  const [productDatas, setProductDatas] = useState([[]]);
-  const [paymentMode, setPaymentMode] = useState("ONLINE");
-  const productData = localStorage.getItem("productsData");
-  const [isOpen, setIsOpen] = useState(false);
-  const [mainPrice, setMainPrice] = useState();
   const canonicalUrl = window.location.href;
-  const [prepaidCouponCode, setPrepaidCouponCode] = useState({});
   const [orderUserData, setOrderUserData] = useState({
     username: "",
     email: "",
+    pin_code: "",
+    pin_code: "",
     pin_code: "",
     address_line_1: "",
     address_line_2: "",
@@ -30,10 +19,10 @@ function RequireMedicineCheckOut() {
     state: "",
     country: "",
   });
-  const [totalDiscount, setTotalDiscount] = useState(0);
-  const [discountCost, setDiscountCost] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [diseaseData, setDiseaseData] = useState(null);
+  const [requirementData, setRequirementData] = useState(null);
 
   const openModal = () => {
     setShowModal(true);
@@ -43,76 +32,24 @@ function RequireMedicineCheckOut() {
     setShowModal(false);
   };
 
-  const handlePaymentModeChange = (e) => {
-    const selectedMode = e.target.value;
-    setPaymentMode(selectedMode);
-
-    if (selectedMode === "ONLINE") {
-      setPrepaidCouponCode({ discount: 0 });
-    } else if (selectedMode === "Cash On Delivery") {
-      setPrepaidCouponCode({ discount: 0 });
-      setMainPrice(totalPrice);
-      removePromoCode("GOMZI5", "COD");
-    }
-  };
-
-  const UpdatedData = (productData) => {
-    const data = JSON.parse(productData);
-    setMainPrice(data.totalAmount);
-    setProductDatas(data.products);
-    setTotalPrice(data.totalAmount);
-  };
-
-  useEffect(() => {
-    if (productData) {
-      getUserData();
-      UpdatedData(productData);
-    }
-  }, [productData]);
-
-  useEffect(() => {
-    const isLogin = localStorage.getItem("fg_group_user_authorization");
-    if (!isLogin) {
-      return openModal();
-    }
-  }, []);
-
-  const toggleCollapse = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const compareUserData = (updatedUserData) => {
-    return (
-      updatedUserData.pin_code === orderUserData.pin_code &&
-      updatedUserData.address_line_1 === orderUserData.address_line_1 &&
-      updatedUserData.address_line_2 === orderUserData.address_line_2 &&
-      updatedUserData.city === orderUserData.city &&
-      updatedUserData.email === orderUserData.email
-    );
-  };
-
   const handleFormSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
     try {
       const updatedUserData = {
-        pin_code: e.target.postalCode.value,
-        address_line_1: e.target.officeName.value,
-        address_line_2: e.target.roadName.value,
-        city: e.target.city.value,
-        state: e.target.state.value,
-        country: e.target.country.value,
-        email: e.target.email.value,
-        first_name: e.target.first_name.value,
-        last_name: e.target.last_name.value,
+        first_name: e.target.first_name?.value,
+        last_name: e.target.last_name?.value,
+        email: e.target.email?.value,
+        address_line_1: e.target.officeName?.value,
+        address_line_2: e.target.roadName?.value,
+        city: e.target.city?.value,
+        pin_code: e.target.postalCode?.value,
       };
       setOrderUserData(updatedUserData);
-      if (!orderUserData.username) {
-        await updateUserData(updatedUserData);
-      } else if (!compareUserData(updatedUserData)) {
-        await updateUserData(updatedUserData);
-      }
-      getEstimate(e.target.postalCode.value);
+      setDiseaseData(e.target.disease?.value);
+      setRequirementData(e.target.disease?.value);
+
+      await updateUserData(updatedUserData);
     } catch (error) {
       console.error("Error in handleFormSubmit:", error);
     }
@@ -123,34 +60,21 @@ function RequireMedicineCheckOut() {
     setLoading(true);
     try {
       const updatedUserData = {
-        pin_code: orderUserData.pin_code,
-        address_line_1: orderUserData.address_line_1,
-        address_line_2: orderUserData.address_line_2,
-        city: orderUserData.city,
-        state: orderUserData.state,
-        country: orderUserData.country,
-        email: orderUserData.email,
-        first_name: orderUserData.first_name,
-        last_name: orderUserData.last_name,
+        disease: diseaseData,
+        requirement: requirementData,
       };
-      const payment_mode = paymentMode;
-
+      
       try {
-        const coupon_ids = [prepaidCouponCode._id].filter(Boolean);
-        await createPaymentProduct(
-          item_id
-            ? [{ product_id: "670a5a7b9a7dbcdce616398d", quantity: 1 }]
-            : productDatas,
-          updatedUserData,
-          coupon_ids,
-          payment_mode,
-          discountCost
+        const result = await axiosInstance.post(
+          "/medical-product/add-requirement",
+          updatedUserData
         );
+        if (result.data.response === "OK") {
+            window.location.href = "/requirement-thank-you";
+        }
       } catch (error) {
         console.error("Error during order:", error);
       }
-      window.Razorpay && window.Razorpay.close && window.Razorpay.close();
-      window.scrollTo(0, 0);
     } catch (error) {
       console.error("Error in handleFormSubmit:", error);
     }
@@ -161,38 +85,10 @@ function RequireMedicineCheckOut() {
     try {
       await axiosInstance.post("/account/update-profile", data);
       getUserData();
+      handleOrderPayment();
     } catch (error) {
       console.error("Error in updateUserData:", error);
     }
-  };
-
-  const removePromoCode = (code, action) => {
-    if (action === "COD") {
-      calculateDiscountedPrice({ discount: 0 }, "COD");
-    } else {
-      calculateDiscountedPrice({ discount: 0 }, "remove");
-    }
-    if (code !== "GOMZI5") {
-      window.location.reload();
-    }
-  };
-
-  const calculateDiscountedPrice = (couponData, action) => {
-    let discountAmount = 0;
-    let prepaidDiscount;
-    if (action === "COD") {
-      prepaidDiscount = 0;
-    } else {
-      prepaidDiscount = prepaidCouponCode.discount || 0;
-    }
-
-    const latestDiscount = couponData.discount || 0;
-    const totalDiscount = prepaidDiscount + latestDiscount;
-    discountAmount += (totalPrice * totalDiscount) / 100;
-
-    const discountedPrice = totalPrice - discountAmount;
-    setMainPrice(discountedPrice > 0 ? discountedPrice : totalPrice);
-    setTotalDiscount(totalDiscount);
   };
 
   const getUserData = async () => {
@@ -211,67 +107,15 @@ function RequireMedicineCheckOut() {
           state: userData.user?.address?.state || "",
           country: userData.user?.address?.country || "",
         });
-        getEstimate(userData.user?.address?.pin_code);
       }
     } catch (error) {
       console.error("Error in getUserData:", error);
     }
   };
 
-  const getEstimate = async (pin_code) => {
-    try {
-      const payload = {
-        length: 10,
-        breadth: 10,
-        height: 25,
-        weight: 1000,
-        destination_pincode: pin_code,
-        origin_pincode: "395004",
-        destination_country_code: "IN",
-        origin_country_code: "IN",
-        shipment_mode: "S",
-        shipment_type:
-          paymentMode === "ONLINE"
-            ? "P"
-            : paymentMode === "Cash On Delivery"
-            ? "C"
-            : "C",
-        shipment_value: `${Math.round(mainPrice)}`,
-      };
-
-      const response = await axiosInstance.post(
-        "/insights/icarry/get-estimate",
-        payload
-      );
-
-      const estimateData = response.data.data.estimate;
-      const courierArray = Object.values(estimateData);
-
-      const deliveryCouriers = courierArray.filter((data) =>
-        data.courier_group_name.includes("Delhivery")
-      );
-
-      let cheapCostData;
-
-      if (deliveryCouriers.length > 0) {
-        cheapCostData = deliveryCouriers.reduce((min, current) =>
-          current.courier_cost < min.courier_cost ? current : min
-        );
-      } else {
-        cheapCostData = courierArray.reduce((min, current) =>
-          current.courier_cost < min.courier_cost ? current : min
-        );
-      }
-
-      setDiscountCost(cheapCostData.courier_cost);
-    } catch (error) {
-      console.error("Error submitting pincode:", error);
-    }
-  };
-
-  // useEffect(() => {
-  //   getEstimate();
-  // }, []);
+  useEffect(() => {
+    getUserData();
+  }, []);
 
   return (
     <>
@@ -383,31 +227,31 @@ function RequireMedicineCheckOut() {
                       </div>
                       <div className="col-12">
                         <div className="form-grp">
-                          <label htmlFor="street-address-two">
+                          <label htmlFor="disease">
                             Your Disease *
                           </label>
                           <textarea
                             type="text"
-                            id="street-address-two"
+                            id="disease"
                             placeholder="Your Disease"
-                            name="roadName"
+                            name="disease"
                             required
-                            // defaultValue={orderUserData.address_line_2}
+                            defaultValue={orderUserData.disease}
                           />
                         </div>
                       </div>
                       <div className="col-12">
                         <div className="form-grp">
-                          <label htmlFor="street-address-three">
+                          <label htmlFor="requirement">
                             Your Requirement *
                           </label>
                           <textarea
                             type="text"
-                            id="street-address-three"
+                            id="requirement"
                             placeholder="Enter Medicine Requirement"
-                            name="roadName"
+                            name="requirement"
                             required
-                            // defaultValue={orderUserData.address_line_2}
+                            defaultValue={orderUserData.requirement}
                           />
                         </div>
                       </div>
@@ -477,15 +321,7 @@ function RequireMedicineCheckOut() {
                       <div className="col-md-12 mt-3">
                         <button
                           onClick={() => {
-                            if (paymentMode) {
-                              document.querySelector("form").requestSubmit();
-                            } else {
-                              Swal.fire({
-                                icon: "error",
-                                title: "Error!",
-                                text: "Please select a payment method.",
-                              });
-                            }
+                            document.querySelector("form").requestSubmit();
                           }}
                           className="cart-btn w-100 m-0"
                         >

@@ -34,7 +34,7 @@ const MoreProduct = ({ setCartDataClick, cartDataClick }) => {
   const fetchProductData = async () => {
     try {
       const response = await axiosInstance.get(
-        "/order-cart/get-carts?item_type=PURE_GO_MEAL_PRODUCT&is_purchase=true"
+        "/order-cart/get-carts?item_type=MEDICAL_PRODUCT&is_purchase=true"
       );
       const cartData = response.data.data[0];
       const cartItemData = cartData.items_details.map((data) => data.name);
@@ -116,7 +116,7 @@ const MoreProduct = ({ setCartDataClick, cartDataClick }) => {
       const response = await axiosInstance.post("/order-cart/add-item", {
         item_id: product_id,
         quantity: 1,
-        item_type: "PURE_GO_MEAL_PRODUCT",
+        item_type: "MEDICAL_PRODUCT",
       });
       if (response.data.response === "OK") {
         toast.success("Product added in cart.");
