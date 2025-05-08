@@ -10,7 +10,7 @@ import "../assets/css/odometer.css";
 import "../assets/css/slick.css";
 import "../assets/css/style.css";
 import { Link } from "react-router-dom";
-import { axiosInstance } from "../assets/js/config/api";
+import { axiosInstance, publicAxiosInstance } from "../assets/js/config/api";
 import LoginModal from "../assets/js/popup/login";
 
 const products = [
@@ -354,6 +354,7 @@ const products = [
 function Home() {
   const [productData, setProductData] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [cartDataCount, setCartDataCount] = useState(null);
   const authorization = localStorage.getItem("fg_group_user_authorization");
 
   const openModal = () => {
@@ -372,7 +373,7 @@ function Home() {
 
   const getProductData = async () => {
     try {
-      const response = await axiosInstance.get("/medical-product/get");
+      const response = await publicAxiosInstance.get("/medical-product/get");
       const userData = response.data.data;
       if (userData) {
         setProductData(userData);
@@ -404,6 +405,26 @@ function Home() {
       console.error(error);
     }
   };
+
+  const fetchProductCartData = async () => {
+    try {
+      const response = await axiosInstance.get(
+        "/order-cart/get-carts?item_type=MEDICAL_PRODUCT&is_purchase=true"
+      );
+      const serverData = response?.data?.data?.[0]?.items?.length;
+
+      setCartDataCount(serverData);
+    } catch (error) {
+      console.error("Error fetching product data:", error);
+    }
+  };
+
+  useEffect(() => {
+    const isLogin = localStorage.getItem("fg_group_user_authorization");
+    if (isLogin) {
+      fetchProductCartData();
+    }
+  }, []);
 
   return (
     <>
@@ -490,19 +511,21 @@ function Home() {
           </div>
         </section>
       </main>
-      <section className="aas-checkout">
-        <div className="container text-center">
-          <form>
-            <div className="row">
-              <div className="form-group col-12">
-                <Link to="add-to-cart" class="cart-btn text-white m-0">
-                  View Cart
-                </Link>
+      {cartDataCount > 0 && (
+        <section className="aas-checkout">
+          <div className="container text-center">
+            <form>
+              <div className="row">
+                <div className="form-group col-12">
+                  <Link to="add-to-cart" class="cart-btn text-white m-0">
+                    View Cart
+                  </Link>
+                </div>
               </div>
-            </div>
-          </form>
-        </div>
-      </section>
+            </form>
+          </div>
+        </section>
+      )}
     </>
   );
 }
