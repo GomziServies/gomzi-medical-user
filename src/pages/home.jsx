@@ -457,7 +457,10 @@ function Home() {
                               1 Box, {product.unit}
                             </span>
                           </div>
-                          <button className="product-btn item-view-btn w-100 m-0" onClick={() => addProductInCart(product._id)}>
+                          <button
+                            className="product-btn item-view-btn w-100 m-0"
+                            onClick={() => addProductInCart(product._id)}
+                          >
                             <i className="fa-solid fa-cart-shopping me-2"></i>
                             Add to Cart
                           </button>
@@ -492,7 +495,7 @@ function Home() {
           <form>
             <div className="row">
               <div className="form-group col-12">
-                <Link to="add-to-cart" class="cart-btn m-0">
+                <Link to="add-to-cart" class="cart-btn text-white m-0">
                   View Cart
                 </Link>
               </div>
