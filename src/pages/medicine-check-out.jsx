@@ -106,6 +106,24 @@ function MedicineCheckOut() {
     setLoading(false);
   };
 
+  const handleRemoveProduct = async (product_id) => {
+    try {
+      const serverDataID = localStorage.getItem("serverDataID");
+      await axiosInstance.delete(
+        `/order-cart/remove-item?item_id=${product_id}&cart_id=${serverDataID}`
+      );
+      const existingData = JSON.parse(
+        localStorage.getItem("addItemInCart")
+      ) || { products: [] };
+      existingData.products = existingData.products.filter(
+        (product) => product.product_id !== product_id
+      );
+      localStorage.setItem("addItemInCart", JSON.stringify(existingData));
+    } catch (error) {
+      console.error("Error removing product:", error);
+    }
+  };
+
   const updateUserData = async (data) => {
     try {
       await axiosInstance.post("/account/update-profile", data);

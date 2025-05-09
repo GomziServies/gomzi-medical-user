@@ -259,18 +259,21 @@
 
 #ex4 .p1[data-count]:after {
   position: absolute;
-  right: -10%;
-  top: -25%;
+  right: 578px;
+  top: -9px;
   content: attr(data-count);
   font-size: 10px;
   padding: 6px;
   border-radius: 50%;
-  height: 20px;
+  min-width: 25px;
+  height: 25px;
   line-height: 1em;
   color: white;
   background: rgba(255, 0, 0, 0.85);
   text-align: center;
-  min-width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 :root {
@@ -9054,21 +9057,74 @@ body.search-visible {
 
   #ex4 .p1[data-count]:after {
     position: absolute;
-    right: -25%;
-    top: -25%;
+    right: 99px;
+    top: -8px;
     content: attr(data-count);
     font-size: 10px;
     padding: 6px;
     border-radius: 50%;
-    height: 20px;
+    min-width: 25px;
+    height: 25px;
     line-height: 1em;
     color: white;
     background: rgba(255, 0, 0, 0.85);
     text-align: center;
-    min-width: 20px;
   }
 }
-
+@media (max-width: 1399px) {
+  #ex4 .p1[data-count]:after {
+    right: 491px;
+    top: -9px;
+  }
+}
+@media (max-width: 1199px) {
+  #ex4 .p1[data-count]:after {
+    right: 401px;
+    top: -9px;
+  }
+}
+@media (max-width: 991px) {
+  #ex4 .p1[data-count]:after {
+    right: 280px;
+    top: -8px;
+  }
+}
+@media (max-width: 767px) {
+  #ex4 .p1[data-count]:after {
+    right: 190px;
+    top: -8px;
+  }
+}
+@media (max-width: 575px) {
+  #ex4 .p1[data-count]:after {
+    right: 206px;
+    top: -8px;
+  }
+}
+@media (max-width: 425px) {
+  #ex4 .p1[data-count]:after {
+    right: 133px;
+    top: -8px;
+  }
+}
+/* @media (max-width: 359px) {
+  #ex4 .p1[data-count]:after {
+    right: 99px;
+    top: -8px;
+  }
+} */
+@media (max-width: 375px) {
+  #ex4 .p1[data-count]:after {
+    right: 99px;
+    top: -8px;
+  }
+}
+@media (max-width: 320px) {
+  #ex4 .p1[data-count]:after {
+    right: 80px;
+    top: -8px;
+  }
+}
 /* Medium devices (tablets, 768px and up) */
 @media (max-width: 767.98px) {
   .custom-container {
@@ -11490,17 +11546,18 @@ body.search-visible {
 
 @media (min-width: 600px) {
   .wrapper-1 {
-      box-shadow: 4px 8px 40px 8px #12af3433;
-      height: auto;
-      margin: 50px auto 0;
-      max-width: 620px;
+    box-shadow: 4px 8px 40px 8px #12af3433;
+    height: auto;
+    margin: 50px auto 0;
+    max-width: 620px;
   }
 }
 
 @media (min-width: 360px) {
-  .wrapper-1 .h1-fs, .wrapper-1 h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
+  .wrapper-1 .h1-fs,
+  .wrapper-1 h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
   }
 }
 

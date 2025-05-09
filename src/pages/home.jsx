@@ -12,6 +12,7 @@ import "../assets/css/style.css";
 import { Link } from "react-router-dom";
 import { axiosInstance, publicAxiosInstance } from "../assets/js/config/api";
 import LoginModal from "../assets/js/popup/login";
+import { toast } from "react-toastify";
 
 const products = [
   {
@@ -355,6 +356,7 @@ function Home() {
   const [productData, setProductData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [cartDataCount, setCartDataCount] = useState(null);
+  const [cartItemName, setCartItemName] = useState([]);
   const authorization = localStorage.getItem("fg_group_user_authorization");
 
   const openModal = () => {
@@ -399,7 +401,9 @@ function Home() {
         item_type: "MEDICAL_PRODUCT",
       });
       if (response.data.response === "OK") {
-        window.location.href = "/add-to-cart";
+        toast.success('Product Added in Cart')
+        fetchProductCartData()
+        // window.location.href = "/add-to-cart";
       }
     } catch (error) {
       console.error(error);
@@ -412,8 +416,11 @@ function Home() {
         "/order-cart/get-carts?item_type=MEDICAL_PRODUCT&is_purchase=true"
       );
       const serverData = response?.data?.data?.[0]?.items?.length;
-
       setCartDataCount(serverData);
+
+      const cartData = response.data.data[0];
+      const cartItemData = cartData.items_details.map((data) => data._id);
+      setCartItemName(cartItemData);
     } catch (error) {
       console.error("Error fetching product data:", error);
     }
@@ -478,13 +485,21 @@ function Home() {
                               1 Box, {product.unit}
                             </span>
                           </div>
-                          <button
-                            className="product-btn item-view-btn w-100 m-0"
-                            onClick={() => addProductInCart(product._id)}
-                          >
-                            <i className="fa-solid fa-cart-shopping me-2"></i>
-                            Add to Cart
-                          </button>
+                          {cartItemName.some((item) =>
+                            item.includes(product._id)
+                          ) ? (
+                            <button className="product-btn item-view-btn w-100 m-0">
+                              Item Added
+                            </button>
+                          ) : (
+                            <button
+                              className="product-btn item-view-btn w-100 m-0"
+                              onClick={() => addProductInCart(product._id)}
+                            >
+                              <i className="fa-solid fa-cart-shopping me-2"></i>
+                              Add to Cart
+                            </button>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -503,7 +518,7 @@ function Home() {
                     to="/require-medicine-check-out"
                     className="cart-btn text-white m-0"
                   >
-                    View FOrm
+                    View Form
                   </Link>
                 </div>
               </div>
@@ -515,11 +530,13 @@ function Home() {
         <section className="aas-checkout">
           <div className="container text-center">
             <form>
-              <div className="row">
-                <div className="form-group col-12">
-                  <Link to="add-to-cart" class="cart-btn text-white m-0">
-                    View Cart
-                  </Link>
+              <div className="row position-relative">
+                <div className="form-group col-12" id="ex4">
+                  <span className="p1" data-count={cartDataCount}>
+                  </span>
+                    <Link to="add-to-cart" class="cart-btn text-white m-0">
+                      View Cart
+                    </Link>
                 </div>
               </div>
             </form>
