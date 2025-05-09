@@ -11,7 +11,8 @@ if (
 } else if (hostname === "test.medicine.gomzilifesciences.in/") {
   baseUrl = "https://dev-api.fggroup.in";
 } else {
-  baseUrl = "https://dev-api.fggroup.in";
+  baseUrl = "https://medicine.gomzilifesciences.in/";
+  // baseUrl = "https://dev-api.fggroup.in";
   // baseUrl = "http://localhost";
 }
 
