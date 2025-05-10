@@ -401,8 +401,8 @@ function Home() {
         item_type: "MEDICAL_PRODUCT",
       });
       if (response.data.response === "OK") {
-        toast.success('Product Added in Cart')
-        fetchProductCartData()
+        toast.success("Product Added in Cart");
+        fetchProductCartData();
         // window.location.href = "/add-to-cart";
       }
     } catch (error) {
@@ -482,7 +482,7 @@ function Home() {
                         <div className="item-desc">
                           <div className="d-flex align-items-center mb-3">
                             <span className="variant-price">
-                              1 Box, {product.unit}
+                              {product.unit}
                             </span>
                           </div>
                           {cartItemName.some((item) =>
@@ -532,11 +532,10 @@ function Home() {
             <form>
               <div className="row position-relative">
                 <div className="form-group col-12" id="ex4">
-                  <span className="p1" data-count={cartDataCount}>
-                  </span>
-                    <Link to="add-to-cart" class="cart-btn text-white m-0">
-                      View Cart
-                    </Link>
+                  <span className="p1" data-count={cartDataCount}></span>
+                  <Link to="add-to-cart" class="cart-btn text-white m-0">
+                    View Cart
+                  </Link>
                 </div>
               </div>
             </form>
