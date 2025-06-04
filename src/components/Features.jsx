@@ -145,7 +145,7 @@ const Features = ({ USPData, removeUSP }) => {
               <h4 className="d-inline-block f-rob-med f-14">
                 <i
                   className="fas fa-check-circle right me-2"
-                  style={{ fontSize: "24px", color: "#86c33a" }}
+                  style={{ fontSize: "24px", color: "#0D1282" }}
                 ></i>
                 100% Authentic
               </h4>

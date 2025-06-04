@@ -454,13 +454,13 @@ function Home() {
 
       <main className="main-area">
         <section className="features-products">
-          <div className="section-title text-center mb-60">
+          <div className="section-title text-center">
             <h1 className="title">Anabolic Compounds</h1>
           </div>
           <div className="container text-center">
             <div className="row">
               {productData.map((product, index) => (
-                <div className="col-lg-4 col-sm-6 text-start mt-3" key={index}>
+                <div className="col-lg-4 col-sm-6 text-start mt-5" key={index}>
                   <div className="item-card">
                     <div className="item-img-sec text-center">
                       <div className="d-flex justify-content-center">

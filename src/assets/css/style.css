@@ -2,7 +2,7 @@
 @import "../../../node_modules/react-modal-video/scss/modal-video.scss";
 
 .labeling {
-  background: #86c33a;
+  background: #0d1282;
   color: white;
   padding: 0px 10px;
   position: absolute;
@@ -280,7 +280,7 @@
   --tg-body-font-family: "Roboto", sans-serif;
   --tg-heading-font-family: "Oswald", sans-serif;
   --tg-primary-color: #faa432;
-  --tg-secondary-color: #86c33a;
+  --tg-secondary-color: #0d1282;
   --tg-body-font-color: #777777;
   --tg-heading-font-color: #222222;
   --tg-paragraph-color: #777777;
@@ -10095,25 +10095,25 @@ body.search-visible {
 }
 
 .checkbox-wrapper-16 .checkbox-input:checked + .checkbox-tile {
-  border-color: #86c33a;
+  border-color: #0d1282;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  color: #86c33a;
+  color: #0d1282;
 }
 
 .checkbox-wrapper-16 .checkbox-input:checked + .checkbox-tile:before {
   transform: scale(1);
   opacity: 1;
-  background-color: #86c33a;
-  border-color: #86c33a;
+  background-color: #0d1282;
+  border-color: #0d1282;
 }
 
 .checkbox-wrapper-16 .checkbox-input:checked + .checkbox-tile .checkbox-icon,
 .checkbox-wrapper-16 .checkbox-input:checked + .checkbox-tile .checkbox-label {
-  color: #86c33a;
+  color: #0d1282;
 }
 
 .checkbox-wrapper-16 .checkbox-input:focus + .checkbox-tile {
-  border-color: #86c33a;
+  border-color: #0d1282;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 0 0 4px #b5c9fc;
 }
 
@@ -10130,7 +10130,7 @@ body.search-visible {
   width: 7rem;
   min-height: 7rem;
   border-radius: 0.5rem;
-  border: 2px solid #86c33a;
+  border: 2px solid #0d1282;
   background-color: #fff;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   transition: 0.15s ease;
@@ -10144,7 +10144,7 @@ body.search-visible {
   display: block;
   width: 1.25rem;
   height: 1.25rem;
-  border: 2px solid #86c33a;
+  border: 2px solid #0d1282;
   background-color: #fff;
   border-radius: 50%;
   top: 0.25rem;
@@ -10159,7 +10159,7 @@ body.search-visible {
 }
 
 .checkbox-wrapper-16 .checkbox-tile:hover {
-  border-color: #86c33a;
+  border-color: #0d1282;
 }
 
 .checkbox-wrapper-16 .checkbox-tile:hover:before {
@@ -10231,7 +10231,7 @@ body.search-visible {
 }
 
 .bg-yellow {
-  background-color: #86c33a;
+  background-color: #0d1282;
 }
 
 .f-rob-bol {
@@ -10339,7 +10339,7 @@ body.search-visible {
 }
 
 .text-yellow {
-  color: #86c33a;
+  color: #0d1282;
 }
 
 .input-with-label input {
@@ -10354,7 +10354,7 @@ body.search-visible {
 }
 
 .input-with-label input:focus {
-  border-color: #86c33a;
+  border-color: #0d1282;
 }
 
 .input-with-label input:focus,
@@ -10687,7 +10687,7 @@ body.search-visible {
 
 .item-title {
   font-family: Montserrat, sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 20px !important;
   letter-spacing: 0;
@@ -10808,8 +10808,8 @@ body.search-visible {
 }
 
 .product-btn.item-view-btn {
-  background: #86c23a;
-  border: 1px solid #86c23a;
+  background: #0d1282;
+  border: 1px solid #0d1282;
   color: #fff9f4 !important;
   margin-left: 10px;
 }
@@ -10821,7 +10821,7 @@ body.search-visible {
 }
 
 .product-btn.item-view-btn:hover {
-  color: #86c23a !important;
+  color: #0d1282 !important;
   background-color: #fff !important;
   transition: 0.7s all;
 }
@@ -11072,7 +11072,7 @@ body.search-visible {
 
 .blog-list-tab .active,
 .blog-list-tab li:hover {
-  border-bottom: 2px solid #86c33a;
+  border-bottom: 2px solid #0d1282;
 }
 
 .blog-main {
@@ -11195,7 +11195,7 @@ body.search-visible {
 }
 
 .shipping .box {
-  border: 3.5px dashed #86c33a;
+  border: 3.5px dashed #0d1282;
   padding: 10px;
 }
 
@@ -11207,7 +11207,7 @@ body.search-visible {
 
 .product-detail .product-box {
   cursor: pointer;
-  border: 3.5px solid #86c33a;
+  border: 3.5px solid #0d1282;
   background-color: #fff;
   padding: 10px;
   border-radius: 8px;
@@ -11299,7 +11299,7 @@ body.search-visible {
   bottom: 0;
   height: 2px;
   width: 120%;
-  background-color: #86c33a;
+  background-color: #0d1282;
 }
 
 .discount-img-size {
