@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import LoginModal from "../popup/login";
 import { axiosInstance } from "../config/api";
 import { toast } from "react-toastify";
+import { BsCartCheckFill } from "react-icons/bs";
+import { IoPersonSharp } from "react-icons/io5";
 
 const UserInfo = ({ cartCount }) => {
   const [userInfo, setUserInfo] = useState(null);
@@ -60,47 +62,17 @@ const UserInfo = ({ cartCount }) => {
       {userInfo ? (
         <>
           <li
-            className="mb-1"
+            className=" d-flex align-items-center gap-1 m-0"
             onClick={toggleUserMenu}
             style={{ cursor: "pointer" }}
           >
-            Hi, {userInfo.user.last_name} <i className="far fa-user"></i>
-          </li>
-          <li className="mx-0">
-            <a href="/add-to-cart" aria-label="Fg Group">
-              {/* <img
-                src={process.env.PUBLIC_URL + "/assets/images/cart-img.webp"}
-                width="21px"
-                alt="Cart"
-                className="mb-1"
-              /> */}
-              <div id="ex4">
-                <span className="p1" data-count={cartCount}>
-                  <img
-                    src={
-                      process.env.PUBLIC_URL + "../assets/images/cart-img.webp"
-                    }
-                    width="28px"
-                    alt="Fg Group"
-                  />
-                </span>
-              </div>
-            </a>
+            Hi, {userInfo.user.last_name} <IoPersonSharp style={{color:'#d83344',fontSize:'22px'}}/>
           </li>
           {isUserMenuVisible && (
             <ul>
               <li>
                 <a href={`/user/profile`}>
                   <i className="far fa-user"></i> Profile
-                </a>
-              </li>
-              <li className="me-0">
-                <a href={`/user/order`}>
-                  <i
-                    className="fas fa-box me-1"
-                    style={{ fontSize: "18px" }}
-                  ></i>
-                  Orders
                 </a>
               </li>
               <li onClick={logout}>

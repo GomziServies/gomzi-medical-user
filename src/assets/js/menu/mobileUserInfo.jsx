@@ -65,12 +65,6 @@ const MobileUserInfo = () => {
               <i className="far fa-user"></i> Profile
             </a>
           </li>
-          <li className="me-0">
-            <a href={`${redirectDir}/user/order`}>
-              <i className="fas fa-box me-3" style={{ fontSize: "18px" }}></i>
-              Orders
-            </a>
-          </li>
           <li>
             <a onClick={logout}>
               {" "}
