@@ -74,27 +74,27 @@ const MediumAnabolicCycle = () => {
                             <table className="cycle-table">
                                 <tbody>
                                     <tr>
-                                        <td>Remain</td>
+                                        <td className="bg-light">Remain</td>
                                         <td>505 mg</td>
                                     </tr>
                                     <tr>
-                                        <td>Testosterone Propionate</td>
+                                        <td className="bg-light">Testosterone Propionate</td>
                                         <td>Weekly 2</td>
                                     </tr>
                                     <tr>
-                                        <td>Trenbolone acetate</td>
+                                        <td className="bg-light">Trenbolone acetate</td>
                                         <td>Weekly 2</td>
                                     </tr>
                                     <tr>
-                                        <td>HGH</td>
+                                        <td className="bg-light">HGH</td>
                                         <td>Fasting state 4 IU Alternate day</td>
                                     </tr>
                                     <tr>
-                                        <td>Stanozolol</td>
+                                        <td className="bg-light">Stanozolol</td>
                                         <td>Daily once </td>
                                     </tr>
                                     <tr>
-                                        <td>Total</td>
+                                        <td className="bg-light">Total</td>
                                         <td>400 + 200 + 70 = 670 mg + 14 IU HGH</td>
                                     </tr>
                                 </tbody>
@@ -108,27 +108,27 @@ const MediumAnabolicCycle = () => {
                             <table className="cycle-table">
                                 <tbody>
                                     <tr>
-                                        <td>Remain</td>
+                                        <td className="bg-light">Remain</td>
                                         <td>378 + 100 + 50 + 50 + 25 = 603mg</td>
                                     </tr>
                                     <tr>
-                                        <td>Testosterone Propionate</td>
+                                        <td className="bg-light">Testosterone Propionate</td>
                                         <td>Weekly 2</td>
                                     </tr>
                                     <tr>
-                                        <td>Trenbolone acetate</td>
+                                        <td className="bg-light">Trenbolone acetate</td>
                                         <td>Weekly 2</td>
                                     </tr>
                                     <tr>
-                                        <td>HGH</td>
+                                        <td className="bg-light">HGH</td>
                                         <td>Fasting state 4 IU Alternate day</td>
                                     </tr>
                                     <tr>
-                                        <td>Stanozolol</td>
+                                        <td className="bg-light">Stanozolol</td>
                                         <td>Daily once </td>
                                     </tr>
                                     <tr>
-                                        <td>Total</td>
+                                        <td className="bg-light">Total</td>
                                         <td>400 + 200 + 70 = 670 mg + 14 IU HGH</td>
                                     </tr>
                                 </tbody>
@@ -142,27 +142,27 @@ const MediumAnabolicCycle = () => {
                             <table className="cycle-table">
                                 <tbody>
                                     <tr>
-                                        <td>Remain</td>
+                                        <td className="bg-light">Remain</td>
                                         <td>252 + 100 + 50 + 50 + 25 = 477mg    </td>
                                     </tr>
                                     <tr>
-                                        <td>Testosterone Propionate</td>
+                                        <td className="bg-light">Testosterone Propionate</td>
                                         <td>Weekly 2</td>
                                     </tr>
                                     <tr>
-                                        <td>Trenbolone acetate</td>
+                                        <td className="bg-light">Trenbolone acetate</td>
                                         <td>Weekly 2</td>
                                     </tr>
                                     <tr>
-                                        <td>HGH</td>
+                                        <td className="bg-light">HGH</td>
                                         <td>Fasting state 4 IU Alternate day</td>
                                     </tr>
                                     <tr>
-                                        <td>Stanozolol</td>
+                                        <td className="bg-light">Stanozolol</td>
                                         <td>Daily once </td>
                                     </tr>
                                     <tr>
-                                        <td>Total</td>
+                                        <td className="bg-light">Total</td>
                                         <td>400 + 200 + 70 = 670 mg + 14 IU HGH</td>
                                     </tr>
                                 </tbody>
@@ -176,27 +176,27 @@ const MediumAnabolicCycle = () => {
                             <table className="cycle-table">
                                 <tbody>
                                     <tr>
-                                        <td>Remain</td>
+                                        <td className="bg-light">Remain</td>
                                         <td>126 + 100 + 50 + 50 + 25= 351mg</td>
                                     </tr>
                                     <tr>
-                                        <td>Testosterone Propionate</td>
+                                        <td className="bg-light">Testosterone Propionate</td>
                                         <td>Weekly 2</td>
                                     </tr>
                                     <tr>
-                                        <td>Trenbolone acetate</td>
+                                        <td className="bg-light">Trenbolone acetate</td>
                                         <td>Weekly 2</td>
                                     </tr>
                                     <tr>
-                                        <td>HGH</td>
+                                        <td className="bg-light">HGH</td>
                                         <td>Fasting state 4 IU Alternate day</td>
                                     </tr>
                                     <tr>
-                                        <td>Stanozolol</td>
+                                        <td className="bg-light">Stanozolol</td>
                                         <td>Daily Twice </td>
                                     </tr>
                                     <tr>
-                                        <td>Total</td>
+                                        <td className="bg-light">Total</td>
                                         <td>400 + 200 + 70 = 670 mg + 14 IU HGH</td>
                                     </tr>
                                 </tbody>
@@ -210,27 +210,27 @@ const MediumAnabolicCycle = () => {
                             <table className="cycle-table">
                                 <tbody>
                                     <tr>
-                                        <td>Remain</td>
+                                        <td className="bg-light">Remain</td>
                                         <td>100 + 50 + 50 + 25= 225mg</td>
                                     </tr>
                                     <tr>
-                                        <td>Testosterone Propionate</td>
+                                        <td className="bg-light">Testosterone Propionate</td>
                                         <td>Weekly 2</td>
                                     </tr>
                                     <tr>
-                                        <td>Trenbolone acetate</td>
+                                        <td className="bg-light">Trenbolone acetate</td>
                                         <td>Weekly 2</td>
                                     </tr>
                                     <tr>
-                                        <td>HGH</td>
+                                        <td className="bg-light">HGH</td>
                                         <td>Fasting state 4 IU Alternate day</td>
                                     </tr>
                                     <tr>
-                                        <td>Stanozolol</td>
+                                        <td className="bg-light">Stanozolol</td>
                                         <td>Daily Twice </td>
                                     </tr>
                                     <tr>
-                                        <td>Total</td>
+                                        <td className="bg-light">Total</td>
                                         <td>400 + 200 + 70 = 670 mg + 14 IU HGH</td>
                                     </tr>
                                 </tbody>
@@ -244,27 +244,27 @@ const MediumAnabolicCycle = () => {
                             <table className="cycle-table">
                                 <tbody>
                                     <tr>
-                                        <td>Remain</td>
+                                        <td className="bg-light">Remain</td>
                                         <td>100 + 50 + 50 + 25= 225mg</td>
                                     </tr>
                                     <tr>
-                                        <td>Testosterone Propionate</td>
+                                        <td className="bg-light">Testosterone Propionate</td>
                                         <td>Weekly 2</td>
                                     </tr>
                                     <tr>
-                                        <td>Trenbolone acetate</td>
+                                        <td className="bg-light">Trenbolone acetate</td>
                                         <td>Weekly 2</td>
                                     </tr>
                                     <tr>
-                                        <td>HGH</td>
+                                        <td className="bg-light">HGH</td>
                                         <td>Fasting state 4 IU Alternate day</td>
                                     </tr>
                                     <tr>
-                                        <td>Stanozolol</td>
+                                        <td className="bg-light">Stanozolol</td>
                                         <td>Daily Twice </td>
                                     </tr>
                                     <tr>
-                                        <td>Total</td>
+                                        <td className="bg-light">Total</td>
                                         <td>400 + 200 + 70 = 670 mg + 14 IU HGH</td>
                                     </tr>
                                 </tbody>
@@ -278,27 +278,27 @@ const MediumAnabolicCycle = () => {
                             <table className="cycle-table">
                                 <tbody>
                                     <tr>
-                                        <td>Remain</td>
+                                        <td className="bg-light">Remain</td>
                                         <td>100 + 50 + 50 + 25= 225mg</td>
                                     </tr>
                                     <tr>
-                                        <td>Testosterone Propionate</td>
+                                        <td className="bg-light">Testosterone Propionate</td>
                                         <td>Weekly 2</td>
                                     </tr>
                                     <tr>
-                                        <td>Trenbolone acetate</td>
+                                        <td className="bg-light">Trenbolone acetate</td>
                                         <td>Weekly 2</td>
                                     </tr>
                                     <tr>
-                                        <td>HGH</td>
+                                        <td className="bg-light">HGH</td>
                                         <td>Fasting state 4 IU Alternate day</td>
                                     </tr>
                                     <tr>
-                                        <td>Stanozolol</td>
+                                        <td className="bg-light">Stanozolol</td>
                                         <td>Daily Twice </td>
                                     </tr>
                                     <tr>
-                                        <td>Total</td>
+                                        <td className="bg-light">Total</td>
                                         <td>400 + 200 + 70 = 670 mg + 14 IU HGH</td>
                                     </tr>
                                 </tbody>
@@ -312,31 +312,31 @@ const MediumAnabolicCycle = () => {
                             <table className="cycle-table">
                                 <tbody>
                                     <tr>
-                                        <td>Remain</td>
+                                        <td className="bg-light">Remain</td>
                                         <td>100 + 50 + 50 + 25= 225mg</td>
                                     </tr>
                                     <tr>
-                                        <td>Testosterone Propionate</td>
+                                        <td className="bg-light">Testosterone Propionate</td>
                                         <td>Weekly 2</td>
                                     </tr>
                                     <tr>
-                                        <td>Trenbolone acetate</td>
+                                        <td className="bg-light">Trenbolone acetate</td>
                                         <td>Weekly 2</td>
                                     </tr>
                                     <tr>
-                                        <td>Drostanolone propionate</td>
+                                        <td className="bg-light">Drostanolone propionate</td>
                                         <td>Weekly 2</td>
                                     </tr>
                                     <tr>
-                                        <td>HGH</td>
+                                        <td className="bg-light">HGH</td>
                                         <td>Fasting state 4 IU Alternate day</td>
                                     </tr>
                                     <tr>
-                                        <td>Stanozolol</td>
+                                        <td className="bg-light">Stanozolol</td>
                                         <td>Daily Twice </td>
                                     </tr>
                                     <tr>
-                                        <td>Total</td>
+                                        <td className="bg-light">Total</td>
                                         <td>400 + 200 + 140 + 200 = 940 mg + 14 IU HGH</td>
                                     </tr>
                                 </tbody>
@@ -350,31 +350,31 @@ const MediumAnabolicCycle = () => {
                             <table className="cycle-table">
                                 <tbody>
                                     <tr>
-                                        <td>Remain</td>
+                                        <td className="bg-light">Remain</td>
                                         <td>100 + 50 + 50 + 25= 300mg</td>
                                     </tr>
                                     <tr>
-                                        <td>Testosterone Propionate</td>
+                                        <td className="bg-light">Testosterone Propionate</td>
                                         <td>Weekly 2</td>
                                     </tr>
                                     <tr>
-                                        <td>Trenbolone acetate</td>
+                                        <td className="bg-light">Trenbolone acetate</td>
                                         <td>Weekly 2</td>
                                     </tr>
                                     <tr>
-                                        <td>Drostanolone propionate</td>
+                                        <td className="bg-light">Drostanolone propionate</td>
                                         <td>Weekly 2</td>
                                     </tr>
                                     <tr>
-                                        <td>HGH</td>
+                                        <td className="bg-light">HGH</td>
                                         <td>Fasting state 4 IU</td>
                                     </tr>
                                     <tr>
-                                        <td>Stanozolol</td>
+                                        <td className="bg-light">Stanozolol</td>
                                         <td>Daily Twice </td>
                                     </tr>
                                     <tr>
-                                        <td>Total</td>
+                                        <td className="bg-light">Total</td>
                                         <td>400 + 200 + 140 + 200 = 940 mg + 14 IU HGH</td>
                                     </tr>
                                 </tbody>
@@ -387,31 +387,31 @@ const MediumAnabolicCycle = () => {
                             <table className="cycle-table">
                                 <tbody>
                                     <tr>
-                                        <td>Remain</td>
+                                        <td className="bg-light">Remain</td>
                                         <td>100 + 50 + 50 + 25 + 50 + 25 = 300mg</td>
                                     </tr>
                                     <tr>
-                                        <td>Testosterone Propionate</td>
+                                        <td className="bg-light">Testosterone Propionate</td>
                                         <td>Weekly 2</td>
                                     </tr>
                                     <tr>
-                                        <td>Trenbolone acetate</td>
+                                        <td className="bg-light">Trenbolone acetate</td>
                                         <td>Weekly 2</td>
                                     </tr>
                                     <tr>
-                                        <td>Drostanolone propionate</td>
+                                        <td className="bg-light">Drostanolone propionate</td>
                                         <td>Weekly 2</td>
                                     </tr>
                                     <tr>
-                                        <td>HGH</td>
+                                        <td className="bg-light">HGH</td>
                                         <td>Fasting state 4 IU Alternate day</td>
                                     </tr>
                                     <tr>
-                                        <td>Stanozolol</td>
+                                        <td className="bg-light">Stanozolol</td>
                                         <td>Daily Twice </td>
                                     </tr>
                                     <tr>
-                                        <td>Total</td>
+                                        <td className="bg-light">Total</td>
                                         <td>400 + 200 + 210 + 200 = 1010 mg + 14 IU HGH</td>
                                     </tr>
                                 </tbody>

@@ -90,11 +90,7 @@ const AdvanceAnabolicCycle = () => {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             Testosterone Enanthate
                                         </td>
                                         <td>~5–7 days</td>
@@ -102,11 +98,7 @@ const AdvanceAnabolicCycle = () => {
                                         <td>Split into 2 doses/week</td>
                                     </tr>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             Trenbolone Acetate
                                         </td>
                                         <td>~1–2 days</td>
@@ -114,11 +106,7 @@ const AdvanceAnabolicCycle = () => {
                                         <td>100mg EOD</td>
                                     </tr>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             Anavar (Oxandrolone)
                                         </td>
                                         <td>~9 hours(oral)</td>
@@ -126,11 +114,7 @@ const AdvanceAnabolicCycle = () => {
                                         <td>Daily</td>
                                     </tr>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             IGF-1 LR3
                                         </td>
                                         <td>~20–30 hours</td>
@@ -141,11 +125,7 @@ const AdvanceAnabolicCycle = () => {
                                         <td>Daily</td>
                                     </tr>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             YK-11 (SARM)
                                         </td>
                                         <td>~6–10 hours</td>
@@ -153,11 +133,7 @@ const AdvanceAnabolicCycle = () => {
                                         <td>Daily</td>
                                     </tr>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             Arimidex (AI)
                                         </td>
                                         <td>~2 days</td>
@@ -188,11 +164,7 @@ const AdvanceAnabolicCycle = () => {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             1-2
                                         </td>
                                         <td>500mg</td>
@@ -203,11 +175,7 @@ const AdvanceAnabolicCycle = () => {
                                         <td>0.5mg EOD</td>
                                     </tr>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             3-6
                                         </td>
                                         <td>600mg</td>
@@ -218,11 +186,7 @@ const AdvanceAnabolicCycle = () => {
                                         <td>0.5mg EOD</td>
                                     </tr>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             7-10
                                         </td>
                                         <td>600mg</td>
@@ -233,11 +197,7 @@ const AdvanceAnabolicCycle = () => {
                                         <td>0.5mg EOD</td>
                                     </tr>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             11-12
                                         </td>
                                         <td>500mg</td>
@@ -268,11 +228,7 @@ const AdvanceAnabolicCycle = () => {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             Testosterone Propionate
                                         </td>
                                         <td>~2 days</td>
@@ -280,11 +236,7 @@ const AdvanceAnabolicCycle = () => {
                                         <td>Every other day</td>
                                     </tr>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             Trenbolone Acetate
                                         </td>
                                         <td>~1–2 days</td>
@@ -292,11 +244,7 @@ const AdvanceAnabolicCycle = () => {
                                         <td>Every other day</td>
                                     </tr>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             Stanozolol (oral)
                                         </td>
                                         <td>~9 hours </td>
@@ -307,11 +255,7 @@ const AdvanceAnabolicCycle = () => {
                                         <td>Daily</td>
                                     </tr>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             Clenbuterol
                                         </td>
                                         <td>~36 hours</td>
@@ -322,11 +266,7 @@ const AdvanceAnabolicCycle = () => {
                                         <td>Daily (AM)</td>
                                     </tr>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             CJC-1295 DAC
                                         </td>
                                         <td>~8 days</td>
@@ -334,11 +274,7 @@ const AdvanceAnabolicCycle = () => {
                                         <td>Bi-weekly</td>
                                     </tr>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             S4 (Andarine - SARM)
                                         </td>
                                         <td>~4–6 hours</td>
@@ -346,11 +282,7 @@ const AdvanceAnabolicCycle = () => {
                                         <td>Daily</td>
                                     </tr>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             Arimidex (AI)
                                         </td>
                                         <td>~2 days</td>
@@ -378,11 +310,7 @@ const AdvanceAnabolicCycle = () => {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             13-14
                                         </td>
                                         <td>100mg EOD</td>
@@ -394,11 +322,7 @@ const AdvanceAnabolicCycle = () => {
                                         <td>0.5mg EOD</td>
                                     </tr>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             15-16
                                         </td>
                                         <td>100mg EOD</td>
@@ -410,11 +334,7 @@ const AdvanceAnabolicCycle = () => {
                                         <td>0.5mg EOD</td>
                                     </tr>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             17-18
                                         </td>
                                         <td>100mg EOD</td>
@@ -426,11 +346,7 @@ const AdvanceAnabolicCycle = () => {
                                         <td>0.5mg EOD</td>
                                     </tr>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             19-20
                                         </td>
                                         <td>100mg EOD</td>
@@ -442,11 +358,7 @@ const AdvanceAnabolicCycle = () => {
                                         <td>0.5mg EOD</td>
                                     </tr>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             21-22
                                         </td>
                                         <td>100mg EOD</td>
@@ -458,11 +370,7 @@ const AdvanceAnabolicCycle = () => {
                                         <td>0.5mg EOD</td>
                                     </tr>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             23-24
                                         </td>
                                         <td>100mg EOD</td>
@@ -499,11 +407,7 @@ const AdvanceAnabolicCycle = () => {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             25
                                         </td>
                                         <td>1000 IU EOD (3 shots)</td>
@@ -512,11 +416,7 @@ const AdvanceAnabolicCycle = () => {
                                         <td>0.5mg EOD</td>
                                     </tr>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             26
                                         </td>
                                         <td>1000 IU EOD (3 shots)</td>
@@ -525,11 +425,7 @@ const AdvanceAnabolicCycle = () => {
                                         <td>–</td>
                                     </tr>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             27
                                         </td>
                                         <td>–</td>
@@ -538,11 +434,7 @@ const AdvanceAnabolicCycle = () => {
                                         <td>–</td>
                                     </tr>
                                     <tr>
-                                        <td
-                                            style={{
-                                                backgroundColor: "#ededee",
-                                            }}
-                                        >
+                                        <td className="bg-light">
                                             28
                                         </td>
                                         <td>–</td>

@@ -83,17 +83,17 @@ const BeginnersAnabolicCycle = () => {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Testosterone cypionate</td>
+                                        <td className="bg-light">Testosterone cypionate</td>
                                         <td>250mg</td>
                                         <td>15 days once</td>
                                     </tr>
                                     <tr>
-                                        <td>Boldenone</td>
+                                        <td className="bg-light">Boldenone</td>
                                         <td>250mg</td>
                                         <td>15 days once</td>
                                     </tr>
                                     <tr>
-                                        <td>Diana Bol</td>
+                                        <td className="bg-light">Diana Bol</td>
                                         <td>150mg</td>
                                         <td>Daily 1 (15 Tablets)</td>
                                     </tr>
@@ -117,17 +117,17 @@ const BeginnersAnabolicCycle = () => {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Testosterone cypionate</td>
+                                        <td className="bg-light">Testosterone cypionate</td>
                                         <td>250mg</td>
                                         <td>15 days once</td>
                                     </tr>
                                     <tr>
-                                        <td>Boldenone</td>
+                                        <td className="bg-light">Boldenone</td>
                                         <td>250mg</td>
                                         <td>15 days once</td>
                                     </tr>
                                     <tr>
-                                        <td>Diana Bol</td>
+                                        <td className="bg-light">Diana Bol</td>
                                         <td>150mg</td>
                                         <td>Daily 1 (15 Tablets)</td>
                                     </tr>
@@ -151,17 +151,17 @@ const BeginnersAnabolicCycle = () => {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Testosterone cypionate</td>
+                                        <td className="bg-light">Testosterone cypionate</td>
                                         <td>250mg</td>
                                         <td>15 days once</td>
                                     </tr>
                                     <tr>
-                                        <td>Boldenone</td>
+                                        <td className="bg-light">Boldenone</td>
                                         <td>250mg</td>
                                         <td>15 days once</td>
                                     </tr>
                                     <tr>
-                                        <td>Diana Bol</td>
+                                        <td className="bg-light">Diana Bol</td>
                                         <td>300mg</td>
                                         <td>Daily twice (30 Tablets)</td>
                                     </tr>
@@ -185,17 +185,17 @@ const BeginnersAnabolicCycle = () => {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Testosterone cypionate</td>
+                                        <td className="bg-light">Testosterone cypionate</td>
                                         <td>250mg</td>
                                         <td>15 days once</td>
                                     </tr>
                                     <tr>
-                                        <td>Boldenone</td>
+                                        <td className="bg-light">Boldenone</td>
                                         <td>250mg</td>
                                         <td>15 days once</td>
                                     </tr>
                                     <tr>
-                                        <td>Diana Bol</td>
+                                        <td className="bg-light">Diana Bol</td>
                                         <td>300mg</td>
                                         <td>Daily twice (30 Tablets)</td>
                                     </tr>
@@ -219,17 +219,17 @@ const BeginnersAnabolicCycle = () => {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Testosterone cypionate</td>
+                                        <td className="bg-light">Testosterone cypionate</td>
                                         <td>250mg</td>
                                         <td>15 days once</td>
                                     </tr>
                                     <tr>
-                                        <td>Boldenone</td>
+                                        <td className="bg-light">Boldenone</td>
                                         <td>250mg</td>
                                         <td>15 days once</td>
                                     </tr>
                                     <tr>
-                                        <td>Diana Bol</td>
+                                        <td className="bg-light">Diana Bol</td>
                                         <td>300mg</td>
                                         <td>Daily twice (30 Tablets)</td>
                                     </tr>
@@ -253,17 +253,17 @@ const BeginnersAnabolicCycle = () => {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Testosterone cypionate</td>
+                                        <td className="bg-light">Testosterone cypionate</td>
                                         <td>250mg</td>
                                         <td>15 days once</td>
                                     </tr>
                                     <tr>
-                                        <td>Boldenone</td>
+                                        <td className="bg-light">Boldenone</td>
                                         <td>250mg</td>
                                         <td>15 days once</td>
                                     </tr>
                                     <tr>
-                                        <td>Diana Bol</td>
+                                        <td className="bg-light">Diana Bol</td>
                                         <td>450mg</td>
                                         <td>Daily three (45 Tablets)</td>
                                     </tr>

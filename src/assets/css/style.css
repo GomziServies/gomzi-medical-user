@@ -163,16 +163,16 @@ body {
     align-items: center;
 }
 .product-card__btn {
-    background-color: var(--primary-color);
-    color: white;
+    display: inline-block;
+    padding: 12px 15px;
+    text-transform: uppercase;
+    color: #ffffff;
+    background-color: #d71313;
     border: none;
-    padding: 10px 20px;
-    border-radius: 50px;
-    font-size: 0.9rem;
+    transition: all 0.3s linear;
     font-weight: 600;
-    cursor: pointer;
-    transition: 0.7s;
-    outline: 1px solid #d83344 !important;
+    letter-spacing: 0.5px;
+    border-radius: 0;
 }
 
 .product-card__btn:hover {
@@ -11855,6 +11855,10 @@ body.search-visible {
     vertical-align: top;
 }
 
+.cycle-table td.bg-light {
+    background-color: rgb(237, 237, 238) !important;
+}
+
 .cycle-table tr:nth-child(even) td {
     background-color: #f9f9f9;
 }
@@ -11956,4 +11960,22 @@ body.search-visible {
     .cycle-table td {
         font-size: 10px;
     }
+}
+
+
+/* home page anabolic-cycle-card */
+
+.anabolic-cycle-card {
+    min-width: 200px;
+    border-radius: 20px ;
+}
+
+.anabolic-cycle-card img {
+    height: 260px;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.anabolic-cycle-card-title {
+    text-transform: uppercase;
+    padding:  14px 0;
 }
