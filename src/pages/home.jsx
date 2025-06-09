@@ -45,10 +45,6 @@ function Home() {
     },
   ];
 
-  const handleCardClick = (path) => {
-    navigate(path);
-  };
-
   const handleShowMore = () => {
     setVisibleCount((prevCount) => prevCount + 6);
   };
@@ -194,8 +190,7 @@ function Home() {
             {visibleCount < productData.length && (
               <div className="text-center mt-4">
                 <span
-                  className="text-danger"
-                  style={{ cursor: "pointer" }}
+                  className="text-danger cp"
                   onClick={handleShowMore}
                 >
                   Show more ...
@@ -209,34 +204,22 @@ function Home() {
               </h2>
               <div className="d-flex flex-wrap flex-lg-nowrap gap-5 overflow-auto justify-content-center">
                 {data.map((item, index) => (
-                  <div
+                  <Link
                     key={index}
-                    className="card me-3 flex-shrink-0"
-                    style={{ minWidth: "200px", cursor: "pointer" }}
-                    onClick={() => handleCardClick(item.path)}
+                    to={item.path}
+                    className="anabolic-cycle-card card me-3 flex-shrink-0 text-decoration-none"
                   >
                     <div className="position-relative">
                       <img
                         src={item.image}
                         alt={item.caption}
                         className="card-img-top"
-                        style={{ borderRadius: "10px" }}
                       />
-                      <div
-                        className=" text-dark fw-bold p-2"
-                        style={{
-                          padding: "1.25rem",
-                          textAlign: "center",
-                          textTransform: "uppercase",
-                          Color: "#122a4e",
-                          fontFamily: "Conv_Montserrat-Bold !important",
-                          fontSize: "25px !important",
-                        }}
-                      >
+                      <div className="anabolic-cycle-card-title text-dark fw-bold">
                         {item.caption}
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -251,7 +234,6 @@ function Home() {
                   <Link
                     to="/require-medicine-check-out"
                     className="m-0 product-card__btn"
-                    style={{ borderRadius: "0px" }}
                   >
                     View Form
                   </Link>
