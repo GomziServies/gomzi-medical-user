@@ -12,9 +12,9 @@ import ThankYouPage from "./pages/thank-you";
 import RequirementThankYouPage from "./pages/thank-you-requirement";
 import Product from "./pages/product";
 import AnabolicCycle from "./pages/anabolic-cycle";
-import BeginnersAnabolicCycle from "./pages/Beginners-Anabolic-Cycle";
-import MediumAnabolicCycle from "./pages/Medium-Anabolic-Cycle";
-import AdvanceAnabolicCycle from "./pages/Advance-Anabolic-Cycle";
+import BeginnersAnabolicCycle from "./pages/beginners-anabolic-cycle";
+import MediumAnabolicCycle from "./pages/medium-anabolic-cycle";
+import AdvanceAnabolicCycle from "./pages/advance-anabolic-cycle";
 
 function App() {
   return (
@@ -25,11 +25,23 @@ function App() {
         <Route path="/404" element={<NotFoundPage />} />
         <Route path="/product" element={<Product />} />
         <Route path="/anaboliccycle" element={<AnabolicCycle />} />
-        <Route path="/beginners-to-anabolic-cycle" element={<BeginnersAnabolicCycle />} />
-        <Route path="/fat-loss-to-anabolic-cycle" element={<MediumAnabolicCycle />} />
-        <Route path="/advance-to-anabolic-cycle" element={<AdvanceAnabolicCycle />} />
+        <Route
+          path="/beginners-to-anabolic-cycle"
+          element={<BeginnersAnabolicCycle />}
+        />
+        <Route
+          path="/fat-loss-to-anabolic-cycle"
+          element={<MediumAnabolicCycle />}
+        />
+        <Route
+          path="/advance-to-anabolic-cycle"
+          element={<AdvanceAnabolicCycle />}
+        />
         <Route path="/thank-you" element={<ThankYouPage />} />
-        <Route path="/requirement-thank-you" element={<RequirementThankYouPage />} />
+        <Route
+          path="/requirement-thank-you"
+          element={<RequirementThankYouPage />}
+        />
         {/* <Route path="/aas-check-out" element={<MedicineCheckOut />} /> */}
         <Route
           path="/require-medicine-check-out"
