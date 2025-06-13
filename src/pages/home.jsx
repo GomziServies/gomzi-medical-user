@@ -24,28 +24,34 @@ function Home() {
   const authorization = localStorage.getItem("fg_group_user_authorization");
   const [expanded, setExpanded] = useState(false);
   const [visibleCount, setVisibleCount] = useState(6);
+
   const navigate = useNavigate();
 
   const data = [
     {
       image: "/assets/images/beginer.jpg",
       caption: "Beginners to Anabolic Cycle",
-      path: "/beginners-to-anabolic-cycle"
+      path: "/beginners-to-anabolic-cycle",
     },
     {
       image: "/assets/images/medium.jpg",
       caption: "Fat Loss to Anabolic Cycle",
-      path: "/fat-loss-to-anabolic-cycle"
+      path: "/fat-loss-to-anabolic-cycle",
     },
     {
       title: "ADVANCE ANABOLIC CYCLES",
       image: "/assets/images/advance.jpg",
       caption: "Advance to Anabolic Cycle",
-      path: "/advance-to-anabolic-cycle"
+      path: "/advance-to-anabolic-cycle",
     },
   ];
 
   const handleShowMore = () => {
+    const newCount = visibleCount + 3;
+    const newIndexes = Array.from(
+      { length: newCount - visibleCount },
+      (_, i) => visibleCount + i
+    );
     setVisibleCount((prevCount) => prevCount + 6);
   };
 
@@ -189,10 +195,7 @@ function Home() {
 
             {visibleCount < productData.length && (
               <div className="text-center mt-4">
-                <span
-                  className="text-danger cp"
-                  onClick={handleShowMore}
-                >
+                <span className="text-danger cp" onClick={handleShowMore}>
                   Show more ...
                 </span>
               </div>

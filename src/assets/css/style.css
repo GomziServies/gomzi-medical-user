@@ -83,6 +83,20 @@ body {
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(48, 48, 48, 0.25);
+    animation: fadeInUp 0.6s ease forwards;
+}
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-5px) scale(1.02);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
 }
 
 .product-card__image {
@@ -1913,7 +1927,7 @@ body.search-visible {
     padding: 80px 0 100px;
     position: relative;
 }
-.features-products-wrap {
+.features-products-wrap {  
     margin-bottom: 180px;
 }
 .features-products-wrap:last-child {
