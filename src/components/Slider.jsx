@@ -1,69 +1,76 @@
 import React, { useState, useEffect, useRef } from 'react';
+import OwlCarousel from "react-owl-carousel";
 
-
-const images = [
-  '/assets/images/Slider-Images/demo.jpg',
-  '/assets/images/Slider-Images/demo2.jpg',
-  '/assets/images/Slider-Images/demo3.jpg'
-];
 
 const Slider = () => {
-  const [index, setIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const [isTransitioning, setIsTransitioning] = useState(true);
-  const intervalRef = useRef(null);
-  const extendedImages = [...images, images[0]]; 
-
-  useEffect(() => {
-    startAutoPlay();
-    return () => stopAutoPlay();
-  }, []);
-
-  const startAutoPlay = () => {
-    stopAutoPlay();
-    intervalRef.current = setInterval(() => {
-      setIndex(prev => prev + 1);
-      setIsTransitioning(true);
-    }, 3000);
-  };
-
-  const stopAutoPlay = () => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-    }
-  };
-
-  const handleTransitionEnd = () => {
-    if (index === images.length) {
-      setIsTransitioning(false);
-      setIndex(0);
-    }
-  };
+  
+  const options1 = {
+     loop: true,
+     dots: false,
+     dotsEach: false,
+     nav: false,
+     autoplay: true,
+     autoplayTimeout: 3000,
+     responsive: {
+       0: { items: 1 },
+       600: { items: 1 },
+       1000: { items: 1 },
+     },
+   };
 
   return (
-    <div
-      className="slider-wrapper"
-    >
-      <div
-        className="slider-track"
-        style={{
-          transform: `translateX(-${index * (100 / extendedImages.length)}%)`,
-          transition: isTransitioning ? 'transform 0.5s ease-in-out' : 'none',
-          width: `${extendedImages.length * 100}%`,
-        }}
-        onTransitionEnd={handleTransitionEnd}
-      >
-        {extendedImages.map((img, i) => (
-          <img
-            key={i}
-            src={img}
-            alt={`Slide ${i + 1}`}
-            className="slide-img"
-            style={{ width: `${100 / extendedImages.length}%` }}
-          />
-        ))}
-      </div>
-    </div>
+    <section className="banner-area main-section">
+          <OwlCarousel {...options1} className="product-slide owl-theme">
+            <div>
+              <img
+                src={process.env.PUBLIC_URL + "/assets/images/slider-images/banner-anabolic-01.webp"}
+                alt="shape"
+                width="100%"
+                className="d-md-block d-none"
+              />
+              <img
+                src={
+                  process.env.PUBLIC_URL + "/assets/images/slider-images/banner-anabolic-01-mobile.webp"
+                }
+                alt="shape"
+                width="100%"
+                className="d-md-none d-block"
+              />
+            </div>
+            <div>
+              <img
+                src={process.env.PUBLIC_URL + "/assets/images/slider-images/banner-anabolic-02.webp"}
+                alt="shape"
+                width="100%"
+                className="d-md-block d-none"
+              />
+              <img
+                src={
+                  process.env.PUBLIC_URL + "/assets/images/slider-images/banner-anabolic-02-mobile.webp"
+                }
+                alt="shape"
+                width="100%"
+                className="d-md-none d-block"
+              />
+            </div>
+            <div>
+              <img
+                src={process.env.PUBLIC_URL + "/assets/images/slider-images/banner-anabolic-03.webp"}
+                alt="shape"
+                width="100%"
+                className="d-md-block d-none"
+              />
+              <img
+                src={
+                  process.env.PUBLIC_URL + "/assets/images/slider-images/banner-anabolic-03-mobile.webp"
+                }
+                alt="shape"
+                width="100%"
+                className="d-md-none d-block"
+              />
+            </div>
+          </OwlCarousel>
+        </section>
   );
 };
 export default Slider;
