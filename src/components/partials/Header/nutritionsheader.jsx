@@ -97,11 +97,11 @@ function NutritionHeader({ productDataGet, cartItemName, cartDataClick }) {
         <div className="menubar">
            <Link to="/"><span>Home</span></Link>
            <Link to="/product"><span>Product</span></Link>
-          <span>Contect us</span>
+          <Link to="#"><span>Contect us</span></Link>
         </div>
         <div className="login d-lg-block d-none">
           <ul>
-            <UserInfo cartCount={cartCount} />
+            <UserInfo />
           </ul>
         </div>
       </div>

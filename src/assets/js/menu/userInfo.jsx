@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { BsCartCheckFill } from "react-icons/bs";
 import { IoPersonSharp } from "react-icons/io5";
 
-const UserInfo = ({ cartCount }) => {
+const UserInfo = () => {
   const [userInfo, setUserInfo] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [isUserMenuVisible, setIsUserMenuVisible] = useState(false);
@@ -62,11 +62,11 @@ const UserInfo = ({ cartCount }) => {
       {userInfo ? (
         <>
           <li
-            className=" d-flex align-items-center gap-1 m-0"
+            className=" d-flex align-items-center justify-content-center gap-1 m-0"
             onClick={toggleUserMenu}
-            style={{ cursor: "pointer" }}
+            style={{ cursor: "pointer"}}
           >
-            Hi, {userInfo.user.last_name} <IoPersonSharp style={{color:'#d83344',fontSize:'22px'}}/>
+            Hi, {userInfo.user.last_name} &nbsp; <IoPersonSharp style={{color:'#86c33a',fontSize:'25px'}}/>
           </li>
           {isUserMenuVisible && (
             <ul>

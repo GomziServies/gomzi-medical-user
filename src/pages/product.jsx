@@ -39,7 +39,7 @@ const Product = () => {
             alignItems: "center",
           }}
         >
-          <CircularProgress sx={{ color: "#d83344" }} size={50} />
+          <CircularProgress sx={{ color: "#86c33a" }} size={50} />
         </div>
       ) : (
         <Fade in={!cardLoader} timeout={600}>

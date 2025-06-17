@@ -1,0 +1,300 @@
+import React, { useRef, useState } from "react";
+import { Helmet } from "react-helmet";
+import NutritionHeader from "../../components/partials/Header/nutritionsheader";
+import { useLocation } from "react-router";
+import LoginModal from "../../assets/js/popup/login";
+
+const Andarine = () => {
+  const [opacity, setOpacity] = useState(1);
+  const imageRef = useRef(null);
+  const [showModal, setShowModal] = useState(false);
+  const [fadingItem, setFadingItem] = useState(null);
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  const handleQuickBuy = async () => {};
+
+  const additionalData = [
+    {
+      label: "Total Fat",
+      value: "0.76",
+    },
+    {
+      label: "Saturated Fat",
+      value: "0.60",
+    },
+    {
+      label: "Cholesterol",
+      value: "0.02",
+    },
+    {
+      label: "Total Carbohydrate",
+      value: "4.02",
+    },
+    {
+      label: "Protein",
+      value: "28.00",
+    },
+    {
+      label: "Total Sugars",
+      value: "0",
+    },
+    {
+      label: "Sodium",
+      value: "135.0",
+    },
+  ];
+
+  return (
+    <div>
+      {/* <LoaderComponent /> */}
+      {showModal && <LoginModal onClose={closeModal} />}
+      {fadingItem}
+
+      <NutritionHeader />
+
+      <button className="scroll-top scroll-to-target" data-target="html">
+        <i className="fas fa-angle-up"></i>
+      </button>
+      <main className="main-area">
+        <section className="inner-shop-details-area">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-5">
+                <div
+                  className="black-before d-flex align-items-center justify-content-center"
+                  style={{ boxShadow: "0 0 20px rgba(48, 48, 48, 0.25)" }}
+                >
+                  <div
+                    className="product-image-container"
+                    ref={imageRef}
+                    style={{
+                      opacity: opacity,
+                      transition: "opacity 0.3s ease-in-out",
+                    }}
+                  >
+                    <img
+                      src="assets\images\medicine\andarine.jpg"
+                      alt="Andarine (S4)"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-7 d-flex align-items-center mt-md-0 p-0">
+                <div className="inner-shop-details-content">
+                  <div className="bg-product px-3 pb-3 pt-3">
+                    <h4 className="title">Andarine (S4)</h4>
+                    <p className="pt-4">
+                      Andarine (S4) is a moderately potent Selective Androgen
+                      Receptor Modulator (SARM) known for promoting fat loss,
+                      muscle preservation, and strength gains. Initially
+                      developed for treating muscle wasting and osteoporosis,
+                      it's popular in cutting and recomp cycles for its dry,
+                      lean gains and vascularity enhancement.
+                    </p>
+
+                    <div className="inner-shop-perched-info mt-3 row align-items-center ms-0">
+                      <button
+                        onClick={() => handleQuickBuy()}
+                        className="col-md-3 col-11 quick-buy-btn m-0 ms-md-3 mt-3 product-card__btn"
+                      >
+                        <i className="fa-solid fa-bolt me-2 "></i> Know more
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-12">
+                <div className="product-desc-wrap">
+                  <ul className="nav nav-tabs" id="myTabTwo" role="tablist">
+                    <li className="nav-item">
+                      <button
+                        className="nav-link active"
+                        id="description-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#description"
+                        role="tab"
+                        aria-controls="description"
+                        aria-selected="true"
+                      >
+                        Description
+                      </button>
+                    </li>
+                  </ul>
+                  <div className="tab-content" id="myTabContentTwo">
+                    <div
+                      className="tab-pane fade show active"
+                      id="description"
+                      role="tabpanel"
+                      aria-labelledby="description-tab"
+                    >
+                      <div>
+                        <h4 className="m-5 mb-3 mx-0">
+                          Pharmacology & Mechanism of Action:
+                        </h4>
+                        <ul>
+                          <li>
+                            <strong>Type:</strong> Oral SARM
+                          </li>
+                          <li>
+                            <strong>Half-Life:</strong> 4–6 hours
+                          </li>
+                          <li>
+                            <strong>Mechanism:</strong>
+                            <ul>
+                              <li>
+                                Binds selectively to androgen receptors in
+                                muscle and bone
+                              </li>
+                              <li>
+                                Helps preserve lean muscle during calorie
+                                deficits
+                              </li>
+                              <li>Increases strength and endurance</li>
+                              <li>
+                                Does not aromatize (no conversion to estrogen)
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+
+                        <h4 className="m-5 mb-3 mx-0">
+                          Dosage & Administration:
+                        </h4>
+                        <ul>
+                          <li>
+                            <strong>Typical Dose Range:</strong> 25–50 mg per
+                            day
+                          </li>
+                          <li>
+                            <strong>Beginner Dose:</strong> 25 mg
+                          </li>
+                          <li>
+                            <strong>Advanced Users:</strong> Up to 50 mg
+                          </li>
+                          <li>
+                            <strong>Frequency:</strong> Split into two doses
+                            daily (short half-life)
+                          </li>
+                          <li>
+                            <strong>Cycle Length:</strong> 6–8 weeks
+                          </li>
+                          <li>
+                            <strong>Post-Cycle Therapy (PCT):</strong>{" "}
+                            Recommended for cycles over 4 weeks or higher doses
+                          </li>
+                        </ul>
+
+                        <h4 className="m-5 mb-3 mx-0">
+                          Primary Uses & Benefits:
+                        </h4>
+                        <ul>
+                          <li>
+                            Fat Loss – enhances fat oxidation; ideal for cutting
+                            cycles
+                          </li>
+                          <li>
+                            Muscle Preservation – retains lean mass during
+                            deficits
+                          </li>
+                          <li>
+                            Increased Vascularity – dry, hard muscle appearance
+                          </li>
+                          <li>
+                            Strength & Performance – better lifts, improved
+                            endurance
+                          </li>
+                          <li>
+                            Recomping – promotes simultaneous fat loss and
+                            muscle gain
+                          </li>
+                        </ul>
+
+                        <h4 className="m-5 mb-3 mx-0">Side Effects & Risks:</h4>
+                        <ul>
+                          <li>
+                            <strong>Visual Disturbances:</strong>
+                            <ul>
+                              <li>Yellow vision tint or night blindness</li>
+                              <li>
+                                Dose-dependent and typically reversible after
+                                use
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <strong>Mild Testosterone Suppression:</strong> Less
+                            than stronger SARMs, but still PCT advised
+                          </li>
+                          <li>
+                            <strong>
+                              No Estrogenic or Liver Toxic Effects:
+                            </strong>{" "}
+                            No gynecomastia or liver strain at normal doses
+                          </li>
+                          <li>
+                            <strong>Appetite Suppression:</strong> Reported
+                            during cutting phases by some users
+                          </li>
+                        </ul>
+
+                        <h4 className="m-5 mb-3 mx-0">Stacking Options:</h4>
+                        <ul>
+                          <li>
+                            <strong>Cutting Stack:</strong> Andarine + Cardarine
+                            (GW-501516)
+                          </li>
+                          <li>
+                            <strong>Recomp Stack:</strong> Andarine + Ostarine
+                            (MK-2866)
+                          </li>
+                          <li>
+                            <strong>Lean Bulking:</strong> Add low-dose
+                            Ligandrol (LGD-4033)
+                          </li>
+                        </ul>
+
+                        <h4 className="m-5 mb-3 mx-0">Cycle Support & PCT:</h4>
+                        <ul>
+                          <li>
+                            <strong>Cycle Support:</strong> Usually not
+                            required, but routine health checks recommended
+                          </li>
+                          <li>
+                            <strong>Post-Cycle Therapy:</strong>
+                            <ul>
+                              <li>Recommended after 4–6 week cycles</li>
+                              <li>
+                                Nolvadex or Clomid for 3–4 weeks to restore
+                                natural testosterone
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+
+                        <p className="mt-5">
+                          Andarine (S4) is a well-regarded SARM for cutting and
+                          recomp phases, providing strength, fat loss, and hard
+                          muscle definition with minimal estrogenic or liver
+                          concerns. Though its vision-related side effects are
+                          unique, they are temporary and manageable for most
+                          users when dosing is properly controlled.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+};
+
+export default Andarine;
