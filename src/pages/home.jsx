@@ -19,8 +19,8 @@ import Slider from "../components/Slider";
 function Home() {
   const [productData, setProductData] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  // const [cartDataCount, setCartDataCount] = useState(null);
-  // const [cartItemName, setCartItemName] = useState([]);
+  const [cartDataCount, setCartDataCount] = useState(null);
+  const [cartItemName, setCartItemName] = useState([]);
   const authorization = localStorage.getItem("fg_group_user_authorization");
   // const [expanded, setExpanded] = useState(false);
 
@@ -444,44 +444,43 @@ function Home() {
     }
   }, [authorization]);
 
-  // const getProductData = async () => {
-  //   try {
-  //     const response = await publicAxiosInstance.get("/medical-product/get");
-  //     const userData = response.data.data;
-  //     console.log(userData);
+  const getProductData = async () => {
+    try {
+      const response = await publicAxiosInstance.get("/medical-product/get");
+      const userData = response.data.data;
+      
+      if (userData) {
+        setProductData(userData);
+      }
+    } catch (error) {
+      console.error("Error in getProductData:", error);
+    }
+  };
 
-  //     if (userData) {
-  //       setProductData(userData);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error in getProductData:", error);
-  //   }
-  // };
+  useEffect(() => {
+    getProductData();
+  }, []);
 
-  // useEffect(() => {
-  //   // getProductData();
-  // }, []);
+  const fetchProductCartData = async () => {
+    try {
+      const response = await axiosInstance.get(
+        "/order-cart/get-carts?item_type=MEDICAL_PRODUCT&is_purchase=true"
+      );
+      const serverData = response?.data?.data?.[0]?.items?.length;
+      setCartDataCount(serverData);
 
-  // const fetchProductCartData = async () => {
-  //   try {
-  //     const response = await axiosInstance.get(
-  //       "/order-cart/get-carts?item_type=MEDICAL_PRODUCT&is_purchase=true"
-  //     );
-  //     const serverData = response?.data?.data?.[0]?.items?.length;
-  //     setCartDataCount(serverData);
-
-  //     const cartData = response.data.data[0];
-  //     const cartItemData = cartData.items_details.map((data) => data._id);
-  //     setCartItemName(cartItemData);
-  //   } catch (error) {
-  //     console.error("Error fetching product data:", error);
-  //   }
-  // };
+      const cartData = response.data.data[0];
+      const cartItemData = cartData.items_details.map((data) => data._id);
+      setCartItemName(cartItemData);
+    } catch (error) {
+      console.error("Error fetching product data:", error);
+    }
+  };
 
   useEffect(() => {
     const isLogin = localStorage.getItem("fg_group_user_authorization");
     if (isLogin) {
-      // fetchProductCartData();
+      fetchProductCartData();
     }
   }, []);
 
@@ -533,7 +532,7 @@ function Home() {
                         <p className="product-card__description text-dark">
                           <b>{product.unit}</b>
                         </p>
-                        <Link to={product.path}>
+                        <Link to={`${product.path}?id=${productData[index]?._id}`}>
                           <div className="product-card__price-row">
                             <button className="product-card__btn w-100">
                               Know more

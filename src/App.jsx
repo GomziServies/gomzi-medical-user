@@ -66,6 +66,8 @@ function App() {
         {/* <Route path="/add-to-cart" element={<AddToCart />} /> */}
         <Route path="/404" element={<NotFoundPage />} />
         <Route path="/product" element={<Product />} />
+        <Route path="/add-to-cart" element={<AddToCart />} />
+        <Route path="/medicine-check-out" element={<MedicineCheckOut />} />
         <Route path="/anaboliccycle" element={<AnabolicCycle />} />
         <Route path="/testosterone-enanthate" element={<TestosteroneEnanthate />} />
         <Route path="/testosterone-cypionate" element={<TestosteroneCypionate />} />

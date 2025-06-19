@@ -20,6 +20,9 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Button, Card } from "react-bootstrap";
+import HomeNutritionFooter from "../components/partials/Footer/footer";
+import { Link } from "react-router-dom";
 
 function AddToCart() {
   const canonicalUrl = window.location.href;
@@ -30,6 +33,7 @@ function AddToCart() {
   const [previousProductData, setPreviousProductData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [cartDataClick, setCartDataClick] = useState(false);
+  const [productData, setProductData] = useState([]);
 
   const openModal = () => {
     setShowModal(true);
@@ -201,7 +205,7 @@ function AddToCart() {
             })
           );
 
-          window.location.href = `/aas-check-out`;
+          window.location.href = `/medicine-check-out`;
         }
       } else {
         const products = productDataGet.map((product) => ({
@@ -218,13 +222,49 @@ function AddToCart() {
 
         localStorage.setItem("serverDataID", serverDataID);
 
-        window.location.href = `/aas-check-out`;
+        window.location.href = `/medicine-check-out`;
       }
     } catch (error) {
       console.error("Error adding to cart:", error);
     }
     setLoading1(false);
   };
+
+  const addProductInCart = async (product_id) => {
+    try {
+      const isLogin = localStorage.getItem("fg_group_user_authorization");
+      if (!isLogin) {
+        return openModal();
+      }
+      const response = await axiosInstance.post("/order-cart/add-item", {
+        item_id: product_id,
+        quantity: 1,
+        item_type: "MEDICAL_PRODUCT",
+      });
+      if (response.data.response === "OK") {
+        window.location.href = "/add-to-cart";
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const getProductData = async () => {
+    try {
+      const response = await publicAxiosInstance.get("/medical-product/get");
+      const userData = response.data.data;
+
+      if (userData) {
+        setProductData(userData);
+      }
+    } catch (error) {
+      console.error("Error in getProductData:", error);
+    }
+  };
+
+  useEffect(() => {
+    getProductData();
+  }, []);
 
   return (
     <>
@@ -389,6 +429,54 @@ function AddToCart() {
           </div>
         </div>
       </main>
+      <div>
+        <div className="section-title text-center mb-60 ">
+          <h1 className="title">Other Product</h1>
+        </div>
+
+        <div className="container">
+          <div className="row">
+            {productData
+              .filter(
+                (product) =>
+                  !productDataGet.some((item) => item._id === product._id)
+              )
+              .map((product, index) => (
+                <div className="col-lg-4 col-sm-6 text-start" key={index}>
+                  <div className="cont">
+                    <div className="product-card">
+                      <div className="product-card__image">
+                        <img
+                          className="lazy"
+                          src={`https://files.fggroup.in/${product.display_image}`}
+                          alt={product.name}
+                          style={{width:'300px',height:'300px'}}
+                        />
+                      </div>
+                      <div className="product-card__info">
+                        <h2 className="product-card__title">{product.name}</h2>
+                        <p className="product-card__description truncate-description">
+                          {product.description}
+                        </p>
+                        <p className="product-card__description text-dark">
+                          <b>{product.unit}</b>
+                        </p>
+                        <div
+                          className="product-card__price-row"
+                          onClick={() => addProductInCart(product?._id)}
+                        >
+                          <button className="product-card__btn w-100">
+                            Add to cart
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+          </div>
+        </div>
+      </div>
       {/* <HomeNutritionFooter /> */}
     </>
   );

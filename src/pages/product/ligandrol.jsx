@@ -1,20 +1,69 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet";
 import NutritionHeader from "../../components/partials/Header/nutritionsheader";
 import { useLocation } from "react-router";
 import LoginModal from "../../assets/js/popup/login";
+import { axiosInstance } from "../../assets/js/config/api";
 
 const Ligandrol = () => {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
   const [opacity, setOpacity] = useState(1);
   const imageRef = useRef(null);
-  const [showModal, setShowModal] = useState(false);
   const [fadingItem, setFadingItem] = useState(null);
+   const [productData, setProductData] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const authorization = localStorage.getItem("fg_group_user_authorization");
+
+  const openModal = () => {
+    setShowModal(true);
+  };
 
   const closeModal = () => {
     setShowModal(false);
   };
 
-  const handleQuickBuy = async () => {};
+  useEffect(() => {
+    if (!authorization) {
+      openModal();
+    }
+  }, [authorization]);
+
+  // const getProductData = async () => {
+  //   try {
+  //     const response = await axiosInstance.get("/medical-product/get");
+  //     const userData = response.data.data;
+
+  //     if (userData) {
+  //       setProductData(userData);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error in getProductData:", error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   getProductData();
+  // }, []);
+
+  const addProductInCart = async (product_id) => {
+    try {
+      const isLogin = localStorage.getItem("fg_group_user_authorization");
+      if (!isLogin) {
+        return openModal();
+      }
+      const response = await axiosInstance.post("/order-cart/add-item", {
+        item_id: product_id,
+        quantity: 1,
+        item_type: "MEDICAL_PRODUCT",
+      });
+      if (response.data.response === "OK") {
+        window.location.href = "/add-to-cart";
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const additionalData = [
     {
@@ -95,10 +144,11 @@ const Ligandrol = () => {
                     </p>
                     <div className="inner-shop-perched-info mt-3 row align-items-center ms-0">
                       <button
-                        onClick={() => handleQuickBuy()}
-                        className="col-md-3 col-11 quick-buy-btn m-0 ms-md-3 mt-3 product-card__btn"
+                        onClick={() => addProductInCart(id)}
+                        className="col-md-6 col-11 quick-buy-btn m-0 ms-md-3 mt-3 product-card__btn"
                       >
-                        <i className="fa-solid fa-bolt me-2 "></i> Know more
+                        <i className="fa-solid fa-bolt me-2 "></i>contact
+                        pharmacist
                       </button>
                     </div>
                   </div>
