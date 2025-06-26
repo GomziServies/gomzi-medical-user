@@ -6,566 +6,411 @@ import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
 
 const Sermorelin = () => {
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
-    const [opacity, setOpacity] = useState(1);
-    const imageRef = useRef(null);
-    const [fadingItem, setFadingItem] = useState(null);
-    const [productData, setProductData] = useState([]);
-    const [showModal, setShowModal] = useState(false);
-    const authorization = localStorage.getItem("fg_group_user_authorization");
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+  const [opacity, setOpacity] = useState(1);
+  const imageRef = useRef(null);
+  const [fadingItem, setFadingItem] = useState(null);
+  const [productData, setProductData] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const authorization = localStorage.getItem("fg_group_user_authorization");
 
-    const openModal = () => {
-        setShowModal(true);
-    };
+  const openModal = () => {
+    setShowModal(true);
+  };
 
-    const closeModal = () => {
-        setShowModal(false);
-    };
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
-    useEffect(() => {
-        if (!authorization) {
-            openModal();
-        }
-    }, [authorization]);
+  useEffect(() => {
+    if (!authorization) {
+      openModal();
+    }
+  }, [authorization]);
 
-    // const getProductData = async () => {
-    //   try {
-    //     const response = await axiosInstance.get("/medical-product/get");
-    //     const userData = response.data.data;
+  // const getProductData = async () => {
+  //   try {
+  //     const response = await axiosInstance.get("/medical-product/get");
+  //     const userData = response.data.data;
 
-    //     if (userData) {
-    //       setProductData(userData);
-    //     }
-    //   } catch (error) {
-    //     console.error("Error in getProductData:", error);
-    //   }
-    // };
+  //     if (userData) {
+  //       setProductData(userData);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error in getProductData:", error);
+  //   }
+  // };
 
-    // useEffect(() => {
-    //   getProductData();
-    // }, []);
+  // useEffect(() => {
+  //   getProductData();
+  // }, []);
 
-    const addProductInCart = async (product_id) => {
-        try {
-            const isLogin = localStorage.getItem("fg_group_user_authorization");
-            if (!isLogin) {
-                return openModal();
-            }
-            const response = await axiosInstance.post("/order-cart/add-item", {
-                item_id: product_id,
-                quantity: 1,
-                item_type: "MEDICAL_PRODUCT",
-            });
-            if (response.data.response === "OK") {
-                window.location.href = "/add-to-cart";
-            }
-        } catch (error) {
-            console.error(error);
-        }
-    };
+  const addProductInCart = async (product_id) => {
+    try {
+      const isLogin = localStorage.getItem("fg_group_user_authorization");
+      if (!isLogin) {
+        return openModal();
+      }
+      const response = await axiosInstance.post("/order-cart/add-item", {
+        item_id: product_id,
+        quantity: 1,
+        item_type: "MEDICAL_PRODUCT",
+      });
+      if (response.data.response === "OK") {
+        window.location.href = "/add-to-cart";
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-    const additionalData = [
-        {
-            label: "Total Fat",
-            value: "0.76",
-        },
-        {
-            label: "Saturated Fat",
-            value: "0.60",
-        },
-        {
-            label: "Cholesterol",
-            value: "0.02",
-        },
-        {
-            label: "Total Carbohydrate",
-            value: "4.02",
-        },
-        {
-            label: "Protein",
-            value: "28.00",
-        },
-        {
-            label: "Total Sugars",
-            value: "0",
-        },
-        {
-            label: "Sodium",
-            value: "135.0",
-        },
-    ];
+  const additionalData = [
+    {
+      label: "Total Fat",
+      value: "0.76",
+    },
+    {
+      label: "Saturated Fat",
+      value: "0.60",
+    },
+    {
+      label: "Cholesterol",
+      value: "0.02",
+    },
+    {
+      label: "Total Carbohydrate",
+      value: "4.02",
+    },
+    {
+      label: "Protein",
+      value: "28.00",
+    },
+    {
+      label: "Total Sugars",
+      value: "0",
+    },
+    {
+      label: "Sodium",
+      value: "135.0",
+    },
+  ];
 
-    return (
-        <div>
-            {/* <LoaderComponent /> */}
-            {showModal && <LoginModal onClose={closeModal} />}
-            {fadingItem}
+  return (
+    <div>
+      {/* <LoaderComponent /> */}
+      {showModal && <LoginModal onClose={closeModal} />}
+      {fadingItem}
 
-            <NutritionHeader />
+      <NutritionHeader />
 
-            <button className="scroll-top scroll-to-target" data-target="html">
-                <i className="fas fa-angle-up"></i>
-            </button>
-            <main className="main-area">
-                <section className="inner-shop-details-area">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-5">
-                                <div
-                                    className="black-before d-flex align-items-center justify-content-center"
-                                    style={{
-                                        boxShadow:
-                                            "0 0 20px rgba(48, 48, 48, 0.25)",
-                                    }}
-                                >
-                                    <div
-                                        className="product-image-container"
-                                        ref={imageRef}
-                                        style={{
-                                            opacity: opacity,
-                                            transition:
-                                                "opacity 0.3s ease-in-out",
-                                        }}
-                                    >
-                                        <img
-                                            src="assets\images\medicine\sermorelin.jpg"
-                                            alt="Sermorelin"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-7 d-flex align-items-center mt-md-0 p-0">
-                                <div className="inner-shop-details-content">
-                                    <div className="bg-product px-3 pb-3 pt-3">
-                                        <h4 className="title">Sermorelin</h4>
-                                        <p className="pt-4">
-                                            Sermorelin is a synthetic analog of
-                                            Growth Hormone-Releasing Hormone
-                                            (GHRH 1-29), designed to stimulate
-                                            the natural production of growth
-                                            hormone (GH) by the pituitary gland.
-                                            It promotes fat loss, lean muscle
-                                            growth, and anti-aging effects by
-                                            encouraging the body's own GH
-                                            release rather than providing
-                                            exogenous GH.
-                                        </p>
+      <button className="scroll-top scroll-to-target" data-target="html">
+        <i className="fas fa-angle-up"></i>
+      </button>
+      <main className="main-area">
+        <section className="inner-shop-details-area">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-5">
+                <div
+                  className="black-before d-flex align-items-center justify-content-center"
+                  style={{
+                    boxShadow: "0 0 20px rgba(48, 48, 48, 0.25)",
+                  }}
+                >
+                  <div
+                    className="product-image-container"
+                    ref={imageRef}
+                    style={{
+                      opacity: opacity,
+                      transition: "opacity 0.3s ease-in-out",
+                    }}
+                  >
+                    <img
+                      src="assets\images\medicine\sermorelin.jpg"
+                      alt="Sermorelin"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-7 d-flex align-items-center mt-md-0 p-0">
+                <div className="inner-shop-details-content">
+                  <div className="bg-product px-3 pb-3 pt-3">
+                    <h4 className="title">Sermorelin</h4>
+                    <p className="pt-4">
+                      Sermorelin is a synthetic analog of Growth
+                      Hormone-Releasing Hormone (GHRH 1-29), designed to
+                      stimulate the natural production of growth hormone (GH) by
+                      the pituitary gland. It promotes fat loss, lean muscle
+                      growth, and anti-aging effects by encouraging the body's
+                      own GH release rather than providing exogenous GH.
+                    </p>
 
-                                        <div className="inner-shop-perched-info mt-3 row align-items-center ms-0">
-                                            <button
-                                                onClick={() =>
-                                                    addProductInCart(id)
-                                                }
-                                                className="col-md-6 col-11 quick-buy-btn m-0 ms-md-3 mt-3 product-card__btn"
-                                            >
-                                                <i className="fa-solid fa-bolt me-2 "></i>
-                                                contact pharmacist
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-12">
-                                <div className="product-desc-wrap">
-                                    <ul
-                                        className="nav nav-tabs"
-                                        id="myTabTwo"
-                                        role="tablist"
-                                    >
-                                        <li className="nav-item">
-                                            <button
-                                                className="nav-link active"
-                                                id="description-tab"
-                                                data-bs-toggle="tab"
-                                                data-bs-target="#description"
-                                                role="tab"
-                                                aria-controls="description"
-                                                aria-selected="true"
-                                            >
-                                                Description
-                                            </button>
-                                        </li>
-                                    </ul>
-                                    <div
-                                        className="tab-content"
-                                        id="myTabContentTwo"
-                                    >
-                                        <div
-                                            className="tab-pane fade show active"
-                                            id="description"
-                                            role="tabpanel"
-                                            aria-labelledby="description-tab"
-                                        >
-                                            <div>
-                                                <h4 className="m-5 mb-3 mx-0">
-                                                    Pharmacology &
-                                                    Classification:
-                                                </h4>
-                                                <ul>
-                                                    <li>
-                                                        <strong>Type:</strong>{" "}
-                                                        Peptide hormone (GHRH
-                                                        analog)
-                                                    </li>
-                                                    <li>
-                                                        <strong>Class:</strong>{" "}
-                                                        Growth Hormone
-                                                        Secretagogue (GHS)
-                                                    </li>
-                                                    <li>
-                                                        <strong>
-                                                            Administration
-                                                            Route:
-                                                        </strong>{" "}
-                                                        Subcutaneous (SubQ)
-                                                        injection
-                                                    </li>
-                                                    <li>
-                                                        <strong>
-                                                            Half-Life:
-                                                        </strong>{" "}
-                                                        ~10-20 minutes
-                                                    </li>
-                                                    <li>
-                                                        <strong>
-                                                            Duration of Action:
-                                                        </strong>{" "}
-                                                        ~1-2 hours of GH
-                                                        elevation post-injection
-                                                    </li>
-                                                </ul>
-
-                                                <h4 className="m-5 mb-3 mx-0">
-                                                    Dosage & Administration:
-                                                </h4>
-                                                <ul>
-                                                    <li>
-                                                        <strong>
-                                                            Typical Dose:
-                                                        </strong>{" "}
-                                                        0.5-1 mg per injection
-                                                    </li>
-                                                    <li>
-                                                        <strong>
-                                                            Frequency:
-                                                        </strong>
-                                                        <ul>
-                                                            <li>
-                                                                3-7 times per
-                                                                week depending
-                                                                on goals
-                                                            </li>
-                                                            <li>
-                                                                Daily use is
-                                                                common,
-                                                                especially when
-                                                                used solo
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        <strong>
-                                                            Injection Sites:
-                                                        </strong>{" "}
-                                                        Abdomen, thigh, or other
-                                                        SubQ areas
-                                                    </li>
-                                                </ul>
-
-                                                <h4 className="m-5 mb-3 mx-0">
-                                                    Administration Timing
-                                                    Guidelines:
-                                                </h4>
-                                                <ul>
-                                                    <li>
-                                                        <strong>
-                                                            Before Sleep:
-                                                        </strong>
-                                                        <ul>
-                                                            <li>
-                                                                Maximizes
-                                                                natural GH pulse
-                                                            </li>
-                                                            <li>
-                                                                Supports deep
-                                                                sleep, recovery,
-                                                                and metabolism
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <br />
-                                                    <li>
-                                                        <strong>
-                                                            On an Empty Stomach:
-                                                        </strong>
-                                                        <ul>
-                                                            <li>
-                                                                30-45 minutes
-                                                                before meals for
-                                                                optimal GH
-                                                                response
-                                                            </li>
-                                                            <li>
-                                                                Avoid carbs or
-                                                                fats around
-                                                                injection
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <br />
-                                                    <li>
-                                                        <strong>
-                                                            Optional
-                                                            Post-Workout Use:
-                                                        </strong>
-                                                        <ul>
-                                                            <li>
-                                                                Supports muscle
-                                                                repair and
-                                                                protein
-                                                                synthesis
-                                                            </li>
-                                                            <li>
-                                                                Best when
-                                                                stacked with
-                                                                GHRPs
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-
-                                                <h4 className="m-5 mb-3 mx-0">
-                                                    Benefits & Uses:
-                                                </h4>
-                                                <ul>
-                                                    <li>
-                                                        Boosts natural GH
-                                                        secretion
-                                                    </li>
-                                                    <li>
-                                                        Supports fat loss and
-                                                        lean muscle retention
-                                                    </li>
-                                                    <li>
-                                                        Improves sleep,
-                                                        recovery, and vitality
-                                                    </li>
-                                                    <li>
-                                                        Anti-aging effects (skin
-                                                        tone, cognition, energy)
-                                                    </li>
-                                                    <li>
-                                                        Raises IGF-1 levels with
-                                                        consistent use
-                                                    </li>
-                                                    <li>
-                                                        Alternative to HGH
-                                                        therapy with lower risk
-                                                    </li>
-                                                </ul>
-
-                                                <h4 className="m-5 mb-3 mx-0">
-                                                    Unique Characteristics:
-                                                </h4>
-                                                <ul>
-                                                    <li>
-                                                        Mimics natural GH
-                                                        secretion rhythm
-                                                    </li>
-                                                    <li>
-                                                        Low risk of
-                                                        desensitization compared
-                                                        to GHRPs
-                                                    </li>
-                                                    <li>
-                                                        Legal and safer option
-                                                        for GH stimulation
-                                                    </li>
-                                                    <li>
-                                                        Effective alone or in
-                                                        GHRP stacks (e.g.,
-                                                        GHRP-2, GHRP-6,
-                                                        Ipamorelin)
-                                                    </li>
-                                                </ul>
-
-                                                <h4 className="m-5 mb-3 mx-0">
-                                                    Side Effects:
-                                                </h4>
-                                                <ul>
-                                                    <li>
-                                                        Mild injection site
-                                                        reactions (redness or
-                                                        irritation)
-                                                    </li>
-                                                    <li>
-                                                        Occasional headaches or
-                                                        dizziness
-                                                    </li>
-                                                    <li>
-                                                        Temporary water
-                                                        retention
-                                                        (dose-dependent)
-                                                    </li>
-                                                    <li>
-                                                        Rare nausea or facial
-                                                        flushing
-                                                    </li>
-                                                    <li>
-                                                        No suppression of
-                                                        natural GH production
-                                                    </li>
-                                                </ul>
-
-                                                <h4 className="m-5 mb-3 mx-0">
-                                                    Stacking & Compatibility:
-                                                </h4>
-                                                <ul>
-                                                    <li>
-                                                        <strong>
-                                                            Commonly Stacked
-                                                            With:
-                                                        </strong>
-                                                        <ul>
-                                                            <li>
-                                                                GHRP-2, GHRP-6,
-                                                                Ipamorelin, or
-                                                                Hexarelin
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <br />
-                                                    <li>
-                                                        <strong>
-                                                            Purpose of Stacking:
-                                                        </strong>
-                                                        <ul>
-                                                            <li>
-                                                                Sermorelin +
-                                                                GHRP produces
-                                                                synergistic
-                                                                dual-pathway GH
-                                                                stimulation
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-
-                                                <h4 className="m-5 mb-3 mx-0">
-                                                    Precautions & Storage:
-                                                </h4>
-                                                <ul>
-                                                    <li>
-                                                        Typical cycle: 8-16
-                                                        weeks
-                                                    </li>
-                                                    <li>
-                                                        Store lyophilized and
-                                                        reconstituted peptide in
-                                                        the fridge
-                                                    </li>
-                                                    <li>
-                                                        Use reconstituted
-                                                        peptide within 10-14
-                                                        days
-                                                    </li>
-                                                    <li>
-                                                        Avoid food (especially
-                                                        carbs/fats) near dosing
-                                                        window
-                                                    </li>
-                                                </ul>
-
-                                                <p className="mt-5">
-                                                    Sermorelin is a fast-acting,
-                                                    short-duration GHRH analog
-                                                    that promotes safe and
-                                                    natural growth hormone
-                                                    release. Ideal for fat loss,
-                                                    anti-aging, and recovery, it
-                                                    offers a regulated
-                                                    alternative to HGH. Its real
-                                                    power shines when stacked
-                                                    with GHRPs, delivering a
-                                                    flexible and effective
-                                                    option in any performance or
-                                                    longevity program.
-                                                </p>
-
-                                                <p>
-                                                    To learn how to integrate
-                                                    short-acting peptides like
-                                                    Sermorelin into your
-                                                    enhancement or wellness
-                                                    protocols, enroll in our
-                                                    <a
-                                                        href="https://fggroup.in/fgiit/anabolic-steroids-course"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className="text-black"
-                                                    >{' '}
-                                                        <strong>
-                                                            Offline Steroids
-                                                            Course
-                                                        </strong>
-                                                    </a>
-                                                    , get started anytime with
-                                                    our
-                                                    <a
-                                                        href="https://fggroup.in/fgiit/anabolic-steroid-testosterone"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className="text-black"
-                                                    >{' '}
-                                                        <strong>
-                                                            Online Course
-                                                        </strong>
-                                                    </a>
-                                                    , or choose the
-                                                    <a
-                                                        href="https://fggroup.in/fgiit/anabolic-androgenic-steroids"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className="text-black"
-                                                    >{' '}
-                                                        <strong>
-                                                            Flexible Learning
-                                                            Program
-                                                        </strong>
-                                                        {' '}
-                                                    </a>
-                                                    to study at your own pace.
-                                                    For deeper education on
-                                                    peptides, stacks, and
-                                                    responsible enhancement,
-                                                    explore our
-                                                    <a
-                                                        href="https://fggroup.in/book/steroids-book"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className="text-black"
-                                                    >{' '}
-                                                        <strong>
-                                                            Comprehensive
-                                                            Steroids Book
-                                                        </strong>
-                                                    </a>
-                                                    .
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div className="inner-shop-perched-info mt-3 row align-items-center ms-0">
+                      <button
+                        onClick={() => addProductInCart(id)}
+                        className="col-md-6 col-11 quick-buy-btn m-0 ms-md-3 mt-3 product-card__btn"
+                      >
+                        <i className="fa-solid fa-bolt me-2 "></i>
+                        contact pharmacist
+                      </button>
                     </div>
-                </section>
-            </main>
-        </div>
-    );
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-12">
+                <div className="product-desc-wrap">
+                  <ul className="nav nav-tabs" id="myTabTwo" role="tablist">
+                    <li className="nav-item">
+                      <button
+                        className="nav-link active"
+                        id="description-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#description"
+                        role="tab"
+                        aria-controls="description"
+                        aria-selected="true"
+                      >
+                        Description
+                      </button>
+                    </li>
+                  </ul>
+                  <div className="tab-content" id="myTabContentTwo">
+                    <div
+                      className="tab-pane fade show active"
+                      id="description"
+                      role="tabpanel"
+                      aria-labelledby="description-tab"
+                    >
+                      <div>
+                        <h4 className="m-5 mb-3 mx-0">
+                          Pharmacology & Classification:
+                        </h4>
+                        <ul>
+                          <li>
+                            <strong>Type:</strong> Peptide hormone (GHRH analog)
+                          </li>
+                          <li>
+                            <strong>Class:</strong> Growth Hormone Secretagogue
+                            (GHS)
+                          </li>
+                          <li>
+                            <strong>Administration Route:</strong> Subcutaneous
+                            (SubQ) injection
+                          </li>
+                          <li>
+                            <strong>Half-Life:</strong> ~10-20 minutes
+                          </li>
+                          <li>
+                            <strong>Duration of Action:</strong> ~1-2 hours of
+                            GH elevation post-injection
+                          </li>
+                        </ul>
+
+                        <h4 className="m-5 mb-3 mx-0">
+                          Dosage & Administration:
+                        </h4>
+                        <ul>
+                          <li>
+                            <strong>Typical Dose:</strong> 0.5-1 mg per
+                            injection
+                          </li>
+                          <li>
+                            <strong>Frequency:</strong>
+                            <ul>
+                              <li>3-7 times per week depending on goals</li>
+                              <li>
+                                Daily use is common, especially when used solo
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <strong>Injection Sites:</strong> Abdomen, thigh, or
+                            other SubQ areas
+                          </li>
+                        </ul>
+
+                        <h4 className="m-5 mb-3 mx-0">
+                          Administration Timing Guidelines:
+                        </h4>
+                        <ul>
+                          <li>
+                            <strong>Before Sleep:</strong>
+                            <ul>
+                              <li>Maximizes natural GH pulse</li>
+                              <li>
+                                Supports deep sleep, recovery, and metabolism
+                              </li>
+                            </ul>
+                          </li>
+                          <br />
+                          <li>
+                            <strong>On an Empty Stomach:</strong>
+                            <ul>
+                              <li>
+                                30-45 minutes before meals for optimal GH
+                                response
+                              </li>
+                              <li>Avoid carbs or fats around injection</li>
+                            </ul>
+                          </li>
+                          <br />
+                          <li>
+                            <strong>Optional Post-Workout Use:</strong>
+                            <ul>
+                              <li>
+                                Supports muscle repair and protein synthesis
+                              </li>
+                              <li>Best when stacked with GHRPs</li>
+                            </ul>
+                          </li>
+                        </ul>
+
+                        <h4 className="m-5 mb-3 mx-0">Benefits & Uses:</h4>
+                        <ul>
+                          <li>Boosts natural GH secretion</li>
+                          <li>Supports fat loss and lean muscle retention</li>
+                          <li>Improves sleep, recovery, and vitality</li>
+                          <li>
+                            Anti-aging effects (skin tone, cognition, energy)
+                          </li>
+                          <li>Raises IGF-1 levels with consistent use</li>
+                          <li>Alternative to HGH therapy with lower risk</li>
+                        </ul>
+
+                        <h4 className="m-5 mb-3 mx-0">
+                          Unique Characteristics:
+                        </h4>
+                        <ul>
+                          <li>Mimics natural GH secretion rhythm</li>
+                          <li>Low risk of desensitization compared to GHRPs</li>
+                          <li>Legal and safer option for GH stimulation</li>
+                          <li>
+                            Effective alone or in GHRP stacks (e.g., GHRP-2,
+                            GHRP-6, Ipamorelin)
+                          </li>
+                        </ul>
+
+                        <h4 className="m-5 mb-3 mx-0">Side Effects:</h4>
+                        <ul>
+                          <li>
+                            Mild injection site reactions (redness or
+                            irritation)
+                          </li>
+                          <li>Occasional headaches or dizziness</li>
+                          <li>Temporary water retention (dose-dependent)</li>
+                          <li>Rare nausea or facial flushing</li>
+                          <li>No suppression of natural GH production</li>
+                        </ul>
+
+                        <h4 className="m-5 mb-3 mx-0">
+                          Stacking & Compatibility:
+                        </h4>
+                        <ul>
+                          <li>
+                            <strong>Commonly Stacked With:</strong>
+                            <ul>
+                              <li>GHRP-2, GHRP-6, Ipamorelin, or Hexarelin</li>
+                            </ul>
+                          </li>
+                          <br />
+                          <li>
+                            <strong>Purpose of Stacking:</strong>
+                            <ul>
+                              <li>
+                                Sermorelin + GHRP produces synergistic
+                                dual-pathway GH stimulation
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+
+                        <h4 className="m-5 mb-3 mx-0">
+                          Precautions & Storage:
+                        </h4>
+                        <ul>
+                          <li>Typical cycle: 8-16 weeks</li>
+                          <li>
+                            Store lyophilized and reconstituted peptide in the
+                            fridge
+                          </li>
+                          <li>Use reconstituted peptide within 10-14 days</li>
+                          <li>
+                            Avoid food (especially carbs/fats) near dosing
+                            window
+                          </li>
+                        </ul>
+
+                        <p className="mt-5">
+                          Sermorelin is a fast-acting, short-duration GHRH
+                          analog that promotes safe and natural growth hormone
+                          release. Ideal for fat loss, anti-aging, and recovery,
+                          it offers a regulated alternative to HGH. Its real
+                          power shines when stacked with GHRPs, delivering a
+                          flexible and effective option in any performance or
+                          longevity program.
+                        </p>
+
+                        <p>
+                          To learn how to integrate short-acting peptides like
+                          Sermorelin into your enhancement or wellness
+                          protocols, enroll in our
+                          <a
+                            href="https://fggroup.in/fgiit/anabolic-steroids-course"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-black"
+                          >
+                            {" "}
+                            <strong>Offline Steroids Course</strong>
+                          </a>
+                          , get started anytime with our
+                          <a
+                            href="https://fggroup.in/fgiit/anabolic-steroid-testosterone"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-black"
+                          >
+                            {" "}
+                            <strong>Online Course</strong>
+                          </a>
+                          , or choose the
+                          <a
+                            href="https://fggroup.in/fgiit/anabolic-androgenic-steroids"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-black"
+                          >
+                            {" "}
+                            <strong>Flexible Learning Course</strong>{" "}
+                          </a>
+                          to study at your own pace. For deeper education on
+                          peptides, stacks, and responsible enhancement, explore
+                          our
+                          <a
+                            href="https://fggroup.in/book/steroids-book"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-black"
+                          >
+                            {" "}
+                            <strong>Comprehensive Steroids Book</strong>
+                          </a>
+                          .
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  );
 };
 
 export default Sermorelin;
