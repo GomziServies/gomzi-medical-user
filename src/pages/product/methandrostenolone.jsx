@@ -6,397 +6,622 @@ import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
 
 const Methandrostenolone = () => {
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get("id");
-  const [opacity, setOpacity] = useState(1);
-  const imageRef = useRef(null);
-  const [fadingItem, setFadingItem] = useState(null);
-   const [productData, setProductData] = useState([]);
-  const [showModal, setShowModal] = useState(false);
-  const authorization = localStorage.getItem("fg_group_user_authorization");
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    const [opacity, setOpacity] = useState(1);
+    const imageRef = useRef(null);
+    const [fadingItem, setFadingItem] = useState(null);
+    const [productData, setProductData] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const authorization = localStorage.getItem("fg_group_user_authorization");
 
-  const openModal = () => {
-    setShowModal(true);
-  };
+    const openModal = () => {
+        setShowModal(true);
+    };
 
-  const closeModal = () => {
-    setShowModal(false);
-  };
+    const closeModal = () => {
+        setShowModal(false);
+    };
 
-  useEffect(() => {
-    if (!authorization) {
-      openModal();
-    }
-  }, [authorization]);
+    useEffect(() => {
+        if (!authorization) {
+            openModal();
+        }
+    }, [authorization]);
 
-  // const getProductData = async () => {
-  //   try {
-  //     const response = await axiosInstance.get("/medical-product/get");
-  //     const userData = response.data.data;
+    // const getProductData = async () => {
+    //   try {
+    //     const response = await axiosInstance.get("/medical-product/get");
+    //     const userData = response.data.data;
 
-  //     if (userData) {
-  //       setProductData(userData);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error in getProductData:", error);
-  //   }
-  // };
+    //     if (userData) {
+    //       setProductData(userData);
+    //     }
+    //   } catch (error) {
+    //     console.error("Error in getProductData:", error);
+    //   }
+    // };
 
-  // useEffect(() => {
-  //   getProductData();
-  // }, []);
+    // useEffect(() => {
+    //   getProductData();
+    // }, []);
 
-  const addProductInCart = async (product_id) => {
-    try {
-      const isLogin = localStorage.getItem("fg_group_user_authorization");
-      if (!isLogin) {
-        return openModal();
-      }
-      const response = await axiosInstance.post("/order-cart/add-item", {
-        item_id: product_id,
-        quantity: 1,
-        item_type: "MEDICAL_PRODUCT",
-      });
-      if (response.data.response === "OK") {
-        window.location.href = "/add-to-cart";
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
+    const addProductInCart = async (product_id) => {
+        try {
+            const isLogin = localStorage.getItem("fg_group_user_authorization");
+            if (!isLogin) {
+                return openModal();
+            }
+            const response = await axiosInstance.post("/order-cart/add-item", {
+                item_id: product_id,
+                quantity: 1,
+                item_type: "MEDICAL_PRODUCT",
+            });
+            if (response.data.response === "OK") {
+                window.location.href = "/add-to-cart";
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
-  const additionalData = [
-    {
-      label: "Total Fat",
-      value: "0.76",
-    },
-    {
-      label: "Saturated Fat",
-      value: "0.60",
-    },
-    {
-      label: "Cholesterol",
-      value: "0.02",
-    },
-    {
-      label: "Total Carbohydrate",
-      value: "4.02",
-    },
-    {
-      label: "Protein",
-      value: "28.00",
-    },
-    {
-      label: "Total Sugars",
-      value: "0",
-    },
-    {
-      label: "Sodium",
-      value: "135.0",
-    },
-  ];
+    const additionalData = [
+        {
+            label: "Total Fat",
+            value: "0.76",
+        },
+        {
+            label: "Saturated Fat",
+            value: "0.60",
+        },
+        {
+            label: "Cholesterol",
+            value: "0.02",
+        },
+        {
+            label: "Total Carbohydrate",
+            value: "4.02",
+        },
+        {
+            label: "Protein",
+            value: "28.00",
+        },
+        {
+            label: "Total Sugars",
+            value: "0",
+        },
+        {
+            label: "Sodium",
+            value: "135.0",
+        },
+    ];
 
-  return (
-    <div>
-      {/* <LoaderComponent /> */}
-      {showModal && <LoginModal onClose={closeModal} />}
-      {fadingItem}
+    return (
+        <div>
+            {/* <LoaderComponent /> */}
+            {showModal && <LoginModal onClose={closeModal} />}
+            {fadingItem}
 
-      <NutritionHeader />
+            <NutritionHeader />
 
-      <button className="scroll-top scroll-to-target" data-target="html">
-        <i className="fas fa-angle-up"></i>
-      </button>
-      <main className="main-area">
-        <section className="inner-shop-details-area">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-5">
-                <div
-                  className="black-before d-flex align-items-center justify-content-center"
-                  style={{ boxShadow: "0 0 20px rgba(48, 48, 48, 0.25)" }}
-                >
-                  <div
-                    className="product-image-container"
-                    ref={imageRef}
-                    style={{
-                      opacity: opacity,
-                      transition: "opacity 0.3s ease-in-out",
-                    }}
-                  >
-                    <img
-                      src="assets\images\medicine\methandrostenolone.jpg"
-                      alt="Methandrostenolone"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-7 d-flex align-items-center mt-md-0 p-0">
-                <div className="inner-shop-details-content">
-                  <div className="bg-product px-3 pb-3 pt-3">
-                    <h4 className="title">Methandrostenolone</h4>
-                    <p className="pt-4">
-                      Methandrostenolone, commonly known as Dianabol (or Dbol),
-                      is one of the most well-known and widely used oral
-                      anabolic steroids. Originally developed in the 1950s, it
-                      gained rapid popularity for its potent anabolic effects,
-                      leading to significant muscle mass and strength gains in a
-                      short period. It remains a staple in bulking cycles,
-                      especially among beginners due to its fast-acting nature
-                      and ease of use.
-                    </p>
+            <button className="scroll-top scroll-to-target" data-target="html">
+                <i className="fas fa-angle-up"></i>
+            </button>
+            <main className="main-area">
+                <section className="inner-shop-details-area">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-lg-5">
+                                <div
+                                    className="black-before d-flex align-items-center justify-content-center"
+                                    style={{
+                                        boxShadow:
+                                            "0 0 20px rgba(48, 48, 48, 0.25)",
+                                    }}
+                                >
+                                    <div
+                                        className="product-image-container"
+                                        ref={imageRef}
+                                        style={{
+                                            opacity: opacity,
+                                            transition:
+                                                "opacity 0.3s ease-in-out",
+                                        }}
+                                    >
+                                        <img
+                                            src="assets\images\medicine\methandrostenolone.jpg"
+                                            alt="Methandrostenolone"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-lg-7 d-flex align-items-center mt-md-0 p-0">
+                                <div className="inner-shop-details-content">
+                                    <div className="bg-product px-3 pb-3 pt-3">
+                                        <h4 className="title">
+                                            Methandrostenolone
+                                        </h4>
+                                        <p className="pt-4">
+                                            Methandrostenolone, commonly known
+                                            as Dianabol (or Dbol), is one of the
+                                            most well-known and widely used oral
+                                            anabolic steroids. Originally
+                                            developed in the 1950s, it gained
+                                            rapid popularity for its potent
+                                            anabolic effects, leading to
+                                            significant muscle mass and strength
+                                            gains in a short period. It remains
+                                            a staple in bulking cycles,
+                                            especially among beginners due to
+                                            its fast-acting nature and ease of
+                                            use.
+                                        </p>
 
-                    <div className="inner-shop-perched-info mt-3 row align-items-center ms-0">
-                      <button
-                        onClick={() => addProductInCart(id)}
-                        className="col-md-6 col-11 quick-buy-btn m-0 ms-md-3 mt-3 product-card__btn"
-                      >
-                        <i className="fa-solid fa-bolt me-2 "></i>contact
-                        pharmacist
-                      </button>
+                                        <div className="inner-shop-perched-info mt-3 row align-items-center ms-0">
+                                            <button
+                                                onClick={() =>
+                                                    addProductInCart(id)
+                                                }
+                                                className="col-md-6 col-11 quick-buy-btn m-0 ms-md-3 mt-3 product-card__btn"
+                                            >
+                                                <i className="fa-solid fa-bolt me-2 "></i>
+                                                contact pharmacist
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-12">
+                                <div className="product-desc-wrap">
+                                    <ul
+                                        className="nav nav-tabs"
+                                        id="myTabTwo"
+                                        role="tablist"
+                                    >
+                                        <li className="nav-item">
+                                            <button
+                                                className="nav-link active"
+                                                id="description-tab"
+                                                data-bs-toggle="tab"
+                                                data-bs-target="#description"
+                                                role="tab"
+                                                aria-controls="description"
+                                                aria-selected="true"
+                                            >
+                                                Description
+                                            </button>
+                                        </li>
+                                    </ul>
+                                    <div
+                                        className="tab-content"
+                                        id="myTabContentTwo"
+                                    >
+                                        <div
+                                            className="tab-pane fade show active"
+                                            id="description"
+                                            role="tabpanel"
+                                            aria-labelledby="description-tab"
+                                        >
+                                            <div>
+                                                <h4 className="m-5 mb-3 mx-0">
+                                                    Pharmacology:
+                                                </h4>
+                                                <ul>
+                                                    <li>
+                                                        <strong>
+                                                            Chemical Structure:
+                                                        </strong>{" "}
+                                                        A modified form of
+                                                        testosterone with an
+                                                        added double bond
+                                                        between carbon 1 and 2,
+                                                        and 17-alpha alkylation
+                                                        for oral activity
+                                                    </li>
+                                                    <li>
+                                                        <strong>
+                                                            Half-Life:
+                                                        </strong>{" "}
+                                                        Approximately 4-6 hours,
+                                                        requiring multiple daily
+                                                        doses for stable blood
+                                                        levels
+                                                    </li>
+                                                    <li>
+                                                        <strong>
+                                                            Mechanism of Action:
+                                                        </strong>
+                                                        <ul>
+                                                            <li>
+                                                                Strong anabolic
+                                                                effects (promote
+                                                                protein
+                                                                synthesis and
+                                                                nitrogen
+                                                                retention)
+                                                            </li>
+                                                            <li>
+                                                                Mild to moderate
+                                                                androgenic
+                                                                properties
+                                                            </li>
+                                                            <li>
+                                                                Highly
+                                                                estrogenic due
+                                                                to conversion
+                                                                via aromatase
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+
+                                                <h4 className="m-5 mb-3 mx-0">
+                                                    Primary Uses:
+                                                </h4>
+                                                <ul>
+                                                    <li>
+                                                        <strong>
+                                                            Bulking Cycles:
+                                                        </strong>
+                                                        <ul>
+                                                            <li>
+                                                                Ideal for rapid
+                                                                mass and
+                                                                strength gain in
+                                                                the early stages
+                                                                of a bulking
+                                                                program
+                                                            </li>
+                                                            <li>
+                                                                Commonly used as
+                                                                a kickstarter in
+                                                                longer
+                                                                injectable
+                                                                cycles due to
+                                                                its fast onset
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <br />
+                                                    <li>
+                                                        <strong>
+                                                            Short-Term Strength
+                                                            Boosts:
+                                                        </strong>
+                                                        <ul>
+                                                            <li>
+                                                                Occasionally
+                                                                used
+                                                                pre-competition
+                                                                or before
+                                                                training blocks
+                                                                for quick power
+                                                                output gains
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <br />
+                                                    <li>
+                                                        <strong>
+                                                            Medical History:
+                                                        </strong>
+                                                        <ul>
+                                                            <li>
+                                                                Previously
+                                                                prescribed for
+                                                                wasting
+                                                                conditions, but
+                                                                now mostly
+                                                                restricted to
+                                                                athletic and
+                                                                underground use
+                                                                due to side
+                                                                effects
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+
+                                                <h4 className="m-5 mb-3 mx-0">
+                                                    Administration & Intake
+                                                    Timing:
+                                                </h4>
+                                                <ul>
+                                                    <li>
+                                                        <strong>
+                                                            Typical Dosage:
+                                                        </strong>{" "}
+                                                        15-50 mg/day, depending
+                                                        on experience level and
+                                                        goals
+                                                    </li>
+                                                    <li>
+                                                        <strong>
+                                                            Best Time to Take:
+                                                        </strong>
+                                                        <ul>
+                                                            <li>
+                                                                For performance:
+                                                                30-45 minutes
+                                                                before workouts
+                                                                to enhance
+                                                                strength and
+                                                                aggression
+                                                            </li>
+                                                            <li>
+                                                                For bulking:
+                                                                Split the daily
+                                                                dose into 2-3
+                                                                administrations
+                                                                throughout the
+                                                                day to keep
+                                                                blood levels
+                                                                stable
+                                                            </li>
+                                                            <li>
+                                                                Always taken
+                                                                with food to
+                                                                reduce
+                                                                gastrointestinal
+                                                                irritation
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+
+                                                <h4 className="m-5 mb-3 mx-0">
+                                                    Potential Side Effects:
+                                                </h4>
+                                                <p>
+                                                    Dianabol is highly effective
+                                                    but comes with a high risk
+                                                    of side effects,
+                                                    particularly with improper
+                                                    use or high doses:
+                                                </p>
+                                                <ul>
+                                                    <li>
+                                                        <strong>
+                                                            Estrogenic Side
+                                                            Effects (High Risk):
+                                                        </strong>
+                                                        <ul>
+                                                            <li>
+                                                                Water retention
+                                                                and bloating,
+                                                                leading to a
+                                                                "puffy"
+                                                                appearance
+                                                            </li>
+                                                            <li>
+                                                                Gynecomastia
+                                                                (development of
+                                                                male breast
+                                                                tissue),
+                                                                especially in
+                                                                users prone to
+                                                                estrogen
+                                                                sensitivity
+                                                            </li>
+                                                            <li>
+                                                                Aromatization
+                                                                (conversion to
+                                                                estrogen) occurs
+                                                                easily; use of
+                                                                aromatase
+                                                                inhibitors (AI)
+                                                                may be necessary
+                                                                during cycle
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <br />
+                                                    <li>
+                                                        <strong>
+                                                            Androgenic Side
+                                                            Effects:
+                                                        </strong>
+                                                        <ul>
+                                                            <li>
+                                                                Acne, greasy
+                                                                skin, and
+                                                                accelerated hair
+                                                                loss (especially
+                                                                in those
+                                                                predisposed to
+                                                                male pattern
+                                                                baldness)
+                                                            </li>
+                                                            <li>
+                                                                Possible
+                                                                increase in
+                                                                aggressive
+                                                                behavior or mood
+                                                                swings
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <br />
+                                                    <li>
+                                                        <strong>
+                                                            Liver Toxicity:
+                                                        </strong>
+                                                        <ul>
+                                                            <li>
+                                                                Due to 17-alpha
+                                                                alkylation,
+                                                                Dianabol is
+                                                                hepatotoxic
+                                                                (toxic to the
+                                                                liver)
+                                                            </li>
+                                                            <li>
+                                                                Not recommended
+                                                                for cycles
+                                                                longer than 4-6
+                                                                weeks
+                                                            </li>
+                                                            <li>
+                                                                Liver support
+                                                                supplements and
+                                                                regular liver
+                                                                function
+                                                                monitoring are
+                                                                strongly advised
+                                                                during use
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <br />
+                                                    <li>
+                                                        <strong>
+                                                            Testosterone
+                                                            Suppression:
+                                                        </strong>
+                                                        <ul>
+                                                            <li>
+                                                                Causes
+                                                                significant
+                                                                suppression of
+                                                                natural
+                                                                testosterone
+                                                                production
+                                                            </li>
+                                                            <li>
+                                                                Post-Cycle
+                                                                Therapy (PCT) is
+                                                                necessary after
+                                                                discontinuation
+                                                                to help restore
+                                                                hormonal balance
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <br />
+                                                    <li>
+                                                        <strong>
+                                                            Other Potential
+                                                            Risks:
+                                                        </strong>
+                                                        <ul>
+                                                            <li>
+                                                                Negative impact
+                                                                on cholesterol
+                                                                levels
+                                                                (decreased HDL,
+                                                                increased LDL)
+                                                            </li>
+                                                            <li>
+                                                                Possible
+                                                                increases in
+                                                                blood pressure
+                                                            </li>
+                                                            <li>
+                                                                Muscle gains may
+                                                                be partially
+                                                                lost after
+                                                                discontinuation
+                                                                if not followed
+                                                                by a proper
+                                                                injectable base
+                                                                or PCT
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+
+                                                <p className="mt-5">
+                                                    Methandrostenolone
+                                                    (Dianabol) is a powerful
+                                                    oral steroid that delivers
+                                                    rapid and dramatic results
+                                                    in muscle mass and strength.
+                                                    It is most effective when
+                                                    used as part of a carefully
+                                                    structured bulking cycle and
+                                                    combined with a proper diet,
+                                                    liver support, and
+                                                    post-cycle therapy. While
+                                                    highly effective, its
+                                                    potential for estrogenic,
+                                                    androgenic, and hepatic side
+                                                    effects means it should be
+                                                    used cautiously and never
+                                                    for extended periods.
+                                                </p>
+
+                                                <p>
+                                                    If you're planning to use or
+                                                    learn more about bulking
+                                                    agents like Dianabol safely
+                                                    and effectively, our
+                                                    <a
+                                                        href="https://fggroup.in/fgiit/anabolic-steroids-course"
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="text-black"
+                                                    >{' '}
+                                                        <strong>
+                                                            Offline Steroids
+                                                            Course
+                                                        </strong>{' '}
+                                                    </a>
+                                                    offers detailed, in-person
+                                                    guidance. You can also join
+                                                    our
+                                                    <a
+                                                        href="https://fggroup.in/fgiit/anabolic-steroid-testosterone"
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="text-black"
+                                                    >{' '}
+                                                        <strong>
+                                                            Online Course
+                                                        </strong>{' '}
+                                                    </a>
+                                                    for structured learning at
+                                                    your convenience, or opt for
+                                                    the
+                                                    <a
+                                                        href="https://fggroup.in/fgiit/anabolic-androgenic-steroids"
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="text-black"
+                                                    >{' '}
+                                                        <strong>
+                                                            Flexible Learning
+                                                            Program
+                                                        </strong>{' '}
+                                                    </a>
+                                                    to move at your own pace.
+                                                    For deep insights and
+                                                    practical knowledge, our
+                                                    <a
+                                                        href="https://fggroup.in/book/steroids-book"
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="text-black"
+                                                    >{' '}
+                                                        <strong>
+                                                            Comprehensive
+                                                            Steroids Book
+                                                        </strong>{' '}
+                                                    </a>
+                                                    is also available.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-12">
-                <div className="product-desc-wrap">
-                  <ul className="nav nav-tabs" id="myTabTwo" role="tablist">
-                    <li className="nav-item">
-                      <button
-                        className="nav-link active"
-                        id="description-tab"
-                        data-bs-toggle="tab"
-                        data-bs-target="#description"
-                        role="tab"
-                        aria-controls="description"
-                        aria-selected="true"
-                      >
-                        Description
-                      </button>
-                    </li>
-                  </ul>
-                  <div className="tab-content" id="myTabContentTwo">
-                    <div
-                      className="tab-pane fade show active"
-                      id="description"
-                      role="tabpanel"
-                      aria-labelledby="description-tab"
-                    >
-                      <div>
-                        <h4 className="m-5 mb-3 mx-0">Pharmacology:</h4>
-                        <ul>
-                          <li>
-                            <strong>Chemical Structure:</strong> A modified form
-                            of testosterone with an added double bond between
-                            carbon 1 and 2, and 17-alpha alkylation for oral
-                            activity
-                          </li>
-                          <li>
-                            <strong>Half-Life:</strong> Approximately 4–6 hours,
-                            requiring multiple daily doses for stable blood
-                            levels
-                          </li>
-                          <li>
-                            <strong>Mechanism of Action:</strong>
-                            <ul>
-                              <li>
-                                Strong anabolic effects (promote protein
-                                synthesis and nitrogen retention)
-                              </li>
-                              <li>Mild to moderate androgenic properties</li>
-                              <li>
-                                Highly estrogenic due to conversion via
-                                aromatase
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
-
-                        <h4 className="m-5 mb-3 mx-0">Primary Uses:</h4>
-                        <ul>
-                          <li>
-                            <strong>Bulking Cycles:</strong>
-                            <ul>
-                              <li>
-                                Ideal for rapid mass and strength gain in the
-                                early stages of a bulking program
-                              </li>
-                              <li>
-                                Commonly used as a kickstarter in longer
-                                injectable cycles due to its fast onset
-                              </li>
-                            </ul>
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Short-Term Strength Boosts:</strong>
-                            <ul>
-                              <li>
-                                Occasionally used pre-competition or before
-                                training blocks for quick power output gains
-                              </li>
-                            </ul>
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Medical History:</strong>
-                            <ul>
-                              <li>
-                                Previously prescribed for wasting conditions,
-                                but now mostly restricted to athletic and
-                                underground use due to side effects
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
-
-                        <h4 className="m-5 mb-3 mx-0">
-                          Administration & Intake Timing:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Typical Dosage:</strong> 15–50 mg/day,
-                            depending on experience level and goals
-                          </li>
-                          <li>
-                            <strong>Best Time to Take:</strong>
-                            <ul>
-                              <li>
-                                For performance: 30–45 minutes before workouts
-                                to enhance strength and aggression
-                              </li>
-                              <li>
-                                For bulking: Split the daily dose into 2–3
-                                administrations throughout the day to keep blood
-                                levels stable
-                              </li>
-                              <li>
-                                Always taken with food to reduce
-                                gastrointestinal irritation
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
-
-                        <h4 className="m-5 mb-3 mx-0">
-                          Potential Side Effects:
-                        </h4>
-                        <p>
-                          Dianabol is highly effective but comes with a high
-                          risk of side effects, particularly with improper use
-                          or high doses:
-                        </p>
-                        <ul>
-                          <li>
-                            <strong>
-                              Estrogenic Side Effects (High Risk):
-                            </strong>
-                            <ul>
-                              <li>
-                                Water retention and bloating, leading to a
-                                "puffy" appearance
-                              </li>
-                              <li>
-                                Gynecomastia (development of male breast
-                                tissue), especially in users prone to estrogen
-                                sensitivity
-                              </li>
-                              <li>
-                                Aromatization (conversion to estrogen) occurs
-                                easily; use of aromatase inhibitors (AI) may be
-                                necessary during cycle
-                              </li>
-                            </ul>
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Androgenic Side Effects:</strong>
-                            <ul>
-                              <li>
-                                Acne, greasy skin, and accelerated hair loss
-                                (especially in those predisposed to male pattern
-                                baldness)
-                              </li>
-                              <li>
-                                Possible increase in aggressive behavior or mood
-                                swings
-                              </li>
-                            </ul>
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Liver Toxicity:</strong>
-                            <ul>
-                              <li>
-                                Due to 17-alpha alkylation, Dianabol is
-                                hepatotoxic (toxic to the liver)
-                              </li>
-                              <li>
-                                Not recommended for cycles longer than 4–6 weeks
-                              </li>
-                              <li>
-                                Liver support supplements and regular liver
-                                function monitoring are strongly advised during
-                                use
-                              </li>
-                            </ul>
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Testosterone Suppression:</strong>
-                            <ul>
-                              <li>
-                                Causes significant suppression of natural
-                                testosterone production
-                              </li>
-                              <li>
-                                Post-Cycle Therapy (PCT) is necessary after
-                                discontinuation to help restore hormonal balance
-                              </li>
-                            </ul>
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Other Potential Risks:</strong>
-                            <ul>
-                              <li>
-                                Negative impact on cholesterol levels (decreased
-                                HDL, increased LDL)
-                              </li>
-                              <li>Possible increases in blood pressure</li>
-                              <li>
-                                Muscle gains may be partially lost after
-                                discontinuation if not followed by a proper
-                                injectable base or PCT
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
-
-                        <p className="mt-5">
-                          Methandrostenolone (Dianabol) is a powerful oral
-                          steroid that delivers rapid and dramatic results in
-                          muscle mass and strength. It is most effective when
-                          used as part of a carefully structured bulking cycle
-                          and combined with a proper diet, liver support, and
-                          post-cycle therapy. While highly effective, its
-                          potential for estrogenic, androgenic, and hepatic side
-                          effects means it should be used cautiously and never
-                          for extended periods.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-    </div>
-  );
+                </section>
+            </main>
+        </div>
+    );
 };
 
 export default Methandrostenolone;
