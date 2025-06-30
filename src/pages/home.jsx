@@ -54,7 +54,7 @@ function Home() {
       description:
         "A long-acting testosterone ester, popular for its stable release and ease.",
       display_image:
-        "development/products/FILE-enanthate-15b31874-f174-4ead-b62e-a585478bafb1.jpeg",
+        "assets/images/medicine/enanthate.jpg",
       name: "Testosterone Enanthate",
       unit: "1 Box, 10 Injection",
       path: "/testosterone-enanthate",
@@ -63,7 +63,7 @@ function Home() {
       description:
         "Similar to Enanthate, with a slightly longer half-life, commonly used in the U.S. for HRT.",
       display_image:
-        "development/products/FILE-cypionate-5402fec9-81e8-4edb-aadf-3e16f569a4f4.jpeg",
+        "assets/images/medicine/cypionate.jpg",
       name: "Testosterone Cypionate",
       unit: "1 Box, 10 Injection",
       path: "/testosterone-cypionate",
@@ -72,7 +72,7 @@ function Home() {
       description:
         "A short-acting ester, ideal for those wanting quick effects or shorter cycles.",
       display_image:
-        "development/products/FILE-propionate-e64a62b8-7520-4bb9-9985-05e18f7386bb.jpeg",
+        "assets/images/medicine/propionate.jpg",
       name: "Testosterone Propionate",
       unit: "1 Box, 10 Injection",
       path: "/testosterone-propionate",
@@ -81,7 +81,7 @@ function Home() {
       description:
         "Aultra-long-acting ester, often used in HRT due to its infrequent injection schedule.",
       display_image:
-        "development/products/FILE-undecanoate-4398ff2d-e5b5-4409-a41c-ba9fcfb07084.jpeg",
+        "assets/images/medicine/undecanoate.jpg",
       name: "Testosterone Undecanoate",
       unit: "1 Box, 10 Injection",
       path: "/testosterone-undecanoate",
@@ -90,7 +90,7 @@ function Home() {
       description:
         "A blend of four testosterone esters, (Propionate, Phenylpropionate, Is caproate, and Decanoate) designed for both fast and long-acting effects.",
       display_image:
-        "development/products/FILE-sustanon-250-ecd4897d-bbc4-4041-8c2b-b34ba82f846d.jpeg",
+        "assets/images/medicine/sustanon-250.jpg",
       name: "Sustanon 250",
       unit: "1 Box, 10 Injection",
       path: "/sustanon-250",
@@ -99,7 +99,7 @@ function Home() {
       description:
         "The first orally active testosterone derivative, methylated to survive liver metabolism.",
       display_image:
-        "development/products/FILE-methyltestosterone-3d73a29c-c57c-472e-a9d2-c1ee9d6953a0.jpeg",
+        "assets/images/medicine/methyltestosterone.jpg",
       name: "Methyltestosterone",
       unit: "1 Box, 100 Tablets",
       path: "/methyltestosterone",
@@ -108,7 +108,7 @@ function Home() {
       description:
         "A fat-soluble form of testosterone absorbed via the lymphatic system, bypassing significant liver metabolism.",
       display_image:
-        "development/products/FILE-testosterone-undecanoate-andriole-967f22c1-6fc5-44ee-a490-e225eb6b99b8.jpeg",
+        "assets/images/medicine/testosterone-undecanoate-andriole.jpg",
       name: "Testosterone Undecanoate Andriole",
       unit: "1 Box, 100 Tablets",
       path: "/testosterone-undecanoate-andriole",
@@ -117,7 +117,7 @@ function Home() {
       description:
         "A potent anabolic steroid for rapid size and strength gains.",
       display_image:
-        "development/products/FILE-methandrostenolone-4d0a9e7c-27d2-4b57-a578-ec6289abb26c.jpeg",
+        "assets/images/medicine/methandrostenolone.jpg",
       name: "Methandrostenolone",
       unit: "1 Box, 100 Tablets",
       path: "/methandrostenolone",
@@ -126,7 +126,8 @@ function Home() {
       description:
         "A mild anabolic steroid with low androgenic activity, suitable for cutting cycles and female athletes.",
       display_image:
-        "development/products/FILE-oxandrolone-anavar-74d8d4b1-3281-4a10-b7d7-d4d9a1417ce5.jpeg",
+        "assets/images/medicine/oxandrolone-anavar.jpg",
+        
       name: "Oxandrolone (Anavar)",
       unit: "1 Box, 100 Tablets",
       path: "/oxandrolone-anavar",
@@ -135,7 +136,7 @@ function Home() {
       description:
         "One of the strongest oral anabolic steroids, known for rapid muscle gain and increased strength.",
       display_image:
-        "development/products/FILE-oxandrolone-anadrol-e9f6ccb3-f38c-4b72-b8c9-6a1b19916ba4.jpeg",
+        "assets/images/medicine/oxandrolone-anadrol.jpg",
       name: "Oxymetholone (Anadrol)",
       unit: "1 Box, 100 Tablets",
       path: "/oxymetholone-anadrol",
@@ -144,7 +145,7 @@ function Home() {
       description:
         "A popular cutting steroid that enhances lean, Cutting cycles and performance enhancement.",
       display_image:
-        "development/products/FILE-stanozolol-winstrol-04d7634c-6739-4838-894b-85b3b48bbb54.jpeg",
+        "assets/images/medicine/stanozolol-winstrol.jpg",
       name: "Stanozolol (Winstrol)",
       unit: "1 Box, 100 Tablets",
       path: "/stanozolol-winstrol",
@@ -153,7 +154,7 @@ function Home() {
       description:
         "A derivative of Diana Bol with fewer androgenic side effects, suitable for lean gains.",
       display_image:
-        "development/products/FILE-turinabol-ca4b9b89-5b1b-4676-851a-41c90a964a19.jpeg",
+        "assets/images/medicine/turinabol.jpg",
       name: "Turina Bol (Chloro dehydromethyl testosterone)",
       unit: "1 Box, 100 Tablets",
       path: "/turina-bol",
@@ -162,7 +163,7 @@ function Home() {
       description:
         "A long-acting injectable anabolic steroid derived from testosterone, known for steady muscle growth and appetite stimulation. Originally developed for veterinary use, particularly in horses.",
       display_image:
-        "development/products/FILE-boldenone-undecylenate-32cb5e60-4600-4c73-95d0-c58b67e5a4ce.jpeg",
+        "assets/images/medicine/boldenone-undecylenate.jpg",
       name: "Boldenone Undecylenate",
       unit: "1 Box, 10 Injection",
       path: "/boldenone-undecylenate",
@@ -171,7 +172,7 @@ function Home() {
       description:
         "A fast-acting injectable anabolic steroid with strong androgenic and moderate anabolic properties, commonly used during cutting phases. Initially developed as a treatment for breast cancer.",
       display_image:
-        "development/products/FILE-drostanolone-propionate-e0244e9b-630b-4e41-878b-ba32a45388f0.jpeg",
+        "assets/images/medicine/drostanolone-propionate.jpg",
       name: "Drostanolone Propionate",
       unit: "1 Box, 10 Injection",
       path: "/drostanolone-propionate",
@@ -180,7 +181,7 @@ function Home() {
       description:
         "A mild anabolic steroid with low androgenic activity, commonly used for preserving lean muscle mass and enhancing strength, suitable for both offseason and on-season use.",
       display_image:
-        "development/products/FILE-primo-bolan-23c90d72-5ec3-4fe1-9231-c2a2b75e4c7a.jpeg",
+        "assets/images/medicine/primo-bolan.jpg",
       name: "Primo Bolan",
       unit: "1 Box, 10 Injection",
       path: "/primo-bolan",
@@ -520,7 +521,7 @@ function Home() {
                       <div className="product-card__image">
                         <img
                           className="lazy"
-                          src={`https://files.fggroup.in/${product.display_image}`}
+                          src={product.display_image}
                           alt={product.name}
                         />
                       </div>
