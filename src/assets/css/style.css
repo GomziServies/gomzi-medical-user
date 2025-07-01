@@ -1,20 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap");
 @import "../../../node_modules/react-modal-video/scss/modal-video.scss";
 
-
-
-.labeling {
-    background: #0d1282;
-    color: white;
-    padding: 0px 10px;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    z-index: 2;
-    transform: rotate(0deg);
-    width: 100%;
-}
-
 .offer-main {
     width: 100%;
     position: fixed;
@@ -142,13 +128,6 @@ body {
     position: relative;
     transition: 5s ease-in-out;
 }
-
-/* .truncate-description:hover {
-  -webkit-line-clamp: unset;    
-  white-space: normal;
-  background: #fff;              
-  z-index: 1;
-} */
 
 .product-card__price-row {
     display: flex;

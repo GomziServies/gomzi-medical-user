@@ -272,7 +272,7 @@ function Home() {
       description:
         "Des (1-3) IGF-1 is another variant of IGF-1 with a shorter structure, which makes it more potent and faster-acting. This version is often used for those seeking rapid muscle recovery and regeneration but may require careful dosing due to its higher potency.",
       display_image:
-        "assets/images/medicine/FILE-igf-1-des-54d9a706-23ee-428d-9f41-5b6ead088d4d.jpeg",
+        "assets/images/medicine/igf-1-des.jpg",
       name: "Des (1-3) IGF-1",
       unit: "1 Box, 10 Injection",
       path: "/des-igf-1",
@@ -281,7 +281,7 @@ function Home() {
       description:
         "BPC-157 is a synthetic peptide derived from a naturally occurring protein in the human stomach. It plays a vital role in healing and regenerating damaged tissues, such as muscles, tendons, ligaments, and joints. BPC-157 works by promoting angiogenesis, the process of creating new blood vessels. This improves blood flow to injured areas, enhancing nutrient delivery, reducing inflammation, and accelerating the healing process. It also helps protect tissues from further damage by supporting collagen synthesis and stabilizing cellular regeneration in tissues.",
       display_image:
-        "assets/images/medicine/FILE-bpc-157-d2c39d2b-77b7-4187-80b3-aaf5528a2d1a.jpeg",
+        "assets/images/medicine/bpc-157.jpg",
       name: "BPC-157",
       unit: "1 Box, 10 Injection",
       path: "/bpc-157",
@@ -290,7 +290,7 @@ function Home() {
       description:
         "TB-500 is a peptide naturally produced by the thymus gland and plays a crucial role in tissue repair. It promotes cell regeneration, enhances cell migration, and accelerates healing in muscle tissue, tendons, and ligaments. TB-500 is known for its ability to reduce inflammation and help restore damaged tissues through increased fibroblast proliferation. Fibroblasts are cells responsible for collagen production, which is essential for repairing connective tissues. It is particularly effective in treating muscle strains, ligament injuries, and tendonitis.",
       display_image:
-        "assets/images/medicine/FILE-tb-500-8446f2d1-463c-4abd-8436-8259ba74af6e.jpeg",
+        "assets/images/medicine/tb-500.jpg",
       name: "TB-500",
       unit: "1 Box, 10 Injection",
       path: "/tb-500",
@@ -299,7 +299,7 @@ function Home() {
       description:
         "HGH Fragment 176-191 is a synthetic peptide derived from the C-terminal portion of the Growth Hormone (GH) molecule. This fragment is specifically designed to target fat loss without affecting other GH functions like muscle growth or bone development. It works by increasing the rate at which the body burns fat (lipolysis) and reducing fat accumulation in fat cells, especially in areas like the abdomen, hips, and thighs. HGH Fragment 176-191 does this by increasing the activity of enzymes involved in fat breakdown and preventing the formation of new fat cells.",
       display_image:
-        "assets/images/medicine/FILE-hgh-fragment-176-191-5768b759-2f69-4f52-87bc-1d2961380019.jpeg",
+        "assets/images/medicine/hgh-fragment-176-191.jpg",
       name: "HGH Fragment 176-191",
       unit: "1 Box, 10 Injection",
       path: "/hgh-fragment-176-191",
@@ -308,7 +308,7 @@ function Home() {
       description:
         "AOD-9604 is another synthetic fragment of GH that has been specifically developed for fat loss purposes. AOD stands for Advanced Obesity Drug and is a modified version of the GH peptide. It functions similarly to HGH Fragment 176-191 by stimulating lipolysis and inhibiting fat storage. AOD-9604 has shown potential in reducing body fat without affecting blood glucose or insulin levels, which makes it appealing for those looking to lose fat without the risk of interfering with other metabolic processes.",
       display_image:
-        "assets/images/medicine/FILE-aod-9604-a7f490a1-2422-4385-b0f3-9471a3fe12da.jpeg",
+        "assets/images/medicine/aod-9604.jpg",
       name: "AOD-9604",
       unit: "1 Box, 10 Injection",
       path: "/aod-9604",
@@ -317,7 +317,7 @@ function Home() {
       description:
         "SARMs are often used in bodybuilding, athletic performance enhancement, and the treatment of conditions like muscle wasting and osteoporosis. They are considered an alternative to steroids because they offer the potential for muscle growth with a reduced risk of negative side effects like liver damage, cardiovascular issues, and hormonal imbalances.",
       display_image:
-        "assets/images/medicine/FILE-ostarine-56298742-c7c6-4f27-bc31-3ca30c00954e.jpeg",
+        "assets/images/medicine/ostarine.jpg",
       name: "Ostarine (MK-2866)",
       unit: "1 Box, 100 Tablets",
       path: "/ostarine",
@@ -326,7 +326,7 @@ function Home() {
       description:
         "SARMs are often used in bodybuilding, athletic performance enhancement, and the treatment of conditions like muscle wasting and osteoporosis. They are considered an alternative to steroids because they offer the potential for muscle growth with a reduced risk of negative side effects like liver damage, cardiovascular issues, and hormonal imbalances.",
       display_image:
-        "assets/images/medicine/FILE-ligandrol-61592573-36c6-4dd9-b7d4-54fe8d9a453d.jpeg",
+        "assets/images/medicine/ligandrol.jpg",
       name: "Ligandrol (LGD-4033)",
       unit: "1 Box, 100 Tablets",
       path: "/ligandrol",
@@ -335,7 +335,7 @@ function Home() {
       description:
         "SARMs are often used in bodybuilding, athletic performance enhancement, and the treatment of conditions like muscle wasting and osteoporosis. They are considered an alternative to steroids because they offer the potential for muscle growth with a reduced risk of negative side effects like liver damage, cardiovascular issues, and hormonal imbalances.",
       display_image:
-        "assets/images/medicine/FILE-rad140-a76dece5-e714-401f-8439-a47c353a0e64.jpeg",
+        "assets/images/medicine/rad140.jpg",
       name: "RAD140 (Testolone)",
       unit: "1 Box, 100 Tablets",
       path: "/rad-140",
@@ -344,7 +344,7 @@ function Home() {
       description:
         "SARMs are often used in bodybuilding, athletic performance enhancement, and the treatment of conditions like muscle wasting and osteoporosis. They are considered an alternative to steroids because they offer the potential for muscle growth with a reduced risk of negative side effects like liver damage, cardiovascular issues, and hormonal imbalances.",
       display_image:
-        "assets/images/medicine/FILE-s23-1b52568b-29c9-46d9-8dba-f670bed01197.jpeg",
+        "assets/images/medicine/s23.jpg",
       name: "S23",
       unit: "1 Box, 100 Tablets",
       path: "/s23",
@@ -353,7 +353,7 @@ function Home() {
       description:
         "These SARMs are typically used during cutting phases to enhance fat loss while preserving lean muscle mass.",
       display_image:
-        "assets/images/medicine/FILE-andarine-278320c0-133f-4974-9941-0bf4fc8f7aa4.jpeg",
+        "assets/images/medicine/andarine.jpg",
       name: "Andarine (S4)",
       unit: "1 Box, 100 Tablets",
       path: "/andarine",
@@ -362,7 +362,7 @@ function Home() {
       description:
         "These SARMs are typically used during cutting phases to enhance fat loss while preserving lean muscle mass.",
       display_image:
-        "assets/images/medicine/FILE-cardarine-0c736278-474c-44be-bf11-49c854746182.jpeg",
+        "assets/images/medicine/cardarine.jpg",
       name: "Cardarine (GW-501516)",
       unit: "1 Box, 100 Tablets",
       path: "/cardarine",
@@ -371,7 +371,7 @@ function Home() {
       description:
         "These SARMs are typically used during cutting phases to enhance fat loss while ntfpreserving lean muscle mass.",
       display_image:
-        "assets/images/medicine/FILE-stenabolic-ef2c9c81-43b0-4c6f-9a75-f54982f40125.jpeg",
+        "assets/images/medicine/stenabolic.jpg",
       name: "Stenabolic (SR9009)",
       unit: "1 Box, 100 Tablets",
       path: "/stenabolic",
@@ -380,7 +380,7 @@ function Home() {
       description:
         "These SARMs are used for improving joint health, bone density, and recovery after intense workouts.",
       display_image:
-        "assets/images/medicine/FILE-mk-677-f3cab4ce-32ca-4f08-9838-7ce74e1fce04.jpeg",
+        "assets/images/medicine/mk-677.jpg",
       name: "MK-677 (Ibutamoren)",
       unit: "1 Box, 100 Tablets",
       path: "/mk-677",
@@ -389,7 +389,7 @@ function Home() {
       description:
         "These SARMs can be used for both muscle growth and fat loss, making them useful for recompositing cycles.",
       display_image:
-        "assets/images/medicine/FILE-yk-11-299b9279-0f66-4bd3-9fc2-f0106845422c.jpeg",
+        "assets/images/medicine/yk-11.jpg",
       name: "YK-11",
       unit: "1 Box, 100 Tablets",
       path: "/yk-11",
@@ -398,7 +398,7 @@ function Home() {
       description:
         "These SARMs can be used for both muscle growth and fat loss, making them useful for recompositing cycles.",
       display_image:
-        "assets/images/medicine/FILE-acp-105-6b568e4b-3348-4ccb-b419-f46ac986ac14.jpeg",
+        "assets/images/medicine/acp-105.jpg",
       name: "ACP-105",
       unit: "1 Box, 100 Tablets",
       path: "/acp-105",
@@ -457,7 +457,7 @@ function Home() {
     if (isLogin) {
       fetchProductCartData();
     }
-  }, []);
+  }, []);  
 
   return (
     <>
