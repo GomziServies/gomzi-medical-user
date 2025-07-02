@@ -43,6 +43,7 @@ function AddToCart() {
       name: "Testosterone Enanthate",
       unit: "1 Box, 10 Injection",
       path: "/testosterone-enanthate",
+      _id: "681c341050b0a21a73050678",
     },
     {
       description:
@@ -51,6 +52,7 @@ function AddToCart() {
       name: "Testosterone Cypionate",
       unit: "1 Box, 10 Injection",
       path: "/testosterone-cypionate",
+      _id: "681c345950b0a21a7305067c",
     },
     {
       description:
@@ -59,6 +61,7 @@ function AddToCart() {
       name: "Testosterone Propionate",
       unit: "1 Box, 10 Injection",
       path: "/testosterone-propionate",
+      _id: "681c348d50b0a21a7305067e",
     },
     {
       description:
@@ -67,6 +70,7 @@ function AddToCart() {
       name: "Testosterone Undecanoate",
       unit: "1 Box, 10 Injection",
       path: "/testosterone-undecanoate",
+      _id: "681c34e350b0a21a73050682",
     },
     {
       description:
@@ -75,6 +79,7 @@ function AddToCart() {
       name: "Sustanon 250",
       unit: "1 Box, 10 Injection",
       path: "/sustanon-250",
+      _id: "681c351050b0a21a73050684",
     },
     {
       description:
@@ -83,6 +88,7 @@ function AddToCart() {
       name: "Methyltestosterone",
       unit: "1 Box, 100 Tablets",
       path: "/methyltestosterone",
+      _id: "681c353150b0a21a73050686",
     },
     {
       description:
@@ -92,6 +98,7 @@ function AddToCart() {
       name: "Testosterone Undecanoate Andriole",
       unit: "1 Box, 100 Tablets",
       path: "/testosterone-undecanoate-andriole",
+      _id: "681c356250b0a21a73050688",
     },
     {
       description:
@@ -100,6 +107,7 @@ function AddToCart() {
       name: "Methandrostenolone",
       unit: "1 Box, 100 Tablets",
       path: "/methandrostenolone",
+      _id: "681c35ef50b0a21a7305068a",
     },
     {
       description:
@@ -109,6 +117,7 @@ function AddToCart() {
       name: "Oxandrolone (Anavar)",
       unit: "1 Box, 100 Tablets",
       path: "/oxandrolone-anavar",
+      _id: "681c361d50b0a21a7305068c",
     },
     {
       description:
@@ -117,6 +126,8 @@ function AddToCart() {
       name: "Oxymetholone (Anadrol)",
       unit: "1 Box, 100 Tablets",
       path: "/oxymetholone-anadrol",
+
+      _id: "681c364b50b0a21a7305068e",
     },
     {
       description:
@@ -125,6 +136,8 @@ function AddToCart() {
       name: "Stanozolol (Winstrol)",
       unit: "1 Box, 100 Tablets",
       path: "/stanozolol-winstrol",
+
+      _id: "681c369850b0a21a73050690",
     },
     {
       description:
@@ -133,6 +146,8 @@ function AddToCart() {
       name: "Turina Bol (Chloro dehydromethyl testosterone)",
       unit: "1 Box, 100 Tablets",
       path: "/turina-bol",
+
+      _id: "681c36b450b0a21a73050692",
     },
     {
       description:
@@ -141,6 +156,7 @@ function AddToCart() {
       name: "Boldenone Undecylenate",
       unit: "1 Box, 10 Injection",
       path: "/boldenone-undecylenate",
+      _id: "681c36e350b0a21a73050694",
     },
     {
       description:
@@ -149,6 +165,7 @@ function AddToCart() {
       name: "Drostanolone Propionate",
       unit: "1 Box, 10 Injection",
       path: "/drostanolone-propionate",
+      _id: "681c370450b0a21a73050696",
     },
     {
       description:
@@ -157,6 +174,7 @@ function AddToCart() {
       name: "Primo Bolan",
       unit: "1 Box, 10 Injection",
       path: "/primo-bolan",
+      _id: "681c375050b0a21a7305069c",
     },
     {
       description:
@@ -165,6 +183,7 @@ function AddToCart() {
       name: "Trenbolone Acetate Hexahydrobenzylcarbonate (Hexa)",
       unit: "1 Box, 10 Injection",
       path: "/trenbolone-acetate-hexahydrobenzylcarbonate",
+      _id: "681c377050b0a21a7305069e",
     },
     {
       description:
@@ -173,6 +192,8 @@ function AddToCart() {
       name: "Nandrolone Decanoate (Deca-Durabolin)",
       unit: "1 Box, 10 Injection",
       path: "/nandrolone-decanoate",
+
+      _id: "681c379c50b0a21a730506a0",
     },
     {
       description:
@@ -181,6 +202,8 @@ function AddToCart() {
       name: "AMP (Adenosine Monophosphate)",
       unit: "1 Box, 10 Injection",
       path: "/amp",
+
+      _id: "681c37bc50b0a21a730506a2",
     },
     {
       description:
@@ -189,6 +212,8 @@ function AddToCart() {
       name: "Mesterolone (proviron)",
       unit: "1 Box, 100 Tablets",
       path: "/mesterolone",
+
+      _id: "681c37ea50b0a21a730506a4",
     },
     {
       description:
@@ -197,6 +222,7 @@ function AddToCart() {
       name: "Clenbuterol",
       unit: "1 Box, 100 Tablets",
       path: "/clenbuterol",
+      _id: "681c381550b0a21a730506a6",
     },
     {
       description:
@@ -205,6 +231,7 @@ function AddToCart() {
       name: "GHRP-2",
       unit: "1 Box, 10 Injection",
       path: "/ghrp-2",
+      _id: "681c4e1d50b0a21a73050751",
     },
     {
       description:
@@ -213,6 +240,7 @@ function AddToCart() {
       name: "GHRP-6",
       unit: "1 Box, 10 Injection",
       path: "/ghrp-6",
+      _id: "681c4e4050b0a21a73050753",
     },
     {
       description:
@@ -221,6 +249,7 @@ function AddToCart() {
       name: "Ipamorelin",
       unit: "1 Box, 10 Injection",
       path: "/ipamorelin",
+      _id: "681c4e6550b0a21a73050755",
     },
     {
       description:
@@ -229,6 +258,7 @@ function AddToCart() {
       name: "Hexarelin",
       unit: "1 Box, 10 Injection",
       path: "/hexarelin",
+      _id: "681c4e8850b0a21a73050757",
     },
     {
       description:
@@ -237,6 +267,7 @@ function AddToCart() {
       name: "CJC-1295",
       unit: "1 Box, 10 Injection",
       path: "/cjc-1295",
+      _id: "681c4eac50b0a21a73050759",
     },
     {
       description:
@@ -245,6 +276,7 @@ function AddToCart() {
       name: "Sermorelin",
       unit: "1 Box, 10 Injection",
       path: "/sermorelin",
+      _id: "681c4ed250b0a21a73050773",
     },
     {
       description:
@@ -253,141 +285,142 @@ function AddToCart() {
       name: "IGF-1 LR3",
       unit: "1 Box, 10 Injection",
       path: "/igf-1-lr3",
+      _id: "681c4eff50b0a21a73050775",
     },
     {
       description:
         "Des (1-3) IGF-1 is another variant of IGF-1 with a shorter structure, which makes it more potent and faster-acting. This version is often used for those seeking rapid muscle recovery and regeneration but may require careful dosing due to its higher potency.",
-      display_image:
-        "assets/images/medicine/igf-1-des.jpg",
+      display_image: "assets/images/medicine/igf-1-des.jpg",
       name: "Des (1-3) IGF-1",
       unit: "1 Box, 10 Injection",
       path: "/des-igf-1",
+      _id: "681c4f2950b0a21a73050777",
     },
     {
       description:
         "BPC-157 is a synthetic peptide derived from a naturally occurring protein in the human stomach. It plays a vital role in healing and regenerating damaged tissues, such as muscles, tendons, ligaments, and joints. BPC-157 works by promoting angiogenesis, the process of creating new blood vessels. This improves blood flow to injured areas, enhancing nutrient delivery, reducing inflammation, and accelerating the healing process. It also helps protect tissues from further damage by supporting collagen synthesis and stabilizing cellular regeneration in tissues.",
-      display_image:
-        "assets/images/medicine/bpc-157.jpg",
+      display_image: "assets/images/medicine/bpc-157.jpg",
       name: "BPC-157",
       unit: "1 Box, 10 Injection",
       path: "/bpc-157",
+      _id: "681c4fdb50b0a21a73050779",
     },
     {
       description:
         "TB-500 is a peptide naturally produced by the thymus gland and plays a crucial role in tissue repair. It promotes cell regeneration, enhances cell migration, and accelerates healing in muscle tissue, tendons, and ligaments. TB-500 is known for its ability to reduce inflammation and help restore damaged tissues through increased fibroblast proliferation. Fibroblasts are cells responsible for collagen production, which is essential for repairing connective tissues. It is particularly effective in treating muscle strains, ligament injuries, and tendonitis.",
-      display_image:
-        "assets/images/medicine/tb-500.jpg",
+      display_image: "assets/images/medicine/tb-500.jpg",
       name: "TB-500",
       unit: "1 Box, 10 Injection",
       path: "/tb-500",
+      _id: "681c504d50b0a21a7305077b",
     },
     {
       description:
         "HGH Fragment 176-191 is a synthetic peptide derived from the C-terminal portion of the Growth Hormone (GH) molecule. This fragment is specifically designed to target fat loss without affecting other GH functions like muscle growth or bone development. It works by increasing the rate at which the body burns fat (lipolysis) and reducing fat accumulation in fat cells, especially in areas like the abdomen, hips, and thighs. HGH Fragment 176-191 does this by increasing the activity of enzymes involved in fat breakdown and preventing the formation of new fat cells.",
-      display_image:
-        "assets/images/medicine/hgh-fragment-176-191.jpg",
+      display_image: "assets/images/medicine/hgh-fragment-176-191.jpg",
       name: "HGH Fragment 176-191",
       unit: "1 Box, 10 Injection",
       path: "/hgh-fragment-176-191",
+      _id: "681c507e50b0a21a7305077d",
     },
     {
       description:
         "AOD-9604 is another synthetic fragment of GH that has been specifically developed for fat loss purposes. AOD stands for Advanced Obesity Drug and is a modified version of the GH peptide. It functions similarly to HGH Fragment 176-191 by stimulating lipolysis and inhibiting fat storage. AOD-9604 has shown potential in reducing body fat without affecting blood glucose or insulin levels, which makes it appealing for those looking to lose fat without the risk of interfering with other metabolic processes.",
-      display_image:
-        "assets/images/medicine/aod-9604.jpg",
+      display_image: "assets/images/medicine/aod-9604.jpg",
       name: "AOD-9604",
       unit: "1 Box, 10 Injection",
       path: "/aod-9604",
+      _id: "681c50b550b0a21a7305077f",
     },
     {
       description:
         "SARMs are often used in bodybuilding, athletic performance enhancement, and the treatment of conditions like muscle wasting and osteoporosis. They are considered an alternative to steroids because they offer the potential for muscle growth with a reduced risk of negative side effects like liver damage, cardiovascular issues, and hormonal imbalances.",
-      display_image:
-        "assets/images/medicine/ostarine.jpg",
+      display_image: "assets/images/medicine/ostarine.jpg",
       name: "Ostarine (MK-2866)",
       unit: "1 Box, 100 Tablets",
       path: "/ostarine",
+      _id: "681c50ed50b0a21a73050781",
     },
     {
       description:
         "SARMs are often used in bodybuilding, athletic performance enhancement, and the treatment of conditions like muscle wasting and osteoporosis. They are considered an alternative to steroids because they offer the potential for muscle growth with a reduced risk of negative side effects like liver damage, cardiovascular issues, and hormonal imbalances.",
-      display_image:
-        "assets/images/medicine/ligandrol.jpg",
+      display_image: "assets/images/medicine/ligandrol.jpg",
       name: "Ligandrol (LGD-4033)",
       unit: "1 Box, 100 Tablets",
       path: "/ligandrol",
+      _id: "681c511050b0a21a73050783",
     },
     {
       description:
         "SARMs are often used in bodybuilding, athletic performance enhancement, and the treatment of conditions like muscle wasting and osteoporosis. They are considered an alternative to steroids because they offer the potential for muscle growth with a reduced risk of negative side effects like liver damage, cardiovascular issues, and hormonal imbalances.",
-      display_image:
-        "assets/images/medicine/rad140.jpg",
+      display_image: "assets/images/medicine/rad140.jpg",
       name: "RAD140 (Testolone)",
       unit: "1 Box, 100 Tablets",
       path: "/rad-140",
+      _id: "681c517450b0a21a73050787",
     },
     {
       description:
         "SARMs are often used in bodybuilding, athletic performance enhancement, and the treatment of conditions like muscle wasting and osteoporosis. They are considered an alternative to steroids because they offer the potential for muscle growth with a reduced risk of negative side effects like liver damage, cardiovascular issues, and hormonal imbalances.",
-      display_image:
-        "assets/images/medicine/s23.jpg",
+      display_image: "assets/images/medicine/s23.jpg",
       name: "S23",
       unit: "1 Box, 100 Tablets",
       path: "/s23",
+      _id: "681c519550b0a21a73050789",
     },
     {
       description:
         "These SARMs are typically used during cutting phases to enhance fat loss while preserving lean muscle mass.",
-      display_image:
-        "assets/images/medicine/andarine.jpg",
+      display_image: "assets/images/medicine/andarine.jpg",
       name: "Andarine (S4)",
       unit: "1 Box, 100 Tablets",
       path: "/andarine",
+      _id: "681c51b950b0a21a7305078b",
     },
     {
       description:
         "These SARMs are typically used during cutting phases to enhance fat loss while preserving lean muscle mass.",
-      display_image:
-        "assets/images/medicine/cardarine.jpg",
+      display_image: "assets/images/medicine/cardarine.jpg",
       name: "Cardarine (GW-501516)",
       unit: "1 Box, 100 Tablets",
       path: "/cardarine",
+      _id: "681c51da50b0a21a7305078d",
     },
     {
       description:
         "These SARMs are typically used during cutting phases to enhance fat loss while ntfpreserving lean muscle mass.",
-      display_image:
-        "assets/images/medicine/stenabolic.jpg",
+      display_image: "assets/images/medicine/stenabolic.jpg",
       name: "Stenabolic (SR9009)",
       unit: "1 Box, 100 Tablets",
       path: "/stenabolic",
+      _id: "681c51f950b0a21a7305078f",
     },
     {
       description:
         "These SARMs are used for improving joint health, bone density, and recovery after intense workouts.",
-      display_image:
-        "assets/images/medicine/mk-677.jpg",
+      display_image: "assets/images/medicine/mk-677.jpg",
       name: "MK-677 (Ibutamoren)",
       unit: "1 Box, 100 Tablets",
       path: "/mk-677",
+      _id: "681c521d50b0a21a73050791",
     },
     {
       description:
         "These SARMs can be used for both muscle growth and fat loss, making them useful for recompositing cycles.",
-      display_image:
-        "assets/images/medicine/yk-11.jpg",
+      display_image: "assets/images/medicine/yk-11.jpg",
       name: "YK-11",
       unit: "1 Box, 100 Tablets",
       path: "/yk-11",
+      _id: "681c524150b0a21a73050793",
     },
     {
       description:
         "These SARMs can be used for both muscle growth and fat loss, making them useful for recompositing cycles.",
-      display_image:
-        "assets/images/medicine/acp-105.jpg",
+      display_image: "assets/images/medicine/acp-105.jpg",
       name: "ACP-105",
       unit: "1 Box, 100 Tablets",
       path: "/acp-105",
+      _id: "681c526050b0a21a73050795",
     },
   ];
 
@@ -608,10 +641,9 @@ function AddToCart() {
   const getProductData = async () => {
     try {
       const response = await publicAxiosInstance.get("/medical-product/get");
-      const userData = response.data.data;
-
-      if (userData) {
-        setProductData(userData);
+      const AllProduct = response.data.data;
+      if (AllProduct) {
+        setProductData(AllProduct);
       }
     } catch (error) {
       console.error("Error in getProductData:", error);
@@ -789,7 +821,6 @@ function AddToCart() {
         <div className="section-title text-center mb-60 ">
           <h1 className="title">Other Product</h1>
         </div>
-
         <div className="container">
           <div className="row">
             {product
@@ -818,7 +849,9 @@ function AddToCart() {
                         </p>
                         <div
                           className="product-card__price-row"
-                          onClick={() => addProductInCart(productDataGet[index]?._id)}
+                          onClick={() =>
+                            addProductInCart(element?._id)
+                          }
                         >
                           <button className="product-card__btn w-100">
                             Add to cart
