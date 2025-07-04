@@ -461,7 +461,7 @@ const product = [
                           <Link to={`${product.path}?id=${product?._id}`}>
                             <div className="product-card__price-row">
                               <button className="product-card__btn w-100">
-                                Know more
+                                contact pharmacist
                               </button>
                             </div>
                           </Link>

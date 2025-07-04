@@ -4,6 +4,7 @@ import NutritionHeader from "../../components/partials/Header/nutritionsheader";
 import { useLocation } from "react-router";
 import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
+import Courses from "../../components/courses";
 
 const GHRP6 = () => {
   const params = new URLSearchParams(window.location.search);
@@ -391,52 +392,7 @@ const GHRP6 = () => {
                           protocols.
                         </p>
 
-                        <p>
-                          To understand how to incorporate peptides like GHRP-6
-                          effectively and safely into enhancement plans,
-                          consider enrolling in our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-steroids-course"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Offline Steroids Course</strong>
-                          </a>
-                          , or learn from home with our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-steroid-testosterone"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Online Course</strong>
-                          </a>
-                          . For a personalized path, explore our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-androgenic-steroids"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Flexible Learning Course</strong>
-                          </a>
-                          . For broader education on performance compounds,
-                          don’t miss our
-                          <a
-                            href="https://fggroup.in/book/steroids-book"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Comprehensive Steroids Book</strong>
-                          </a>
-                          .
-                        </p>
+                        <Courses />
                       </div>
                     </div>
                   </div>

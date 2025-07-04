@@ -4,6 +4,7 @@ import NutritionHeader from "../../components/partials/Header/nutritionsheader";
 import { useLocation } from "react-router";
 import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
+import Courses from "../../components/courses";
 
 const S23 = () => {
   const params = new URLSearchParams(window.location.search);
@@ -335,51 +336,7 @@ const S23 = () => {
                           monitoring protocols.
                         </p>
 
-                        <p>
-                          To safely navigate advanced SARMs like S23, enroll in
-                          our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-steroids-course"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Offline Steroids Course</strong>
-                          </a>
-                          , or start learning anytime with our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-steroid-testosterone"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Online Course</strong>
-                          </a>
-                          . For greater flexibility, choose our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-androgenic-steroids"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Flexible Learning Course</strong>
-                          </a>
-                          . For detailed guidance on SARM usage, stacking, and
-                          post-cycle therapy, explore our
-                          <a
-                            href="https://fggroup.in/book/steroids-book"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Comprehensive Steroids Book</strong>
-                          </a>
-                          .
-                        </p>
+                        <Courses />
                       </div>
                     </div>
                   </div>

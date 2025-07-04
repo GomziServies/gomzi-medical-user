@@ -4,6 +4,7 @@ import NutritionHeader from "../../components/partials/Header/nutritionsheader";
 import { useLocation } from "react-router";
 import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
+import Courses from "../../components/courses";
 
 const Sustanon250 = () => {
   const params = new URLSearchParams(window.location.search);
@@ -388,51 +389,7 @@ const Sustanon250 = () => {
                           effects effectively.
                         </p>
 
-                        <p>
-                          To learn how to plan and manage testosterone blends
-                          like Sustanon 250 effectively, consider joining our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-steroids-course"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Offline Steroids Course</strong>
-                          </a>
-                          , or start learning from anywhere with our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-steroid-testosterone"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Online Course</strong>
-                          </a>
-                          . You can also explore the
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-androgenic-steroids"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Flexible Learning Course</strong>{" "}
-                          </a>
-                          for a more personalized pace. For deeper insights,
-                          check out our
-                          <a
-                            href="https://fggroup.in/book/steroids-book"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Comprehensive Steroids Book</strong>{" "}
-                          </a>
-                          .
-                        </p>
+                        <Courses />
                       </div>
                     </div>
                   </div>

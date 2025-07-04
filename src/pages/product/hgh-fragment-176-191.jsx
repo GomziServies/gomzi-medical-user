@@ -4,6 +4,7 @@ import NutritionHeader from "../../components/partials/Header/nutritionsheader";
 import { useLocation } from "react-router";
 import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
+import Courses from "../../components/courses";
 
 const HGHFragment176191 = () => {
   const params = new URLSearchParams(window.location.search);
@@ -377,51 +378,7 @@ const HGHFragment176191 = () => {
                           especially when cycled properly.
                         </p>
 
-                        <p>
-                          To master the safe and effective use of peptides like
-                          HGH Fragment 176-191, consider enrolling in our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-steroids-course"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Offline Steroids Course</strong>
-                          </a>
-                          , or begin learning through our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-steroid-testosterone"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Online Course</strong>
-                          </a>
-                          . Prefer to learn at your own pace? Try the
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-androgenic-steroids"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Flexible Learning Course</strong>
-                          </a>
-                          . For deeper insights on cutting strategies, fat-loss
-                          peptides, and enhancement safety, explore our
-                          <a
-                            href="https://fggroup.in/book/steroids-book"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Comprehensive Steroids Book</strong>
-                          </a>
-                          .
-                        </p>
+                        <Courses />
                       </div>
                     </div>
                   </div>

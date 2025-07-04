@@ -4,6 +4,7 @@ import NutritionHeader from "../../components/partials/Header/nutritionsheader";
 import { useLocation } from "react-router";
 import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
+import Courses from "../../components/courses";
 
 const Hexarelin = () => {
   const params = new URLSearchParams(window.location.search);
@@ -353,52 +354,7 @@ const Hexarelin = () => {
                           timing, stacking, and cycling are essential.
                         </p>
 
-                        <p>
-                          To learn how to safely and strategically incorporate
-                          advanced peptides like Hexarelin into your enhancement
-                          approach, enroll in our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-steroids-course"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Offline Steroids Course</strong>
-                          </a>
-                          , or start anytime with our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-steroid-testosterone"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Online Course</strong>
-                          </a>
-                          . You can also opt for the
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-androgenic-steroids"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Flexible Learning Course</strong>{" "}
-                          </a>
-                          to study at your own pace. For in-depth knowledge on
-                          GH peptides and enhancement strategies, explore our
-                          <a
-                            href="https://fggroup.in/book/steroids-book"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Comprehensive Steroids Book</strong>
-                          </a>
-                          .
-                        </p>
+                        <Courses />
                       </div>
                     </div>
                   </div>

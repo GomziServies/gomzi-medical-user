@@ -4,6 +4,7 @@ import NutritionHeader from "../../components/partials/Header/nutritionsheader";
 import { useLocation } from "react-router";
 import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
+import Courses from "../../components/courses";
 
 const ACP105 = () => {
   const params = new URLSearchParams(window.location.search);
@@ -299,51 +300,7 @@ const ACP105 = () => {
                           dosing, and PCT are essential for safe use.
                         </p>
 
-                        <p>
-                          To learn how to use beginner-friendly SARMs like
-                          ACP-105 safely and effectively, enroll in our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-steroids-course"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-dark"
-                          >
-                            {" "}
-                            <strong>Offline Steroids Course</strong>
-                          </a>
-                          , or study anytime with our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-steroid-testosterone"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-dark"
-                          >
-                            {" "}
-                            <strong>Online Course</strong>
-                          </a>
-                          . Prefer to learn on your own schedule? Explore our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-androgenic-steroids"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-dark"
-                          >
-                            {" "}
-                            <strong>Flexible Learning Course</strong>
-                          </a>
-                          . For detailed SARMs protocols, safety guidance, and
-                          muscle optimization strategies, refer to our
-                          <a
-                            href="https://fggroup.in/book/steroids-book"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-dark"
-                          >
-                            {" "}
-                            <strong>Comprehensive Steroids Book</strong>
-                          </a>
-                          .
-                        </p>
+                        <Courses />
                       </div>
                     </div>
                   </div>

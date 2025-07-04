@@ -4,6 +4,8 @@ import NutritionHeader from "../../components/partials/Header/nutritionsheader";
 import { useLocation } from "react-router";
 import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
+import { Link } from "react-router-dom";
+import Courses from "../../components/courses";
 
 const YK11 = () => {
   const params = new URLSearchParams(window.location.search);
@@ -95,7 +97,6 @@ const YK11 = () => {
       value: "135.0",
     },
   ];
-
   return (
     <div>
       {/* <LoaderComponent /> */}
@@ -112,21 +113,32 @@ const YK11 = () => {
           <div className="container">
             <div className="row">
               <div className="col-lg-5">
-                <div
-                  className="black-before d-flex align-items-center justify-content-center"
-                  style={{
-                    boxShadow: "0 0 20px rgba(48, 48, 48, 0.25)",
-                  }}
-                >
+                <div className="bg-white shadow rounded d-flex align-items-center justify-content-center h">
                   <div
-                    className="product-image-container"
+                    className="w-100 h-100 d-flex align-items-center justify-content-center"
                     ref={imageRef}
                     style={{
                       opacity: opacity,
                       transition: "opacity 0.3s ease-in-out",
                     }}
                   >
-                    <img src="assets\images\medicine\yk-11.jpg" alt="YK-11" />
+                    {/* <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-100 h-100 rounded"
+                      style={{ objectFit: "cover" }}
+                    >
+                      <source
+                        src="assets/images/medicine/Demo.mp4"
+                        type="video/mp4"
+                      />
+                    </video> */}
+                    <img
+                      src="assets\images\medicine\yk-11.jpg"
+                      alt="Turina Bol (Chloro dehydromethyl testosterone)"
+                    />
                   </div>
                 </div>
               </div>
@@ -158,7 +170,7 @@ const YK11 = () => {
               </div>
             </div>
             <div className="row">
-              <div className="col-12">
+              <div className="col-md-7 col-12">
                 <div className="product-desc-wrap">
                   <ul className="nav nav-tabs" id="myTabTwo" role="tablist">
                     <li className="nav-item">
@@ -322,8 +334,7 @@ const YK11 = () => {
                             Clomid or Nolvadex advised
                           </li>
                         </ul>
-
-                        <p className="mt-5">
+                        <p>
                           YK-11 is a powerful compound for advanced users
                           focused on maximum muscle growth and performance
                           enhancement. Its myostatin-inhibiting effects are
@@ -331,57 +342,114 @@ const YK11 = () => {
                           with liver support, proper dosing, and PCT is crucial
                           for safety and effectiveness.
                         </p>
-
-                        <p>
-                          To learn how to safely and strategically use advanced
-                          compounds like YK-11, consider enrolling in our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-steroids-course"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-dark"
-                          >
-                            {" "}
-                            <strong>Offline Steroids Course</strong>
-                          </a>
-                          , or start anytime with our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-steroid-testosterone"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-dark"
-                          >
-                            {" "}
-                            <strong>Online Course</strong>
-                          </a>
-                          . If you prefer flexibility, explore our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-androgenic-steroids"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-dark"
-                          >
-                            {" "}
-                            <strong>Flexible Learning Course</strong>
-                          </a>
-                          . For deep insights into muscle-building agents,
-                          myostatin science, and safety protocols, check out our
-                          <a
-                            href="https://fggroup.in/book/steroids-book"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-dark"
-                          >
-                            {" "}
-                            <strong>Comprehensive Steroids Book</strong>
-                          </a>
-                          .
-                        </p>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+
+              <div className="col-md-5 col-12 mt-4 mt-md-0">
+                <div className="rounded d-flex align-items-center justify-content-center h-100">
+                  <div
+                    className="w-100 h-100 d-flex flex-column align-items-center justify-content-start"
+                    style={{
+                      opacity: 1,
+                      transition: "opacity 0.3s ease-in-out",
+                    }}
+                  >
+                    <div className="container p-0 my-3 mb-4">
+                      <h4 className="mt-4 p-0">
+                        Injection Administration Guide :
+                      </h4>
+                    </div>
+                    <video
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-100  rounded"
+                      style={{ objectFit: "cover" }}
+                    >
+                      <source
+                        src="assets/images/medicine/injection.mp4"
+                        type="video/mp4"
+                      />
+                    </video>
+                    <div className="container my-4 p-0">
+                      <h4
+                        className="mb-4 text-uppercase"
+                        style={{ letterSpacing: "1px" }}
+                      >
+                        Important Notes:
+                      </h4>
+                      <div className="table-responsive w-100">
+                        <table className="table table-bordered border border-dark table-striped bg-white">
+                          <thead className="table-light border border-dark">
+                            <tr>
+                              <th>Icon</th>
+                              <th>Note</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>✅</td>
+                              <td>
+                                Always wash your hands thoroughly before
+                                handling any injection materials.
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>✅</td>
+                              <td>
+                                Use a sterile, single-use needle and syringe for
+                                each injection.
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>✅</td>
+                              <td>
+                                Disinfect the injection site with an alcohol
+                                swab before injecting.
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>✅</td>
+                              <td>
+                                Rotate injection sites to avoid tissue damage or
+                                irritation.
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>✅</td>
+                              <td>
+                                Never reuse needles — dispose of them in a
+                                proper sharps container.
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>⚠️</td>
+                              <td>
+                                If you notice redness, swelling, or pain at the
+                                injection site, consult a healthcare
+                                professional.
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>⚠️</td>
+                              <td>
+                                Always follow your prescribed dosage and
+                                injection schedule.
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <Courses />
             </div>
           </div>
         </section>

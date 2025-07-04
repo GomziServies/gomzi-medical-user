@@ -4,6 +4,7 @@ import NutritionHeader from "../../components/partials/Header/nutritionsheader";
 import { useLocation } from "react-router";
 import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
+import Courses from "../../components/courses";
 
 const TrenboloneAcetateHexahydrobenzylcarbonate = () => {
   const params = new URLSearchParams(window.location.search);
@@ -424,51 +425,7 @@ const TrenboloneAcetateHexahydrobenzylcarbonate = () => {
                           and post-cycle therapy.
                         </p>
 
-                        <p>
-                          If you're ready to explore advanced compounds like
-                          Trenbolone safely and strategically, our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-steroids-course"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Offline Steroids Course</strong>{" "}
-                          </a>
-                          offers hands-on education. You can also join our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-steroid-testosterone"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Online Course</strong>{" "}
-                          </a>
-                          or pursue the
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-androgenic-steroids"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Flexible Learning Course</strong>{" "}
-                          </a>
-                          to study at your own pace. For deeper understanding,
-                          consult our
-                          <a
-                            href="https://fggroup.in/book/steroids-book"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Comprehensive Steroids Book</strong>{" "}
-                          </a>
-                          for expert-level guidance.
-                        </p>
+                        <Courses />
                       </div>
                     </div>
                   </div>

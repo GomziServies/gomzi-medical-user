@@ -45,10 +45,6 @@ function Home() {
     },
   ];
 
-  // const toggleDescription = () => {
-  //   setExpanded(!expanded);
-  // };
-
   const product = [
     {
       description:
@@ -490,8 +486,7 @@ function Home() {
     if (isLogin) {
       fetchProductCartData();
     }
-  }, []);  
-
+  }, []);
   return (
     <>
       <Helmet>
@@ -540,12 +535,10 @@ function Home() {
                         <p className="product-card__description text-dark">
                           <b>{product.unit}</b>
                         </p>
-                        <Link
-                          to={`${product.path}?id=${product?._id}`}
-                        >
+                        <Link to={`${product.path}?id=${product?._id}`}>
                           <div className="product-card__price-row">
                             <button className="product-card__btn w-100">
-                              Know more
+                              contact pharmacist
                             </button>
                           </div>
                         </Link>
@@ -559,7 +552,7 @@ function Home() {
               <h2 className="text-2xl font-bold text-red-600 mb-5 fs-1">
                 KNOW YOUR STACK
               </h2>
-              <div className="d-flex flex-wrap flex-lg-nowrap gap-5 overflow-auto justify-content-center">
+              <div className="d-flex flex-wrap flex-lg-nowrap gap-5  justify-content-center">
                 {data.map((item, index) => (
                   <Link
                     key={index}

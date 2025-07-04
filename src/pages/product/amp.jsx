@@ -5,6 +5,7 @@ import { useLocation } from "react-router";
 import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
 import AddToCart from "../add-to-cart";
+import Courses from "../../components/courses";
 
 const AMP = () => {
   const params = new URLSearchParams(window.location.search);
@@ -327,54 +328,7 @@ const AMP = () => {
                           caution and not as part of a long-term regimen.
                         </p>
 
-                        <p>
-                          For those curious about unconventional or emerging
-                          compounds like AMP and their place in enhancement
-                          strategies, our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-steroids-course"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Offline Steroids Course</strong>{" "}
-                          </a>
-                          and
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-steroid-testosterone"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Online Course</strong>{" "}
-                          </a>
-                          provide a solid scientific foundation. You can also
-                          choose our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-androgenic-steroids"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Flexible Learning Course</strong>{" "}
-                          </a>
-                          for a more self-paced approach. For deeper
-                          exploration, our
-                          <a
-                            href="https://fggroup.in/book/steroids-book"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Comprehensive Steroids Book</strong>{" "}
-                          </a>
-                          includes both traditional and lesser-known performance
-                          compounds.
-                        </p>
+                        <Courses />
                       </div>
                     </div>
                   </div>

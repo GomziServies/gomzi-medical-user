@@ -4,6 +4,7 @@ import NutritionHeader from "../../components/partials/Header/nutritionsheader";
 import { useLocation } from "react-router";
 import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
+import Courses from "../../components/courses";
 
 const TestosteroneEnanthate = () => {
   const params = new URLSearchParams(window.location.search);
@@ -325,51 +326,7 @@ const TestosteroneEnanthate = () => {
                           therapies.
                         </p>
 
-                        <p>
-                          For those who want to deepen their understanding of
-                          anabolic steroids and their responsible use, we offer
-                          multiple learning paths. You can enroll in our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-steroids-course"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-dark"
-                          >
-                            <strong> Offline Steroids Course</strong>
-                          </a>
-                          , explore at your own pace through our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-androgenic-steroids"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-dark"
-                          >
-                            {" "}
-                            <strong>Flexible Learning Course</strong>
-                          </a>
-                          , or join the
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-steroid-testosterone"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-dark"
-                          >
-                            {" "}
-                            <strong>Online Course</strong>
-                          </a>{" "}
-                          for structured guidance from anywhere. If you prefer
-                          reading and research, our
-                          <a
-                            href="https://fggroup.in/book/steroids-book"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-dark"
-                          >
-                            {" "}
-                            <strong>Comprehensive Book on Steroids</strong>
-                          </a>{" "}
-                          is a great place to start.
-                        </p>
+                        <Courses />
                       </div>
                     </div>
                   </div>

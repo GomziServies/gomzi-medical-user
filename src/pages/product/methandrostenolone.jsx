@@ -4,6 +4,7 @@ import NutritionHeader from "../../components/partials/Header/nutritionsheader";
 import { useLocation } from "react-router";
 import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
+import Courses from "../../components/courses";
 
 const Methandrostenolone = () => {
   const params = new URLSearchParams(window.location.search);
@@ -389,53 +390,7 @@ const Methandrostenolone = () => {
                           for extended periods.
                         </p>
 
-                        <p>
-                          If you're planning to use or learn more about bulking
-                          agents like Dianabol safely and effectively, our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-steroids-course"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Offline Steroids Course</strong>{" "}
-                          </a>
-                          offers detailed, in-person guidance. You can also join
-                          our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-steroid-testosterone"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Online Course</strong>{" "}
-                          </a>
-                          for structured learning at your convenience, or opt
-                          for the
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-androgenic-steroids"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Flexible Learning Course</strong>{" "}
-                          </a>
-                          to move at your own pace. For deep insights and
-                          practical knowledge, our
-                          <a
-                            href="https://fggroup.in/book/steroids-book"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-black"
-                          >
-                            {" "}
-                            <strong>Comprehensive Steroids Book</strong>{" "}
-                          </a>
-                          is also available.
-                        </p>
+                        <Courses />
                       </div>
                     </div>
                   </div>

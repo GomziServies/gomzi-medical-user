@@ -4,6 +4,7 @@ import NutritionHeader from "../../components/partials/Header/nutritionsheader";
 import { useLocation } from "react-router";
 import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
+import Courses from "../../components/courses";
 
 const TestosteroneCypionate = () => {
   const params = new URLSearchParams(window.location.search);
@@ -339,51 +340,7 @@ const TestosteroneCypionate = () => {
                           under proper guidance.
                         </p>
 
-                        <p>
-                          To gain in-depth knowledge about safe and structured
-                          use of compounds like Testosterone Cypionate, consider
-                          enrolling in our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-steroids-course"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-dark"
-                          >
-                            {" "}
-                            <strong>Offline Steroids Course</strong>
-                          </a>
-                          , explore our
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-steroid-testosterone"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-dark"
-                          >
-                            {" "}
-                            <strong>Online Course</strong>
-                          </a>
-                          , or opt for the
-                          <a
-                            href="https://fggroup.in/fgiit/anabolic-androgenic-steroids"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-dark"
-                          >
-                            {" "}
-                            <strong>Flexible Learning Course</strong>{" "}
-                          </a>
-                          to study at your own pace. You can also dive into our
-                          <a
-                            href="https://fggroup.in/book/steroids-book"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-dark"
-                          >
-                            {" "}
-                            <strong>Comprehensive Book on Steroids</strong>{" "}
-                          </a>
-                          for detailed insights and guidance.
-                        </p>
+                        <Courses />
                       </div>
                     </div>
                   </div>
