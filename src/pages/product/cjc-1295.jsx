@@ -5,6 +5,7 @@ import { useLocation } from "react-router";
 import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
 import Courses from "../../components/courses";
+import LoaderComponent from "../../components/PageLoader";
 import ModalVideo from "react-modal-video";
 import { CloseButton } from "react-bootstrap";
 
@@ -19,8 +20,8 @@ const CJC1295 = () => {
   const [showModal, setShowModal] = useState(false);
   const authorization = localStorage.getItem("fg_group_user_authorization");
     const [isVideoOpen, setIsVideoOpen] = useState(false);
-  const [videoUrl, setVideoUrl] = useState("");
-
+const [videoUrl, setVideoUrl] = useState("");
+  const [isLoader,setLoader] = useState(false);
   const openVideoModal = (url) => {
     setIsVideoOpen(true);
     setVideoUrl(url);
@@ -65,6 +66,7 @@ const CJC1295 = () => {
 
   const addProductInCart = async (product_id) => {
     try {
+      setLoader(true)
       const isLogin = localStorage.getItem("fg_group_user_authorization");
       if (!isLogin) {
         return openModal();
@@ -79,6 +81,8 @@ const CJC1295 = () => {
       }
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoader(false);
     }
   };
 
@@ -115,7 +119,7 @@ const CJC1295 = () => {
 
   return (
     <div>
-      {/* <LoaderComponent /> */}
+      {isLoader ? <LoaderComponent /> : ''}
       {showModal && <LoginModal onClose={closeModal} />}
       {fadingItem}
 

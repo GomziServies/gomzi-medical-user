@@ -4,8 +4,8 @@ import ModalVideo from "react-modal-video";
 import OwlCarousel from "react-owl-carousel";
 
 const Review = () => {
-  const [videoUrl, setVideoUrl] = useState("");
-  const [isVideoOpen, setIsVideoOpen] = useState(false);
+const [videoUrl, setVideoUrl] = useState("");
+  const [isLoader,setLoader] = useState(false);  const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   const openVideoModal = (url) => {
     setIsVideoOpen(true);

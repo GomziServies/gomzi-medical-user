@@ -23,6 +23,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Button, Card } from "react-bootstrap";
 import HomeNutritionFooter from "../components/partials/Footer/footer";
 import { Link } from "react-router-dom";
+import LoaderComponent from "../components/PageLoader";
 
 function AddToCart() {
   const canonicalUrl = window.location.href;
@@ -34,6 +35,7 @@ function AddToCart() {
   const [showModal, setShowModal] = useState(false);
   const [cartDataClick, setCartDataClick] = useState(false);
   const [productData, setProductData] = useState([]);
+  const [isLoader, setLoader] = useState(false);
 
   const product = [
     {
@@ -621,6 +623,7 @@ function AddToCart() {
 
   const addProductInCart = async (product_id) => {
     try {
+      setLoader(true);
       const isLogin = localStorage.getItem("fg_group_user_authorization");
       if (!isLogin) {
         return openModal();
@@ -635,6 +638,8 @@ function AddToCart() {
       }
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoader(false);
     }
   };
 
@@ -717,7 +722,7 @@ function AddToCart() {
           `}
         </script>
       </Helmet>
-      {/* <LoaderComponent /> */}
+      <LoaderComponent />
       {showModal && <LoginModal onClose={closeModal} />}
       {(loading || loading1) && <LoadingComponent />}
       {/* <NutritionHeader productDataGet={productDataGet} /> */}
@@ -756,7 +761,7 @@ function AddToCart() {
                                   className="rounded"
                                 />
                               </span>
-                              </td>
+                            </td>
                             <td className="product__name">
                               <span className="text-dark">{product.name}</span>
                             </td>
@@ -850,9 +855,7 @@ function AddToCart() {
                         </p>
                         <div
                           className="product-card__price-row"
-                          onClick={() =>
-                            addProductInCart(element?._id)
-                          }
+                          onClick={() => addProductInCart(element?._id)}
                         >
                           <button className="product-card__btn w-100">
                             Add to cart

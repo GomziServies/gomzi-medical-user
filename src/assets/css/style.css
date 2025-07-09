@@ -5121,6 +5121,7 @@ body.search-visible {
   left: 0;
   background: var(--tg-white);
   z-index: 9999;
+  opacity: 0.6;
 }
 #preloader1 {
   position: fixed;
