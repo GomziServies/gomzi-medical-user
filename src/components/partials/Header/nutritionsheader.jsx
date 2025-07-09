@@ -95,9 +95,15 @@ function NutritionHeader({ productDataGet, cartItemName, cartDataClick }) {
         </span>
 
         <div className="menubar">
-           <Link to="/"><span>Home</span></Link>
-           <Link to="/product"><span>Product</span></Link>
-          <Link to="#"><span>Contact us</span></Link>
+          <Link to="/">
+            <span>Home</span>
+          </Link>
+          <Link to="/product">
+            <span>Product</span>
+          </Link>
+          {/* <Link to="#">
+            <span>Contact us</span>
+          </Link> */}
         </div>
         <div className="login d-lg-block d-none">
           <ul>
