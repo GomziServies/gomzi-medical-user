@@ -5,6 +5,9 @@ import { useLocation } from "react-router";
 import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
 import Courses from "../../components/courses";
+import ModalVideo from "react-modal-video";
+import { CloseButton } from "react-bootstrap";
+
 
 const Ostarine = () => {
   const params = new URLSearchParams(window.location.search);
@@ -15,6 +18,18 @@ const Ostarine = () => {
   const [productData, setProductData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const authorization = localStorage.getItem("fg_group_user_authorization");
+    const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [videoUrl, setVideoUrl] = useState("");
+
+  const openVideoModal = (url) => {
+    setIsVideoOpen(true);
+    setVideoUrl(url);
+  };
+
+  const closeVideoModal = () => {
+    setIsVideoOpen(false);
+    setVideoUrl("");
+  };
 
   const openModal = () => {
     setShowModal(true);
@@ -156,206 +171,362 @@ const Ostarine = () => {
                         contact pharmacist
                       </button>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-12">
-                <div className="product-desc-wrap">
-                  <ul className="nav nav-tabs" id="myTabTwo" role="tablist">
-                    <li className="nav-item">
-                      <button
-                        className="nav-link active"
-                        id="description-tab"
-                        data-bs-toggle="tab"
-                        data-bs-target="#description"
-                        role="tab"
-                        aria-controls="description"
-                        aria-selected="true"
-                      >
-                        Description
-                      </button>
-                    </li>
-                  </ul>
-                  <div className="tab-content" id="myTabContentTwo">
-                    <div
-                      className="tab-pane fade show active"
-                      id="description"
-                      role="tabpanel"
-                      aria-labelledby="description-tab"
-                    >
-                      <div>
-                        <h4 className="m-5 mb-3 mx-0">
-                          Pharmacology & Mechanism of Action:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Type:</strong> Oral non-steroidal SARM
-                          </li>
-                          <li>
-                            <strong>Half-Life:</strong> ~24 hours
-                          </li>
-                          <li>
-                            <strong>Mechanism:</strong>
-                            <ul>
-                              <li>
-                                Selectively binds to androgen receptors in
-                                muscle and bone
-                              </li>
-                              <li>
-                                Promotes anabolic activity in muscle tissue
-                                without affecting other organs
-                              </li>
-                              <li>
-                                Minimizes muscle wasting and supports lean mass
-                                during caloric deficits
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                    <div className="row">
+                      <div className="col-md-12 col-12">
+                        <div className="product-desc-wrap">
+                          {/* <ul
+                            className="nav nav-tabs"
+                            id="myTabTwo"
+                            role="tablist"
+                          >
+                            <li className="nav-item">
+                              <button
+                                className="nav-link active"
+                                id="description-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#description"
+                                role="tab"
+                                aria-controls="description"
+                                aria-selected="true"
+                              >
+                                Description
+                              </button>
+                            </li>
+                          </ul> */}
+                          <div className="tab-content" id="myTabContentTwo">
+                            <div
+                              className="tab-pane fade show active"
+                              id="description"
+                              role="tabpanel"
+                              aria-labelledby="description-tab"
+                            >
+                              <div>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Pharmacology & Mechanism of Action:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Type:</strong> Oral non-steroidal
+                                    SARM
+                                  </li>
+                                  <li>
+                                    <strong>Half-Life:</strong> ~24 hours
+                                  </li>
+                                  <li>
+                                    <strong>Mechanism:</strong>
+                                    <ul>
+                                      <li>
+                                        Selectively binds to androgen receptors
+                                        in muscle and bone
+                                      </li>
+                                      <li>
+                                        Promotes anabolic activity in muscle
+                                        tissue without affecting other organs
+                                      </li>
+                                      <li>
+                                        Minimizes muscle wasting and supports
+                                        lean mass during caloric deficits
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Dosage & Administration:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Typical Dose Range:</strong> 10-25 mg per
-                            day
-                          </li>
-                          <li>
-                            <strong>Beginner:</strong> 10-15 mg
-                          </li>
-                          <li>
-                            <strong>Experienced Users:</strong> 20-25 mg
-                          </li>
-                          <li>
-                            <strong>Frequency:</strong> Once daily (due to long
-                            half-life)
-                          </li>
-                          <li>
-                            <strong>Cycle Length:</strong> 6-8 weeks
-                          </li>
-                          <li>
-                            <strong>Post-Cycle Therapy (PCT):</strong> Often
-                            recommended for cycles &gt;4 weeks or higher doses
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Dosage & Administration:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Typical Dose Range:</strong> 10-25
+                                    mg per day
+                                  </li>
+                                  <li>
+                                    <strong>Beginner:</strong> 10-15 mg
+                                  </li>
+                                  <li>
+                                    <strong>Experienced Users:</strong> 20-25 mg
+                                  </li>
+                                  <li>
+                                    <strong>Frequency:</strong> Once daily (due
+                                    to long half-life)
+                                  </li>
+                                  <li>
+                                    <strong>Cycle Length:</strong> 6-8 weeks
+                                  </li>
+                                  <li>
+                                    <strong>Post-Cycle Therapy (PCT):</strong>{" "}
+                                    Often recommended for cycles &gt;4 weeks or
+                                    higher doses
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Primary Uses & Benefits:
-                        </h4>
-                        <ul>
-                          <li>
-                            Muscle Preservation - ideal for cutting phases
-                          </li>
-                          <li>
-                            Fat Loss - supports recomposition and fat oxidation
-                          </li>
-                          <li>
-                            Strength Gains - improves strength without bulk or
-                            water retention
-                          </li>
-                          <li>
-                            Joint Support - may help with collagen synthesis and
-                            joint comfort
-                          </li>
-                          <li>Recovery - reduces time between workouts</li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Primary Uses & Benefits:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    Muscle Preservation - ideal for cutting
+                                    phases
+                                  </li>
+                                  <li>
+                                    Fat Loss - supports recomposition and fat
+                                    oxidation
+                                  </li>
+                                  <li>
+                                    Strength Gains - improves strength without
+                                    bulk or water retention
+                                  </li>
+                                  <li>
+                                    Joint Support - may help with collagen
+                                    synthesis and joint comfort
+                                  </li>
+                                  <li>
+                                    Recovery - reduces time between workouts
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Side Effects & Considerations:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Mild Side Effects (Dose-Dependent):</strong>
-                            <ul>
-                              <li>
-                                Testosterone suppression (notable at &gt;20 mg
-                                or &gt;4-week cycles)
-                              </li>
-                              <li>Headaches</li>
-                              <li>
-                                Joint pain or stiffness (rare, usually
-                                temporary)
-                              </li>
-                            </ul>
-                          </li>
-                          <li>
-                            <strong>Not Estrogenic:</strong>
-                            <ul>
-                              <li>No conversion to estrogen</li>
-                              <li>
-                                No risk of gynecomastia or water retention
-                              </li>
-                              <li>Does not aromatize</li>
-                            </ul>
-                          </li>
-                          <li>
-                            <strong>Not Hepatotoxic:</strong>
-                            <ul>
-                              <li>Safe for the liver at standard doses</li>
-                              <li>
-                                Routine bloodwork still recommended for safety
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Side Effects & Considerations:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>
+                                      Mild Side Effects (Dose-Dependent):
+                                    </strong>
+                                    <ul>
+                                      <li>
+                                        Testosterone suppression (notable at
+                                        &gt;20 mg or &gt;4-week cycles)
+                                      </li>
+                                      <li>Headaches</li>
+                                      <li>
+                                        Joint pain or stiffness (rare, usually
+                                        temporary)
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <li>
+                                    <strong>Not Estrogenic:</strong>
+                                    <ul>
+                                      <li>No conversion to estrogen</li>
+                                      <li>
+                                        No risk of gynecomastia or water
+                                        retention
+                                      </li>
+                                      <li>Does not aromatize</li>
+                                    </ul>
+                                  </li>
+                                  <li>
+                                    <strong>Not Hepatotoxic:</strong>
+                                    <ul>
+                                      <li>
+                                        Safe for the liver at standard doses
+                                      </li>
+                                      <li>
+                                        Routine bloodwork still recommended for
+                                        safety
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">Stacking Options:</h4>
-                        <ul>
-                          <li>
-                            <strong>Cutting Stack:</strong> Ostarine + Cardarine
-                            (fat loss + endurance)
-                          </li>
-                          <li>
-                            <strong>Recomp Stack:</strong> Ostarine + LGD-4033
-                            or S4 (lean mass + strength)
-                          </li>
-                          <li>
-                            <strong>PCT Use:</strong> May be included at low
-                            doses in a mini-PCT for bridging/tapering
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Stacking Options:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Cutting Stack:</strong> Ostarine +
+                                    Cardarine (fat loss + endurance)
+                                  </li>
+                                  <li>
+                                    <strong>Recomp Stack:</strong> Ostarine +
+                                    LGD-4033 or S4 (lean mass + strength)
+                                  </li>
+                                  <li>
+                                    <strong>PCT Use:</strong> May be included at
+                                    low doses in a mini-PCT for
+                                    bridging/tapering
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">Cycle Support & PCT:</h4>
-                        <ul>
-                          <li>
-                            <strong>Cycle Support:</strong> Typically not needed
-                            at moderate doses
-                          </li>
-                          <li>
-                            <strong>Post-Cycle Therapy (PCT):</strong>
-                            <ul>
-                              <li>
-                                Recommended for cycles longer than 8 weeks or
-                                higher dosages
-                              </li>
-                              <li>
-                                <strong>Common PCT:</strong> Clomid 25 mg/day
-                                for 2-3 weeks or natural test boosters
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Cycle Support & PCT:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Cycle Support:</strong> Typically
+                                    not needed at moderate doses
+                                  </li>
+                                  <li>
+                                    <strong>Post-Cycle Therapy (PCT):</strong>
+                                    <ul>
+                                      <li>
+                                        Recommended for cycles longer than 8
+                                        weeks or higher dosages
+                                      </li>
+                                      <li>
+                                        <strong>Common PCT:</strong> Clomid 25
+                                        mg/day for 2-3 weeks or natural test
+                                        boosters
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <p className="mt-5">
-                          Ostarine (MK-2866) is one of the most
-                          beginner-friendly SARMs on the market, offering
-                          reliable muscle preservation, fat loss, and strength
-                          improvement with minimal suppression and low side
-                          effect risk. Perfect for cutting and recomposition
-                          goals, especially when paired with proper training and
-                          nutrition.
-                        </p>
+                                <p className="mt-5">
+                                  Ostarine (MK-2866) is one of the most
+                                  beginner-friendly SARMs on the market,
+                                  offering reliable muscle preservation, fat
+                                  loss, and strength improvement with minimal
+                                  suppression and low side effect risk. Perfect
+                                  for cutting and recomposition goals,
+                                  especially when paired with proper training
+                                  and nutrition.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
-                        <Courses />
+                      <div className="col-md-12 col-12 mt-4 mt-md-0">
+                        <div className="rounded d-flex align-items-center justify-content-center h-100">
+                          <div
+                            className="w-100 h-100 d-flex flex-column align-items-center justify-content-start"
+                            style={{
+                              opacity: 1,
+                              transition: "opacity 0.3s ease-in-out",
+                            }}
+                          >
+                            <div className="container p-0 my-3 mb-4">
+                              {/* <h4 className="mt-4 p-0">
+                                Injection Administration Guide :
+                              </h4> */}
+                            </div>
+                            <div className="video-wrapper">
+                              <img
+                                src="assets/images/medicine/video/steroids-without-diet.jpeg"
+                                onClick={openVideoModal}
+                                alt="Instagram video thumbnail"
+                              />
+                              <div
+                                className="video-play-button"
+                                onClick={openVideoModal}
+                              >
+                                <span className="play-icon"></span>
+                              </div>
+
+                              {isVideoOpen && (
+                                <div
+                                  className="custom-modal-overlay"
+                                  onClick={closeVideoModal}
+                                >
+                                  <div
+                                    className="custom-modal-content"
+                                    onClick={(e) => e.stopPropagation()}
+                                  >
+                                    <video
+                                      controls
+                                      width="100%"
+                                      height="100%"
+                                      autoPlay
+                                    >
+                                      <source
+                                        src="assets/images/medicine/video/steroids-without-diet.mp4"
+                                        type="video/mp4"
+                                      />
+                                      Your browser does not support the video
+                                      tag.
+                                    </video>
+                                    <button
+                                      className="modal-close bg-danger"
+                                      onClick={closeVideoModal}
+                                    >
+                                      <CloseButton variant="white"/>
+                                    </button>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                            <div className="container my-4 p-0">
+                              <h4
+                                className="mb-4 text-uppercase"
+                                style={{ letterSpacing: "1px" }}
+                              >
+                                Important Notes:
+                              </h4>
+                              <div className="table-responsive w-100">
+                                <table className="table table-bordered border border-dark table-striped bg-white">
+                                  <thead className="table-light border border-dark">
+                                    <tr>
+                                      <th>Icon</th>
+                                      <th>Note</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Take Ostarine capsules with water,
+                                        preferably at the same time each day.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Follow the recommended dosage — 10mg per
+                                        capsule as shown on the label.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Store in a cool, dry place away from
+                                        sunlight and moisture.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Benefits may include increased muscle
+                                        mass, strength boost, and joint support.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Consult a healthcare provider before
+                                        starting Ostarine, especially if you
+                                        have pre-existing conditions.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Do not exceed the recommended dosage to
+                                        avoid potential side effects.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Not approved by the FDA for human
+                                        consumption outside of research settings
+                                        — use at your own risk.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <Courses />
           </div>
         </section>
       </main>

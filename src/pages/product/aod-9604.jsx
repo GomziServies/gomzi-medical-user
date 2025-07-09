@@ -5,6 +5,8 @@ import { useLocation } from "react-router";
 import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
 import Courses from "../../components/courses";
+import ModalVideo from "react-modal-video";
+import { CloseButton } from "react-bootstrap";
 
 const AOD9604 = () => {
   const params = new URLSearchParams(window.location.search);
@@ -15,6 +17,18 @@ const AOD9604 = () => {
   const [productData, setProductData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const authorization = localStorage.getItem("fg_group_user_authorization");
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [videoUrl, setVideoUrl] = useState("");
+
+  const openVideoModal = (url) => {
+    setIsVideoOpen(true);
+    setVideoUrl(url);
+  };
+
+  const closeVideoModal = () => {
+    setIsVideoOpen(false);
+    setVideoUrl("");
+  };
 
   const openModal = () => {
     setShowModal(true);
@@ -157,259 +171,419 @@ const AOD9604 = () => {
                         contact pharmacist
                       </button>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-12">
-                <div className="product-desc-wrap">
-                  <ul className="nav nav-tabs" id="myTabTwo" role="tablist">
-                    <li className="nav-item">
-                      <button
-                        className="nav-link active"
-                        id="description-tab"
-                        data-bs-toggle="tab"
-                        data-bs-target="#description"
-                        role="tab"
-                        aria-controls="description"
-                        aria-selected="true"
-                      >
-                        Description
-                      </button>
-                    </li>
-                  </ul>
-                  <div className="tab-content" id="myTabContentTwo">
-                    <div
-                      className="tab-pane fade show active"
-                      id="description"
-                      role="tabpanel"
-                      aria-labelledby="description-tab"
-                    >
-                      <div>
-                        <h4 className="m-5 mb-3 mx-0">
-                          Pharmacology & Mechanism of Action:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Type:</strong> Synthetic GH fragment
-                            (non-anabolic)
-                          </li>
-                          <li>
-                            <strong>Mechanism of Action:</strong>
-                            <ul>
-                              <li>
-                                Stimulates lipolysis (breakdown of fat cells)
-                              </li>
-                              <li>
-                                Inhibits lipogenesis (formation of new fat
-                                cells)
-                              </li>
-                              <li>
-                                Does not affect IGF-1, blood glucose, or muscle
-                                growth
-                              </li>
-                              <li>
-                                Targets abdominal fat and other stubborn fat
-                                stores
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                    <div className="row">
+                      <div className="col-md-12 col-12">
+                        <div className="product-desc-wrap">
+                          {/* <ul
+                            className="nav nav-tabs"
+                            id="myTabTwo"
+                            role="tablist"
+                          >
+                            <li className="nav-item">
+                              <button
+                                className="nav-link active"
+                                id="description-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#description"
+                                role="tab"
+                                aria-controls="description"
+                                aria-selected="true"
+                              >
+                                Description
+                              </button>
+                            </li>
+                          </ul> */}
+                          <div className="tab-content" id="myTabContentTwo">
+                            <div
+                              className="tab-pane fade show active"
+                              id="description"
+                              role="tabpanel"
+                              aria-labelledby="description-tab"
+                            >
+                              <div>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Pharmacology & Mechanism of Action:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Type:</strong> Synthetic GH fragment
+                                    (non-anabolic)
+                                  </li>
+                                  <li>
+                                    <strong>Mechanism of Action:</strong>
+                                    <ul>
+                                      <li>
+                                        Stimulates lipolysis (breakdown of fat
+                                        cells)
+                                      </li>
+                                      <li>
+                                        Inhibits lipogenesis (formation of new
+                                        fat cells)
+                                      </li>
+                                      <li>
+                                        Does not affect IGF-1, blood glucose, or
+                                        muscle growth
+                                      </li>
+                                      <li>
+                                        Targets abdominal fat and other stubborn
+                                        fat stores
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Dosage & Administration:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Typical Dose:</strong> 1-2 mg per day
-                          </li>
-                          <li>
-                            <strong>Frequency:</strong>
-                            <ul>
-                              <li>Once or twice daily, depending on goals</li>
-                              <li>
-                                Common protocol: Morning + Pre-workout dose
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Dosage & Administration:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Typical Dose:</strong> 1-2 mg per
+                                    day
+                                  </li>
+                                  <li>
+                                    <strong>Frequency:</strong>
+                                    <ul>
+                                      <li>
+                                        Once or twice daily, depending on goals
+                                      </li>
+                                      <li>
+                                        Common protocol: Morning + Pre-workout
+                                        dose
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Administration Timing & Method:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Injection Type:</strong> Subcutaneous (SubQ)
-                            - under the skin
-                          </li>
-                          <li>
-                            <strong>Injection Site:</strong> Abdominal fat or
-                            other fatty areas
-                          </li>
-                          <li>
-                            <strong>Best Times to Inject:</strong>
-                            <ul>
-                              <li>
-                                Morning on an empty stomach - boosts fat burning
-                                throughout the day
-                              </li>
-                              <li>
-                                Pre-workout - increases fat mobilization during
-                                activity
-                              </li>
-                              <li>
-                                Avoid eating for 30-60 minutes post-injection
-                                for maximum effect
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Administration Timing & Method:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Injection Type:</strong>{" "}
+                                    Subcutaneous (SubQ) - under the skin
+                                  </li>
+                                  <li>
+                                    <strong>Injection Site:</strong> Abdominal
+                                    fat or other fatty areas
+                                  </li>
+                                  <li>
+                                    <strong>Best Times to Inject:</strong>
+                                    <ul>
+                                      <li>
+                                        Morning on an empty stomach - boosts fat
+                                        burning throughout the day
+                                      </li>
+                                      <li>
+                                        Pre-workout - increases fat mobilization
+                                        during activity
+                                      </li>
+                                      <li>
+                                        Avoid eating for 30-60 minutes
+                                        post-injection for maximum effect
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Cycle Duration & Protocol:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Cycle Length:</strong> 4-8 weeks
-                          </li>
-                          <li>
-                            <strong>Post-Cycle:</strong> Break recommended to
-                            avoid tolerance
-                          </li>
-                          <li>
-                            <strong>Repeatability:</strong> Can be safely cycled
-                            with appropriate breaks
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Cycle Duration & Protocol:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Cycle Length:</strong> 4-8 weeks
+                                  </li>
+                                  <li>
+                                    <strong>Post-Cycle:</strong> Break
+                                    recommended to avoid tolerance
+                                  </li>
+                                  <li>
+                                    <strong>Repeatability:</strong> Can be
+                                    safely cycled with appropriate breaks
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Benefits & Applications:
-                        </h4>
-                        <ul>
-                          <li>
-                            Promotes stubborn fat loss without anabolic activity
-                          </li>
-                          <li>No impact on blood sugar, insulin, or IGF-1</li>
-                          <li>Safe for both men and women</li>
-                          <li>
-                            Ideal for cutting, recomposition, or aesthetic fat
-                            reduction
-                          </li>
-                          <li>
-                            Non-hormonal - good for steroid- or GH-sensitive
-                            users
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Benefits & Applications:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    Promotes stubborn fat loss without anabolic
+                                    activity
+                                  </li>
+                                  <li>
+                                    No impact on blood sugar, insulin, or IGF-1
+                                  </li>
+                                  <li>Safe for both men and women</li>
+                                  <li>
+                                    Ideal for cutting, recomposition, or
+                                    aesthetic fat reduction
+                                  </li>
+                                  <li>
+                                    Non-hormonal - good for steroid- or
+                                    GH-sensitive users
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Side Effects & Tolerability:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>
-                              Generally well-tolerated when used properly
-                            </strong>
-                          </li>
-                          <li>
-                            <strong>Mild Side Effects:</strong>
-                            <ul>
-                              <li>Injection site redness or irritation</li>
-                              <li>Headaches</li>
-                              <li>Occasional nausea or dizziness (rare)</li>
-                            </ul>
-                          </li>
-                          <li>
-                            <strong>Long-Term Use Risks:</strong>
-                            <ul>
-                              <li>
-                                Possible tolerance or reduced effect over time
-                              </li>
-                              <li>
-                                Disruption of metabolic feedback signals with
-                                chronic use
-                              </li>
-                              <li>
-                                Cycle on/off to preserve long-term effectiveness
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Side Effects & Tolerability:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>
+                                      Generally well-tolerated when used
+                                      properly
+                                    </strong>
+                                  </li>
+                                  <li>
+                                    <strong>Mild Side Effects:</strong>
+                                    <ul>
+                                      <li>
+                                        Injection site redness or irritation
+                                      </li>
+                                      <li>Headaches</li>
+                                      <li>
+                                        Occasional nausea or dizziness (rare)
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <li>
+                                    <strong>Long-Term Use Risks:</strong>
+                                    <ul>
+                                      <li>
+                                        Possible tolerance or reduced effect
+                                        over time
+                                      </li>
+                                      <li>
+                                        Disruption of metabolic feedback signals
+                                        with chronic use
+                                      </li>
+                                      <li>
+                                        Cycle on/off to preserve long-term
+                                        effectiveness
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Compatibility & Stacking:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Commonly Stacked With:</strong>
-                            <ul>
-                              <li>
-                                HGH Fragment 176-191 - for dual-pathway fat loss
-                              </li>
-                              <li>
-                                CJC-1295 (No DAC) or Ipamorelin - boosts natural
-                                GH pulses
-                              </li>
-                              <li>
-                                Clenbuterol (for advanced thermogenic protocols)
-                              </li>
-                            </ul>
-                          </li>
-                          <li>
-                            <strong>Why Stack?</strong>
-                            <ul>
-                              <li>
-                                Enhances fat burning without increasing muscle
-                                mass
-                              </li>
-                              <li>
-                                Targets multiple metabolic pathways for fat
-                                oxidation
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Compatibility & Stacking:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Commonly Stacked With:</strong>
+                                    <ul>
+                                      <li>
+                                        HGH Fragment 176-191 - for dual-pathway
+                                        fat loss
+                                      </li>
+                                      <li>
+                                        CJC-1295 (No DAC) or Ipamorelin - boosts
+                                        natural GH pulses
+                                      </li>
+                                      <li>
+                                        Clenbuterol (for advanced thermogenic
+                                        protocols)
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <li>
+                                    <strong>Why Stack?</strong>
+                                    <ul>
+                                      <li>
+                                        Enhances fat burning without increasing
+                                        muscle mass
+                                      </li>
+                                      <li>
+                                        Targets multiple metabolic pathways for
+                                        fat oxidation
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Storage & Reconstitution:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Form:</strong> Lyophilized (freeze-dried)
-                            powder
-                          </li>
-                          <li>
-                            <strong>Reconstitution:</strong> Use bacteriostatic
-                            water (mix gently)
-                          </li>
-                          <li>
-                            <strong>Storage:</strong>
-                            <ul>
-                              <li>Before mixing: Store in a cool, dry place</li>
-                              <li>
-                                After reconstitution: Refrigerate and use within
-                                2-3 weeks
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Storage & Reconstitution:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Form:</strong> Lyophilized
+                                    (freeze-dried) powder
+                                  </li>
+                                  <li>
+                                    <strong>Reconstitution:</strong> Use
+                                    bacteriostatic water (mix gently)
+                                  </li>
+                                  <li>
+                                    <strong>Storage:</strong>
+                                    <ul>
+                                      <li>
+                                        Before mixing: Store in a cool, dry
+                                        place
+                                      </li>
+                                      <li>
+                                        After reconstitution: Refrigerate and
+                                        use within 2-3 weeks
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <p className="mt-5">
-                          AOD-9604 is a specialized fat-loss peptide that offers
-                          a non-anabolic, non-hormonal solution for individuals
-                          seeking targeted fat reduction. With minimal side
-                          effects and no disruption of growth-related pathways,
-                          it's an excellent option for safe and effective
-                          cutting cycles.
-                        </p>
+                                <p className="mt-5">
+                                  AOD-9604 is a specialized fat-loss peptide
+                                  that offers a non-anabolic, non-hormonal
+                                  solution for individuals seeking targeted fat
+                                  reduction. With minimal side effects and no
+                                  disruption of growth-related pathways, it's an
+                                  excellent option for safe and effective
+                                  cutting cycles.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
-                        <Courses />
+                      <div className="col-md-12 col-12 mt-4 mt-md-0">
+                        <div className="rounded d-flex align-items-center justify-content-center h-100">
+                          <div
+                            className="w-100 h-100 d-flex flex-column align-items-center justify-content-start"
+                            style={{
+                              opacity: 1,
+                              transition: "opacity 0.3s ease-in-out",
+                            }}
+                          >
+                            <div className="container p-0 my-3 mb-4">
+                              {/* <h4 className="mt-4 p-0">
+                                Injection Administration Guide :
+                              </h4> */}
+                            </div>
+                            <div className="video-wrapper">
+                              <img
+                                src="assets/images/medicine/video/diet.jpeg"
+                                onClick={openVideoModal}
+                                alt="Instagram video thumbnail"
+                              />
+                              <div
+                                className="video-play-button"
+                                onClick={openVideoModal}
+                              >
+                                <span className="play-icon"></span>
+                              </div>
+
+                              {isVideoOpen && (
+                                <div
+                                  className="custom-modal-overlay"
+                                  onClick={closeVideoModal}
+                                >
+                                  <div
+                                    className="custom-modal-content"
+                                    onClick={(e) => e.stopPropagation()}
+                                  >
+                                    <video
+                                      controls
+                                      width="100%"
+                                      height="100%"
+                                      autoPlay
+                                    >
+                                      <source
+                                        src="assets/images/medicine/video/diet.mp4"
+                                        type="video/mp4"
+                                      />
+                                      Your browser does not support the video
+                                      tag.
+                                    </video>
+                                    <button
+                                      className="modal-close bg-danger"
+                                      onClick={closeVideoModal}
+                                    >
+                                      <CloseButton variant="white" />
+                                    </button>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                            <div className="container my-4 p-0">
+                              <h4
+                                className="mb-4 text-uppercase"
+                                style={{ letterSpacing: "1px" }}
+                              >
+                                Important Notes:
+                              </h4>
+                              <div className="table-responsive w-100">
+                                <table className="table table-bordered border border-dark table-striped bg-white">
+                                  <thead className="table-light border border-dark">
+                                    <tr>
+                                      <th>Icon</th>
+                                      <th>Note</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        AOD-9604 is a modified fragment of human
+                                        growth hormone (HGH) designed for
+                                        fat-burning research.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Common research dosage: 300–500 mcg per
+                                        day, subcutaneously.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Primarily investigated for its ability
+                                        to reduce body fat, especially abdominal
+                                        fat.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Reported to have minimal to no effect on
+                                        blood sugar or insulin levels.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Not approved for human consumption —
+                                        labeled for research purposes only.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        May cause mild side effects like
+                                        headaches or localized injection site
+                                        irritation.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Should be handled and administered only
+                                        by qualified professionals in controlled
+                                        settings.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <Courses />
           </div>
         </section>
       </main>

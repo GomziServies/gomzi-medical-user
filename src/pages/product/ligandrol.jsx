@@ -5,6 +5,7 @@ import { useLocation } from "react-router";
 import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
 import Courses from "../../components/courses";
+import ModalVideo from "react-modal-video";
 
 const Ligandrol = () => {
   const params = new URLSearchParams(window.location.search);
@@ -15,6 +16,18 @@ const Ligandrol = () => {
   const [productData, setProductData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const authorization = localStorage.getItem("fg_group_user_authorization");
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [videoUrl, setVideoUrl] = useState("");
+
+  const openVideoModal = (url) => {
+    setIsVideoOpen(true);
+    setVideoUrl(url);
+  };
+
+  const closeVideoModal = () => {
+    setIsVideoOpen(false);
+    setVideoUrl("");
+  };
 
   const openModal = () => {
     setShowModal(true);
@@ -154,207 +167,340 @@ const Ligandrol = () => {
                         contact pharmacist
                       </button>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-12">
-                <div className="product-desc-wrap">
-                  <ul className="nav nav-tabs" id="myTabTwo" role="tablist">
-                    <li className="nav-item">
-                      <button
-                        className="nav-link active"
-                        id="description-tab"
-                        data-bs-toggle="tab"
-                        data-bs-target="#description"
-                        role="tab"
-                        aria-controls="description"
-                        aria-selected="true"
-                      >
-                        Description
-                      </button>
-                    </li>
-                  </ul>
-                  <div className="tab-content" id="myTabContentTwo">
-                    <div
-                      className="tab-pane fade show active"
-                      id="description"
-                      role="tabpanel"
-                      aria-labelledby="description-tab"
-                    >
-                      <div>
-                        <h4 className="m-5 mb-3 mx-0">
-                          Pharmacology & Mechanism of Action:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Type:</strong> Oral Selective Androgen
-                            Receptor Modulator (SARM)
-                          </li>
-                          <li>
-                            <strong>Half-Life:</strong> 24-36 hours
-                          </li>
-                          <li>
-                            <strong>Mechanism:</strong>
-                            <ul>
-                              <li>
-                                Selectively binds to androgen receptors in
-                                skeletal muscle
-                              </li>
-                              <li>
-                                Promotes muscle protein synthesis and nitrogen
-                                retention
-                              </li>
-                              <li>
-                                Enhances lean mass growth with fewer side
-                                effects than anabolic steroids
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                    <div className="row">
+                      <div className="col-md-12 col-12">
+                        <div className="product-desc-wrap">
+                          {/* <ul
+                            className="nav nav-tabs"
+                            id="myTabTwo"
+                            role="tablist"
+                          >
+                            <li className="nav-item">
+                              <button
+                                className="nav-link active"
+                                id="description-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#description"
+                                role="tab"
+                                aria-controls="description"
+                                aria-selected="true"
+                              >
+                                Description
+                              </button>
+                            </li>
+                          </ul> */}
+                          <div className="tab-content" id="myTabContentTwo">
+                            <div
+                              className="tab-pane fade show active"
+                              id="description"
+                              role="tabpanel"
+                              aria-labelledby="description-tab"
+                            >
+                              <div>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Pharmacology & Mechanism of Action:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Type:</strong> Oral Selective
+                                    Androgen Receptor Modulator (SARM)
+                                  </li>
+                                  <li>
+                                    <strong>Half-Life:</strong> 24-36 hours
+                                  </li>
+                                  <li>
+                                    <strong>Mechanism:</strong>
+                                    <ul>
+                                      <li>
+                                        Selectively binds to androgen receptors
+                                        in skeletal muscle
+                                      </li>
+                                      <li>
+                                        Promotes muscle protein synthesis and
+                                        nitrogen retention
+                                      </li>
+                                      <li>
+                                        Enhances lean mass growth with fewer
+                                        side effects than anabolic steroids
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Dosage & Administration:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Typical Dose Range:</strong> 5-10 mg per day
-                          </li>
-                          <li>
-                            <strong>Beginner:</strong> 5 mg
-                          </li>
-                          <li>
-                            <strong>Intermediate/Advanced:</strong> 10 mg
-                          </li>
-                          <li>
-                            <strong>Frequency:</strong> Once daily (long
-                            half-life)
-                          </li>
-                          <li>
-                            <strong>Cycle Length:</strong> 6-8 weeks
-                          </li>
-                          <li>
-                            <strong>Post-Cycle Therapy (PCT):</strong> Generally
-                            recommended due to moderate suppression
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Dosage & Administration:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Typical Dose Range:</strong> 5-10 mg
+                                    per day
+                                  </li>
+                                  <li>
+                                    <strong>Beginner:</strong> 5 mg
+                                  </li>
+                                  <li>
+                                    <strong>Intermediate/Advanced:</strong> 10
+                                    mg
+                                  </li>
+                                  <li>
+                                    <strong>Frequency:</strong> Once daily (long
+                                    half-life)
+                                  </li>
+                                  <li>
+                                    <strong>Cycle Length:</strong> 6-8 weeks
+                                  </li>
+                                  <li>
+                                    <strong>Post-Cycle Therapy (PCT):</strong>{" "}
+                                    Generally recommended due to moderate
+                                    suppression
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Primary Uses & Benefits:
-                        </h4>
-                        <ul>
-                          <li>Bulking - rapid increases in muscle size</li>
-                          <li>
-                            Strength Gains - fast improvements in power output
-                          </li>
-                          <li>
-                            Body Recomposition - lean mass gain with minimal fat
-                            accumulation
-                          </li>
-                          <li>
-                            Recovery - enhances muscle repair and post-training
-                            recovery
-                          </li>
-                          <li>
-                            Muscle Preservation - maintains gains during caloric
-                            restriction
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Primary Uses & Benefits:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    Bulking - rapid increases in muscle size
+                                  </li>
+                                  <li>
+                                    Strength Gains - fast improvements in power
+                                    output
+                                  </li>
+                                  <li>
+                                    Body Recomposition - lean mass gain with
+                                    minimal fat accumulation
+                                  </li>
+                                  <li>
+                                    Recovery - enhances muscle repair and
+                                    post-training recovery
+                                  </li>
+                                  <li>
+                                    Muscle Preservation - maintains gains during
+                                    caloric restriction
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Side Effects & Considerations:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>
-                              Mild to Moderate Side Effects (Dose Dependent):
-                            </strong>
-                            <ul>
-                              <li>
-                                Testosterone suppression - more prominent at
-                                higher doses or long cycles
-                              </li>
-                              <li>Slight water retention or bloating</li>
-                              <li>Occasional headaches during early use</li>
-                            </ul>
-                          </li>
-                          <li>
-                            <strong>Not Estrogenic:</strong>
-                            <ul>
-                              <li>No aromatization to estrogen</li>
-                              <li>
-                                No risk of gynecomastia or major
-                                estrogen-related water retention
-                              </li>
-                            </ul>
-                          </li>
-                          <li>
-                            <strong>Minimal Liver Toxicity:</strong>
-                            <ul>
-                              <li>Considered safe at recommended doses</li>
-                              <li>
-                                Routine blood monitoring advised for longer-term
-                                use
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Side Effects & Considerations:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>
+                                      Mild to Moderate Side Effects (Dose
+                                      Dependent):
+                                    </strong>
+                                    <ul>
+                                      <li>
+                                        Testosterone suppression - more
+                                        prominent at higher doses or long cycles
+                                      </li>
+                                      <li>
+                                        Slight water retention or bloating
+                                      </li>
+                                      <li>
+                                        Occasional headaches during early use
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <li>
+                                    <strong>Not Estrogenic:</strong>
+                                    <ul>
+                                      <li>No aromatization to estrogen</li>
+                                      <li>
+                                        No risk of gynecomastia or major
+                                        estrogen-related water retention
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <li>
+                                    <strong>Minimal Liver Toxicity:</strong>
+                                    <ul>
+                                      <li>
+                                        Considered safe at recommended doses
+                                      </li>
+                                      <li>
+                                        Routine blood monitoring advised for
+                                        longer-term use
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">Stacking Options:</h4>
-                        <ul>
-                          <li>
-                            <strong>Bulking Stack:</strong> LGD-4033 + MK-677 or
-                            RAD-140
-                          </li>
-                          <li>
-                            <strong>Recomp Stack:</strong> LGD-4033 + Ostarine
-                            or Cardarine
-                          </li>
-                          <li>
-                            <strong>PCT:</strong> Required for cycles over 6
-                            weeks or doses &gt; 5 mg
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Stacking Options:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Bulking Stack:</strong> LGD-4033 +
+                                    MK-677 or RAD-140
+                                  </li>
+                                  <li>
+                                    <strong>Recomp Stack:</strong> LGD-4033 +
+                                    Ostarine or Cardarine
+                                  </li>
+                                  <li>
+                                    <strong>PCT:</strong> Required for cycles
+                                    over 6 weeks or doses &gt; 5 mg
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">Cycle Support & PCT:</h4>
-                        <ul>
-                          <li>
-                            <strong>Cycle Support:</strong> Not strictly
-                            necessary for short-term use; optional for longer
-                            cycles
-                          </li>
-                          <li>
-                            <strong>Post-Cycle Therapy (PCT):</strong>
-                            <ul>
-                              <li>
-                                Recommended to restore natural testosterone
-                                production
-                              </li>
-                              <li>
-                                <strong>Example:</strong> Clomid 25-50 mg/day
-                                for 2-4 weeks based on suppression level
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Cycle Support & PCT:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Cycle Support:</strong> Not strictly
+                                    necessary for short-term use; optional for
+                                    longer cycles
+                                  </li>
+                                  <li>
+                                    <strong>Post-Cycle Therapy (PCT):</strong>
+                                    <ul>
+                                      <li>
+                                        Recommended to restore natural
+                                        testosterone production
+                                      </li>
+                                      <li>
+                                        <strong>Example:</strong> Clomid 25-50
+                                        mg/day for 2-4 weeks based on
+                                        suppression level
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <p className="mt-5">
-                          Ligandrol (LGD-4033) is a powerful anabolic SARM
-                          favored for bulking and strength gains. With
-                          responsible use and proper PCT, it delivers
-                          substantial lean muscle results with fewer risks than
-                          traditional steroids, making it a popular choice for
-                          serious physique enhancement.
-                        </p>
+                                <p className="mt-5">
+                                  Ligandrol (LGD-4033) is a powerful anabolic
+                                  SARM favored for bulking and strength gains.
+                                  With responsible use and proper PCT, it
+                                  delivers substantial lean muscle results with
+                                  fewer risks than traditional steroids, making
+                                  it a popular choice for serious physique
+                                  enhancement.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
-                        <Courses />
+                      <div className="col-md-12 col-12 mt-4 mt-md-0">
+                        <div className="rounded d-flex align-items-center justify-content-center h-100">
+                          <div
+                            className="w-100 h-100 d-flex flex-column align-items-center justify-content-start"
+                            style={{
+                              opacity: 1,
+                              transition: "opacity 0.3s ease-in-out",
+                            }}
+                          >
+                            <div className="container p-0 my-3 mb-4">
+                              {/* <h4 className="mt-4 p-0">
+                                Injection Administration Guide :
+                              </h4> */}
+                            </div>
+                            <div className="video-wrapper">
+                              <img
+                                src="assets\images\medicine\video\sustanon-250.jpeg"
+                                onClick={() => openVideoModal("VpV3E9pcxko")}
+                              />
+                              <div
+                                className="video-play-button"
+                                onClick={() => openVideoModal("VpV3E9pcxko")}
+                              >
+                                <span className="play-icon"></span>
+                              </div>
+
+                              <ModalVideo
+                                channel="youtube"
+                                isOpen={isVideoOpen}
+                                videoId={videoUrl}
+                                onClose={closeVideoModal}
+                              />
+                            </div>
+                            <div className="container my-4 p-0">
+                              <h4
+                                className="mb-4 text-uppercase"
+                                style={{ letterSpacing: "1px" }}
+                              >
+                                Important Notes:
+                              </h4>
+                              <div className="table-responsive w-100">
+                                <table className="table table-bordered border border-dark table-striped bg-white">
+                                  <thead className="table-light border border-dark">
+                                    <tr>
+                                      <th>Icon</th>
+                                      <th>Note</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Take Ligandrol orally with water, once
+                                        per day, at a consistent time.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Known to help with lean muscle gain,
+                                        strength increase, and preservation
+                                        during calorie deficits.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Often cycled for 6–8 weeks at 5–10 mg
+                                        daily, depending on user tolerance.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Store in a cool, dry place. Avoid
+                                        exposure to heat, moisture, or direct
+                                        sunlight.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        May cause temporary suppression of
+                                        natural testosterone — PCT is typically
+                                        recommended.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Not approved by the FDA for human use —
+                                        long-term health effects are not fully
+                                        known.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Avoid combining with other SARMs or
+                                        anabolic agents unless under
+                                        supervision.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <Courses />
           </div>
         </section>
       </main>

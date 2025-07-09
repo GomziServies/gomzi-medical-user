@@ -20,7 +20,7 @@ const Slider = () => {
 
   return (
     <section className="banner-area main-section">
-          <OwlCarousel {...options1} className="product-slide owl-theme">
+          {/* <OwlCarousel {...options1} className="product-slide owl-theme">
             <div>
               <img
                 src={process.env.PUBLIC_URL + "/assets/images/slider-images/banner-anabolic-01.webp"}
@@ -69,7 +69,23 @@ const Slider = () => {
                 className="d-md-none d-block"
               />
             </div>
-          </OwlCarousel>
+          </OwlCarousel> */}
+          <div>
+              <img
+                src={process.env.PUBLIC_URL + "/assets/images/slider-images/banner-anabolic-01.webp"}
+                alt="shape"
+                width="100%"
+                className="d-md-block d-none"
+              />
+              <img
+                src={
+                  process.env.PUBLIC_URL + "/assets/images/slider-images/banner-anabolic-01-mobile.webp"
+                }
+                alt="shape"
+                width="100%"
+                className="d-md-none d-block"
+              />
+            </div>
         </section>
   );
 };

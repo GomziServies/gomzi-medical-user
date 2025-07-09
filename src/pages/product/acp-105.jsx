@@ -5,6 +5,7 @@ import { useLocation } from "react-router";
 import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
 import Courses from "../../components/courses";
+import ModalVideo from "react-modal-video";
 
 const ACP105 = () => {
   const params = new URLSearchParams(window.location.search);
@@ -15,6 +16,18 @@ const ACP105 = () => {
   const [productData, setProductData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const authorization = localStorage.getItem("fg_group_user_authorization");
+    const [isVideoOpen, setIsVideoOpen] = useState(false);
+    const [videoUrl, setVideoUrl] = useState("");
+  
+    const openVideoModal = (url) => {
+      setIsVideoOpen(true);
+      setVideoUrl(url);
+    };
+  
+    const closeVideoModal = () => {
+      setIsVideoOpen(false);
+      setVideoUrl("");
+    };
 
   const openModal = () => {
     setShowModal(true);
@@ -126,187 +139,315 @@ const ACP105 = () => {
                         contact pharmacist
                       </button>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-12">
-                <div className="product-desc-wrap">
-                  <ul className="nav nav-tabs" id="myTabTwo" role="tablist">
-                    <li className="nav-item">
-                      <button
-                        className="nav-link active"
-                        id="description-tab"
-                        data-bs-toggle="tab"
-                        data-bs-target="#description"
-                        role="tab"
-                        aria-controls="description"
-                        aria-selected="true"
-                      >
-                        Description
-                      </button>
-                    </li>
-                  </ul>
-                  <div className="tab-content" id="myTabContentTwo">
-                    <div
-                      className="tab-pane fade show active"
-                      id="description"
-                      role="tabpanel"
-                      aria-labelledby="description-tab"
-                    >
-                      <div>
-                        <h4 className="m-5 mb-3 mx-0">
-                          Pharmacology & Mechanism of Action:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Type:</strong> Non-steroidal SARM
-                          </li>
-                          <li>
-                            <strong>Half-Life:</strong> Unknown (estimated short
-                            to moderate)
-                          </li>
-                          <li>
-                            <strong>Mechanism of Action:</strong>
-                            <ul>
-                              <li>
-                                Selectively binds to androgen receptors in
-                                muscle and bone tissue
-                              </li>
-                              <li>
-                                Stimulates anabolic activity without significant
-                                effects on reproductive organs
-                              </li>
-                              <li>
-                                Designed to minimize androgenic side effects
-                                (e.g., hair loss, prostate impact)
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                    <div className="row">
+                      <div className="col-md-12 col-12">
+                        <div className="product-desc-wrap">
+                          {/* <ul
+                            className="nav nav-tabs"
+                            id="myTabTwo"
+                            role="tablist"
+                          >
+                            <li className="nav-item">
+                              <button
+                                className="nav-link active"
+                                id="description-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#description"
+                                role="tab"
+                                aria-controls="description"
+                                aria-selected="true"
+                              >
+                                Description
+                              </button>
+                            </li>
+                          </ul> */}
+                          <div className="tab-content" id="myTabContentTwo">
+                            <div
+                              className="tab-pane fade show active"
+                              id="description"
+                              role="tabpanel"
+                              aria-labelledby="description-tab"
+                            >
+                              <div>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Pharmacology & Mechanism of Action:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Type:</strong> Non-steroidal SARM
+                                  </li>
+                                  <li>
+                                    <strong>Half-Life:</strong> Unknown
+                                    (estimated short to moderate)
+                                  </li>
+                                  <li>
+                                    <strong>Mechanism of Action:</strong>
+                                    <ul>
+                                      <li>
+                                        Selectively binds to androgen receptors
+                                        in muscle and bone tissue
+                                      </li>
+                                      <li>
+                                        Stimulates anabolic activity without
+                                        significant effects on reproductive
+                                        organs
+                                      </li>
+                                      <li>
+                                        Designed to minimize androgenic side
+                                        effects (e.g., hair loss, prostate
+                                        impact)
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Dosage & Administration:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Typical Dose Range:</strong> 10-20 mg per
-                            day
-                          </li>
-                          <li>
-                            <strong>Cycle Length:</strong> 6-8 weeks
-                          </li>
-                          <li>
-                            <strong>Timing:</strong> Taken once daily (due to
-                            presumed moderate half-life)
-                          </li>
-                          <li>
-                            <strong>PCT Required:</strong> Yes - especially at
-                            higher doses or longer cycles
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Dosage & Administration:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Typical Dose Range:</strong> 10-20
+                                    mg per day
+                                  </li>
+                                  <li>
+                                    <strong>Cycle Length:</strong> 6-8 weeks
+                                  </li>
+                                  <li>
+                                    <strong>Timing:</strong> Taken once daily
+                                    (due to presumed moderate half-life)
+                                  </li>
+                                  <li>
+                                    <strong>PCT Required:</strong> Yes -
+                                    especially at higher doses or longer cycles
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Primary Uses & Benefits:
-                        </h4>
-                        <ul>
-                          <li>
-                            Lean Muscle Gain - encourages dry muscle growth with
-                            minimal water retention
-                          </li>
-                          <li>
-                            Strength Gains - improves performance and endurance
-                            in training
-                          </li>
-                          <li>
-                            Fat Loss Support - preserves muscle during calorie
-                            deficit phases
-                          </li>
-                          <li>
-                            Mild Compound - lower side effect profile makes it
-                            ideal for new users or females (at lower doses)
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Primary Uses & Benefits:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    Lean Muscle Gain - encourages dry muscle
+                                    growth with minimal water retention
+                                  </li>
+                                  <li>
+                                    Strength Gains - improves performance and
+                                    endurance in training
+                                  </li>
+                                  <li>
+                                    Fat Loss Support - preserves muscle during
+                                    calorie deficit phases
+                                  </li>
+                                  <li>
+                                    Mild Compound - lower side effect profile
+                                    makes it ideal for new users or females (at
+                                    lower doses)
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">Side Effects & Risks:</h4>
-                        <ul>
-                          <li>
-                            <strong>Mild Testosterone Suppression:</strong>{" "}
-                            Especially with cycles over 6 weeks
-                          </li>
-                          <li>
-                            <strong>Nausea or Headaches:</strong> Typically
-                            dose-dependent and reversible
-                          </li>
-                          <li>
-                            <strong>Other Considerations:</strong>
-                            <ul>
-                              <li>
-                                Due to limited human trials, long-term effects
-                                remain unknown
-                              </li>
-                              <li>
-                                Not approved for human use - research chemical
-                                status
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Side Effects & Risks:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>
+                                      Mild Testosterone Suppression:
+                                    </strong>{" "}
+                                    Especially with cycles over 6 weeks
+                                  </li>
+                                  <li>
+                                    <strong>Nausea or Headaches:</strong>{" "}
+                                    Typically dose-dependent and reversible
+                                  </li>
+                                  <li>
+                                    <strong>Other Considerations:</strong>
+                                    <ul>
+                                      <li>
+                                        Due to limited human trials, long-term
+                                        effects remain unknown
+                                      </li>
+                                      <li>
+                                        Not approved for human use - research
+                                        chemical status
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">Stacking Options:</h4>
-                        <ul>
-                          <li>
-                            <strong>Recomp Stack:</strong> ACP-105 + Cardarine
-                            (GW-501516)
-                          </li>
-                          <li>
-                            <strong>Lean Bulk Stack:</strong> ACP-105 + MK-677
-                            (Ibutamoren) for GH synergy
-                          </li>
-                          <li>
-                            <strong>Fat Loss Stack:</strong> ACP-105 + SR9009
-                            (Stenabolic) for increased metabolism and stamina
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Stacking Options:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Recomp Stack:</strong> ACP-105 +
+                                    Cardarine (GW-501516)
+                                  </li>
+                                  <li>
+                                    <strong>Lean Bulk Stack:</strong> ACP-105 +
+                                    MK-677 (Ibutamoren) for GH synergy
+                                  </li>
+                                  <li>
+                                    <strong>Fat Loss Stack:</strong> ACP-105 +
+                                    SR9009 (Stenabolic) for increased metabolism
+                                    and stamina
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">Cycle Support & PCT:</h4>
-                        <ul>
-                          <li>
-                            <strong>Cycle Support:</strong> Generally not
-                            required, but organ health support supplements can
-                            be included
-                          </li>
-                          <li>
-                            <strong>Post-Cycle Therapy (PCT):</strong>
-                            <ul>
-                              <li>
-                                Yes - to restore natural testosterone production
-                              </li>
-                              <li>
-                                Typical duration: 4 weeks using Clomid or
-                                Nolvadex
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Cycle Support & PCT:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Cycle Support:</strong> Generally
+                                    not required, but organ health support
+                                    supplements can be included
+                                  </li>
+                                  <li>
+                                    <strong>Post-Cycle Therapy (PCT):</strong>
+                                    <ul>
+                                      <li>
+                                        Yes - to restore natural testosterone
+                                        production
+                                      </li>
+                                      <li>
+                                        Typical duration: 4 weeks using Clomid
+                                        or Nolvadex
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <p className="mt-5">
-                          ACP-105 is a promising SARM known for its
-                          muscle-building and fat-burning capabilities with low
-                          androgenic risk. Its milder profile makes it a
-                          potential entry-level compound for users exploring
-                          SARMs. As with all SARMs, responsible cycling, proper
-                          dosing, and PCT are essential for safe use.
-                        </p>
+                                <p className="mt-5">
+                                  ACP-105 is a promising SARM known for its
+                                  muscle-building and fat-burning capabilities
+                                  with low androgenic risk. Its milder profile
+                                  makes it a potential entry-level compound for
+                                  users exploring SARMs. As with all SARMs,
+                                  responsible cycling, proper dosing, and PCT
+                                  are essential for safe use.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
-                        <Courses />
+                      <div className="col-md-12 col-12 mt-4 mt-md-0">
+                        <div className="rounded d-flex align-items-center justify-content-center h-100">
+                          <div
+                            className="w-100 h-100 d-flex flex-column align-items-center justify-content-start"
+                            style={{
+                              opacity: 1,
+                              transition: "opacity 0.3s ease-in-out",
+                            }}
+                          >
+                            <div className="container p-0 my-3 mb-4">
+                              {/* <h4 className="mt-4 p-0">
+                                Injection Administration Guide :
+                              </h4> */}
+                            </div>
+                            <div className="video-wrapper">
+                              <img
+                              src="assets\images\medicine\video\sustanon-250.jpeg"
+                                onClick={() => openVideoModal("VpV3E9pcxko")}
+                              />
+                              <div
+                                className="video-play-button"
+                                onClick={() => openVideoModal("VpV3E9pcxko")}
+                              >
+                                <span className="play-icon"></span>
+                              </div>
+
+                              <ModalVideo
+                                channel="youtube"
+                                isOpen={isVideoOpen}
+                                videoId={videoUrl}
+                                onClose={closeVideoModal}
+                              />
+                            </div>
+                            <div className="container my-4 p-0">
+                              <h4
+                                className="mb-4 text-uppercase"
+                                style={{ letterSpacing: "1px" }}
+                              >
+                                Important Notes:
+                              </h4>
+                              <div className="table-responsive w-100">
+                                <table className="table table-bordered border border-dark table-striped bg-white">
+                                  <thead className="table-light border border-dark">
+                                    <tr>
+                                      <th>Icon</th>
+                                      <th>Note</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Take ACP-105 orally with water,
+                                        preferably at the same time each day.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Store the capsules in a cool, dry place
+                                        away from direct sunlight.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Follow the recommended dosage —
+                                        typically 5 mg per capsule unless
+                                        directed otherwise.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Only use ACP-105 for research purposes
+                                        unless prescribed by a qualified
+                                        physician.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Do not exceed the suggested dose, as
+                                        SARMs may affect hormone levels.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Discontinue use and consult a doctor if
+                                        you experience unusual side effects
+                                        (e.g., headache, mood changes, or
+                                        hormonal symptoms).
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Not for use by individuals under 18
+                                        years or women who are pregnant or
+                                        nursing.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <Courses />
           </div>
         </section>
       </main>

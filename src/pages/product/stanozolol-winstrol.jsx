@@ -5,6 +5,9 @@ import { useLocation } from "react-router";
 import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
 import Courses from "../../components/courses";
+import ModalVideo from "react-modal-video";
+import { CloseButton } from "react-bootstrap";
+
 
 const StanozololWinstrol = () => {
   const params = new URLSearchParams(window.location.search);
@@ -15,6 +18,18 @@ const StanozololWinstrol = () => {
   const [productData, setProductData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const authorization = localStorage.getItem("fg_group_user_authorization");
+    const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [videoUrl, setVideoUrl] = useState("");
+
+  const openVideoModal = (url) => {
+    setIsVideoOpen(true);
+    setVideoUrl(url);
+  };
+
+  const closeVideoModal = () => {
+    setIsVideoOpen(false);
+    setVideoUrl("");
+  };
 
   const openModal = () => {
     setShowModal(true);
@@ -159,240 +174,401 @@ const StanozololWinstrol = () => {
                         contact pharmacist
                       </button>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-12">
-                <div className="product-desc-wrap">
-                  <ul className="nav nav-tabs" id="myTabTwo" role="tablist">
-                    <li className="nav-item">
-                      <button
-                        className="nav-link active"
-                        id="description-tab"
-                        data-bs-toggle="tab"
-                        data-bs-target="#description"
-                        role="tab"
-                        aria-controls="description"
-                        aria-selected="true"
-                      >
-                        Description
-                      </button>
-                    </li>
-                  </ul>
-                  <div className="tab-content" id="myTabContentTwo">
-                    <div
-                      className="tab-pane fade show active"
-                      id="description"
-                      role="tabpanel"
-                      aria-labelledby="description-tab"
-                    >
-                      <div>
-                        <h4 className="m-5 mb-3 mx-0">Pharmacology:</h4>
-                        <ul>
-                          <li>
-                            <strong>Half-Life:</strong> Approximately 9 hours
-                          </li>
-                          <li>
-                            <strong>Chemical Nature:</strong> A 17-alpha
-                            alkylated DHT-derived oral anabolic steroid, also
-                            available in injectable form (aqueous solution)
-                          </li>
-                          <li>
-                            <strong>Anabolic to Androgenic Ratio:</strong> High
-                            anabolic activity with moderate androgenic effects,
-                            although side effects can still occur
-                          </li>
-                        </ul>
+                    <div className="row">
+                      <div className="col-md-12 col-12">
+                        <div className="product-desc-wrap">
+                          {/* <ul
+                            className="nav nav-tabs"
+                            id="myTabTwo"
+                            role="tablist"
+                          >
+                            <li className="nav-item">
+                              <button
+                                className="nav-link active"
+                                id="description-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#description"
+                                role="tab"
+                                aria-controls="description"
+                                aria-selected="true"
+                              >
+                                Description
+                              </button>
+                            </li>
+                          </ul> */}
+                          <div className="tab-content" id="myTabContentTwo">
+                            <div
+                              className="tab-pane fade show active"
+                              id="description"
+                              role="tabpanel"
+                              aria-labelledby="description-tab"
+                            >
+                              <div>
+                                <h4 className="m-5 mb-3 mx-0">Pharmacology:</h4>
+                                <ul>
+                                  <li>
+                                    <strong>Half-Life:</strong> Approximately 9
+                                    hours
+                                  </li>
+                                  <li>
+                                    <strong>Chemical Nature:</strong> A 17-alpha
+                                    alkylated DHT-derived oral anabolic steroid,
+                                    also available in injectable form (aqueous
+                                    solution)
+                                  </li>
+                                  <li>
+                                    <strong>
+                                      Anabolic to Androgenic Ratio:
+                                    </strong>{" "}
+                                    High anabolic activity with moderate
+                                    androgenic effects, although side effects
+                                    can still occur
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">Primary Uses:</h4>
-                        <ul>
-                          <li>
-                            <strong>Cutting Cycles:</strong>
-                            <ul>
-                              <li>
-                                Commonly used to retain lean muscle while
-                                shedding body fat
-                              </li>
-                              <li>
-                                Provides a dry, grainy look that enhances muscle
-                                definition and striations
-                              </li>
-                            </ul>
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Performance Enhancement:</strong>
-                            <ul>
-                              <li>
-                                Increases speed, strength, and endurance without
-                                excessive weight gain
-                              </li>
-                              <li>
-                                Used by track athletes and fighters for
-                                non-bulky performance boosts
-                              </li>
-                            </ul>
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Medical Use (Historical):</strong>
-                            <ul>
-                              <li>
-                                Previously prescribed for treating osteoporosis,
-                                angioedema, and anemia
-                              </li>
-                              <li>
-                                Now rarely used due to the availability of safer
-                                alternatives
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">Primary Uses:</h4>
+                                <ul>
+                                  <li>
+                                    <strong>Cutting Cycles:</strong>
+                                    <ul>
+                                      <li>
+                                        Commonly used to retain lean muscle
+                                        while shedding body fat
+                                      </li>
+                                      <li>
+                                        Provides a dry, grainy look that
+                                        enhances muscle definition and
+                                        striations
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <br />
+                                  <li>
+                                    <strong>Performance Enhancement:</strong>
+                                    <ul>
+                                      <li>
+                                        Increases speed, strength, and endurance
+                                        without excessive weight gain
+                                      </li>
+                                      <li>
+                                        Used by track athletes and fighters for
+                                        non-bulky performance boosts
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <br />
+                                  <li>
+                                    <strong>Medical Use (Historical):</strong>
+                                    <ul>
+                                      <li>
+                                        Previously prescribed for treating
+                                        osteoporosis, angioedema, and anemia
+                                      </li>
+                                      <li>
+                                        Now rarely used due to the availability
+                                        of safer alternatives
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Administration & Intake Timing:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Typical Dosage (Men):</strong> 25-50 mg per
-                            day (oral); 50 mg every other day (injectable)
-                          </li>
-                          <li>
-                            <strong>Typical Dosage (Women):</strong> 5-10 mg per
-                            day (due to risk of virilization)
-                          </li>
-                          <li>
-                            <strong>Intake Schedule:</strong>
-                            <ul>
-                              <li>
-                                Typically taken in split doses (e.g., morning
-                                and evening) to maintain more stable blood
-                                levels
-                              </li>
-                              <li>
-                                Often taken with meals to reduce
-                                gastrointestinal discomfort
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Administration & Intake Timing:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Typical Dosage (Men):</strong> 25-50
+                                    mg per day (oral); 50 mg every other day
+                                    (injectable)
+                                  </li>
+                                  <li>
+                                    <strong>Typical Dosage (Women):</strong>{" "}
+                                    5-10 mg per day (due to risk of
+                                    virilization)
+                                  </li>
+                                  <li>
+                                    <strong>Intake Schedule:</strong>
+                                    <ul>
+                                      <li>
+                                        Typically taken in split doses (e.g.,
+                                        morning and evening) to maintain more
+                                        stable blood levels
+                                      </li>
+                                      <li>
+                                        Often taken with meals to reduce
+                                        gastrointestinal discomfort
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Potential Side Effects:
-                        </h4>
-                        <p>
-                          Though considered milder in certain respects compared
-                          to more powerful compounds, Winstrol has its own set
-                          of risks and must be used with caution:
-                        </p>
-                        <ul>
-                          <li>
-                            <strong>Liver Toxicity:</strong>
-                            <ul>
-                              <li>
-                                As a 17-alpha alkylated oral steroid, Winstrol
-                                does impose hepatotoxic stress on the liver
-                              </li>
-                              <li>
-                                Though milder than Anadrol or Dianabol,
-                                prolonged use still requires liver support
-                                supplements and routine liver enzyme monitoring
-                              </li>
-                            </ul>
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Joint Discomfort:</strong>
-                            <ul>
-                              <li>
-                                One of Winstrol's most notable side effects is
-                                joint pain or dryness
-                              </li>
-                              <li>
-                                This occurs due to its ability to eliminate
-                                subcutaneous water, leading to reduced joint
-                                lubrication
-                              </li>
-                              <li>
-                                Users often report a "dry" feeling in the
-                                joints, which can increase the risk of injury
-                                under heavy lifting
-                              </li>
-                            </ul>
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Androgenic Effects:</strong>
-                            <ul>
-                              <li>
-                                May cause acne, oily skin, and hair thinning,
-                                especially in those genetically prone to these
-                                issues
-                              </li>
-                              <li>
-                                Women face a risk of virilization (deepened
-                                voice, hair growth, menstrual irregularities) if
-                                dosing is not carefully controlled
-                              </li>
-                            </ul>
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Cardiovascular Risks:</strong>
-                            <ul>
-                              <li>
-                                Stanozolol can have a profound negative effect
-                                on cholesterol levels
-                              </li>
-                              <li>
-                                Notably reduces HDL (good cholesterol) and may
-                                raise LDL (bad cholesterol)
-                              </li>
-                              <li>
-                                Long-term use can contribute to atherosclerosis
-                                and other cardiovascular issues, especially
-                                without dietary and supplemental support
-                              </li>
-                            </ul>
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Testosterone Suppression:</strong>
-                            <ul>
-                              <li>
-                                Like most anabolic steroids, Winstrol suppresses
-                                natural testosterone production
-                              </li>
-                              <li>
-                                Post-cycle therapy (PCT) is recommended to
-                                recover hormonal balance
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Potential Side Effects:
+                                </h4>
+                                <p>
+                                  Though considered milder in certain respects
+                                  compared to more powerful compounds, Winstrol
+                                  has its own set of risks and must be used with
+                                  caution:
+                                </p>
+                                <ul>
+                                  <li>
+                                    <strong>Liver Toxicity:</strong>
+                                    <ul>
+                                      <li>
+                                        As a 17-alpha alkylated oral steroid,
+                                        Winstrol does impose hepatotoxic stress
+                                        on the liver
+                                      </li>
+                                      <li>
+                                        Though milder than Anadrol or Dianabol,
+                                        prolonged use still requires liver
+                                        support supplements and routine liver
+                                        enzyme monitoring
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <br />
+                                  <li>
+                                    <strong>Joint Discomfort:</strong>
+                                    <ul>
+                                      <li>
+                                        One of Winstrol's most notable side
+                                        effects is joint pain or dryness
+                                      </li>
+                                      <li>
+                                        This occurs due to its ability to
+                                        eliminate subcutaneous water, leading to
+                                        reduced joint lubrication
+                                      </li>
+                                      <li>
+                                        Users often report a "dry" feeling in
+                                        the joints, which can increase the risk
+                                        of injury under heavy lifting
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <br />
+                                  <li>
+                                    <strong>Androgenic Effects:</strong>
+                                    <ul>
+                                      <li>
+                                        May cause acne, oily skin, and hair
+                                        thinning, especially in those
+                                        genetically prone to these issues
+                                      </li>
+                                      <li>
+                                        Women face a risk of virilization
+                                        (deepened voice, hair growth, menstrual
+                                        irregularities) if dosing is not
+                                        carefully controlled
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <br />
+                                  <li>
+                                    <strong>Cardiovascular Risks:</strong>
+                                    <ul>
+                                      <li>
+                                        Stanozolol can have a profound negative
+                                        effect on cholesterol levels
+                                      </li>
+                                      <li>
+                                        Notably reduces HDL (good cholesterol)
+                                        and may raise LDL (bad cholesterol)
+                                      </li>
+                                      <li>
+                                        Long-term use can contribute to
+                                        atherosclerosis and other cardiovascular
+                                        issues, especially without dietary and
+                                        supplemental support
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <br />
+                                  <li>
+                                    <strong>Testosterone Suppression:</strong>
+                                    <ul>
+                                      <li>
+                                        Like most anabolic steroids, Winstrol
+                                        suppresses natural testosterone
+                                        production
+                                      </li>
+                                      <li>
+                                        Post-cycle therapy (PCT) is recommended
+                                        to recover hormonal balance
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <p className="mt-5">
-                          Stanozolol (Winstrol) is a highly effective cutting
-                          agent known for producing a lean, dry, and chiseled
-                          physique without excessive bulk or bloating. It
-                          remains a go-to steroid for competitive athletes,
-                          fitness models, and bodybuilders entering pre-contest
-                          phases. However, it must be used with care due to its
-                          impact on joints, liver, and cholesterol levels.
-                          Proper dosing, cycle length, and support
-                          supplementation are crucial to minimizing side effects
-                          and maximizing results.
-                        </p>
+                                <p className="mt-5">
+                                  Stanozolol (Winstrol) is a highly effective
+                                  cutting agent known for producing a lean, dry,
+                                  and chiseled physique without excessive bulk
+                                  or bloating. It remains a go-to steroid for
+                                  competitive athletes, fitness models, and
+                                  bodybuilders entering pre-contest phases.
+                                  However, it must be used with care due to its
+                                  impact on joints, liver, and cholesterol
+                                  levels. Proper dosing, cycle length, and
+                                  support supplementation are crucial to
+                                  minimizing side effects and maximizing
+                                  results.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
-                        <Courses />
+                      <div className="col-md-12 col-12 mt-4 mt-md-0">
+                        <div className="rounded d-flex align-items-center justify-content-center h-100">
+                          <div
+                            className="w-100 h-100 d-flex flex-column align-items-center justify-content-start"
+                            style={{
+                              opacity: 1,
+                              transition: "opacity 0.3s ease-in-out",
+                            }}
+                          >
+                            <div className="container p-0 my-3 mb-4">
+                              {/* <h4 className="mt-4 p-0">
+                                Injection Administration Guide :
+                              </h4> */}
+                            </div>
+                            <div className="video-wrapper">
+                              <img
+                                src="assets/images/medicine/video/pct.jpeg"
+                                onClick={openVideoModal}
+                                alt="Instagram video thumbnail"
+                              />
+                              <div
+                                className="video-play-button"
+                                onClick={openVideoModal}
+                              >
+                                <span className="play-icon"></span>
+                              </div>
+
+                              {isVideoOpen && (
+                                <div
+                                  className="custom-modal-overlay"
+                                  onClick={closeVideoModal}
+                                >
+                                  <div
+                                    className="custom-modal-content"
+                                    onClick={(e) => e.stopPropagation()}
+                                  >
+                                    <video
+                                      controls
+                                      width="100%"
+                                      height="100%"
+                                      autoPlay
+                                    >
+                                      <source
+                                        src="assets/images/medicine/video/pct.mp4"
+                                        type="video/mp4"
+                                      />
+                                      Your browser does not support the video
+                                      tag.
+                                    </video>
+                                    <button
+                                      className="modal-close bg-danger"
+                                      onClick={closeVideoModal}
+                                    >
+                                      <CloseButton variant="white" />
+                                    </button>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                            <div className="container my-4 p-0">
+                              <h4
+                                className="mb-4 text-uppercase"
+                                style={{ letterSpacing: "1px" }}
+                              >
+                                Important Notes:
+                              </h4>
+                              <div className="table-responsive w-100">
+                                <table className="table table-bordered border border-dark table-striped bg-white">
+                                  <thead className="table-light border border-dark">
+                                    <tr>
+                                      <th>Icon</th>
+                                      <th>Note</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Take only under supervision of a
+                                        qualified medical professional. Do not
+                                        self-prescribe.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Store tablets in a cool, dry place. Keep
+                                        the container tightly closed.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Follow exact dosage instructions
+                                        provided on the prescription or label.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Drink plenty of water when taking
+                                        tablets to avoid stomach irritation.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Keep out of reach of children. For
+                                        prescription use only.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Long-term or high-dose use may cause
+                                        liver damage or hormonal imbalance.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Report side effects such as mood
+                                        changes, acne, hair loss, or joint pain
+                                        to your doctor immediately.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Do not combine with other steroids,
+                                        alcohol, or hepatotoxic drugs without
+                                        medical guidance.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <Courses />
           </div>
         </section>
       </main>

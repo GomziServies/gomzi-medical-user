@@ -2741,9 +2741,9 @@ body.search-visible {
   background: var(--tg-secondary-color);
   border-color: var(--tg-secondary-color);
 }
-.product-desc-wrap {
+/* .product-desc-wrap {
   padding-top: 85px;
-}
+} */
 .product-desc-wrap .nav-tabs {
   border-bottom: 1px solid #ebebeb;
   justify-content: flex-start;
@@ -12101,3 +12101,204 @@ body.search-visible {
     aspect-ratio: 16 / 9;
   }
 }
+.video-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.video-play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: greenyellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  animation: pulse 1.5s infinite;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.play-icon {
+  width: 0;
+  height: 0;
+  border-left: 20px solid white;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  margin-left: 5px;
+}
+
+@media (max-width: 576px) {
+  .video-play-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .play-icon {
+    border-left: 14px solid white;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    margin-left: 3px;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255);
+  }
+  70% {
+    transform: translate(-50%, -50%) scale(1.05);
+    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+.modal-video {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.modal-video-body {
+  background: transparent !important;
+}
+
+.modal-video-inner {
+  box-shadow: none !important;
+}
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  cursor: pointer;
+}
+
+.video-play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: greenyellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: pulse 1.5s infinite;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.play-icon {
+  width: 0;
+  height: 0;
+  border-left: 20px solid white;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  margin-left: 5px;
+}
+
+.custom-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 10px;
+}
+
+.custom-modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 750px;
+  height: 450px;
+  background-color: #000;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.modal-close {
+  position: absolute;
+  top: -5px;
+  right: -45px;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  z-index: 999 !important;
+  background-color: transparent !important;
+  color: white;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+  70% {
+    transform: translate(-50%, -50%) scale(1.05);
+    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+
+@media (max-width: 768px) {
+  .custom-modal-content {
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+  .modal-close {
+    top: -40px;
+    right: 0px;
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-play-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .play-icon {
+    border-left: 14px solid white;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    margin-left: 3px;
+  }
+
+  .custom-modal-content {
+    height: auto;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+}
+

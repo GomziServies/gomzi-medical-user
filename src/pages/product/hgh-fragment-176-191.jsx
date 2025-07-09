@@ -5,6 +5,8 @@ import { useLocation } from "react-router";
 import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
 import Courses from "../../components/courses";
+import ModalVideo from "react-modal-video";
+import { CloseButton } from "react-bootstrap";
 
 const HGHFragment176191 = () => {
   const params = new URLSearchParams(window.location.search);
@@ -15,6 +17,18 @@ const HGHFragment176191 = () => {
   const [productData, setProductData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const authorization = localStorage.getItem("fg_group_user_authorization");
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [videoUrl, setVideoUrl] = useState("");
+
+  const openVideoModal = (url) => {
+    setIsVideoOpen(true);
+    setVideoUrl(url);
+  };
+
+  const closeVideoModal = () => {
+    setIsVideoOpen(false);
+    setVideoUrl("");
+  };
 
   const openModal = () => {
     setShowModal(true);
@@ -157,234 +171,409 @@ const HGHFragment176191 = () => {
                         contact pharmacist
                       </button>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-12">
-                <div className="product-desc-wrap">
-                  <ul className="nav nav-tabs" id="myTabTwo" role="tablist">
-                    <li className="nav-item">
-                      <button
-                        className="nav-link active"
-                        id="description-tab"
-                        data-bs-toggle="tab"
-                        data-bs-target="#description"
-                        role="tab"
-                        aria-controls="description"
-                        aria-selected="true"
-                      >
-                        Description
-                      </button>
-                    </li>
-                  </ul>
-                  <div className="tab-content" id="myTabContentTwo">
-                    <div
-                      className="tab-pane fade show active"
-                      id="description"
-                      role="tabpanel"
-                      aria-labelledby="description-tab"
-                    >
-                      <div>
-                        <h4 className="m-5 mb-3 mx-0">
-                          Pharmacology & Mechanism of Action:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Type:</strong> Synthetic peptide (fragment
-                            of hGH)
-                          </li>
-                          <li>
-                            <strong>Half-Life:</strong> Approx. 1-2 hours
-                          </li>
-                          <li>
-                            <strong>Mechanism of Action:</strong>
-                            <ul>
-                              <li>
-                                Stimulates lipolysis (breakdown of stored fat)
-                              </li>
-                              <li>
-                                Inhibits lipogenesis (formation of new fat)
-                              </li>
-                              <li>Increases fat-burning enzyme activity</li>
-                              <li>
-                                Especially effective in trouble areas like
-                                belly, hips, and thighs
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                    <div className="row">
+                      <div className="col-md-12 col-12">
+                        <div className="product-desc-wrap">
+                          {/* <ul
+                            className="nav nav-tabs"
+                            id="myTabTwo"
+                            role="tablist"
+                          >
+                            <li className="nav-item">
+                              <button
+                                className="nav-link active"
+                                id="description-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#description"
+                                role="tab"
+                                aria-controls="description"
+                                aria-selected="true"
+                              >
+                                Description
+                              </button>
+                            </li>
+                          </ul> */}
+                          <div className="tab-content" id="myTabContentTwo">
+                            <div
+                              className="tab-pane fade show active"
+                              id="description"
+                              role="tabpanel"
+                              aria-labelledby="description-tab"
+                            >
+                              <div>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Pharmacology & Mechanism of Action:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Type:</strong> Synthetic peptide
+                                    (fragment of hGH)
+                                  </li>
+                                  <li>
+                                    <strong>Half-Life:</strong> Approx. 1-2
+                                    hours
+                                  </li>
+                                  <li>
+                                    <strong>Mechanism of Action:</strong>
+                                    <ul>
+                                      <li>
+                                        Stimulates lipolysis (breakdown of
+                                        stored fat)
+                                      </li>
+                                      <li>
+                                        Inhibits lipogenesis (formation of new
+                                        fat)
+                                      </li>
+                                      <li>
+                                        Increases fat-burning enzyme activity
+                                      </li>
+                                      <li>
+                                        Especially effective in trouble areas
+                                        like belly, hips, and thighs
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Dosage & Administration:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Typical Dose:</strong> 250-500 mcg per day
-                          </li>
-                          <li>
-                            <strong>Frequency:</strong>
-                            <ul>
-                              <li>Once or twice daily depending on goals</li>
-                              <li>
-                                Often split between morning and pre-workout
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Dosage & Administration:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Typical Dose:</strong> 250-500 mcg
+                                    per day
+                                  </li>
+                                  <li>
+                                    <strong>Frequency:</strong>
+                                    <ul>
+                                      <li>
+                                        Once or twice daily depending on goals
+                                      </li>
+                                      <li>
+                                        Often split between morning and
+                                        pre-workout
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Administration Timing & Method:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Injection Type:</strong> Subcutaneous (under
-                            the skin)
-                          </li>
-                          <li>
-                            <strong>Injection Site:</strong> Abdominal fat or
-                            other localized fatty areas
-                          </li>
-                          <li>
-                            <strong>Best Times to Inject:</strong>
-                            <ul>
-                              <li>Morning on an empty stomach</li>
-                              <li>Pre-workout for enhanced fat oxidation</li>
-                              <li>
-                                Avoid eating for 30-60 minutes after injection
-                                for maximum effect
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Administration Timing & Method:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Injection Type:</strong>{" "}
+                                    Subcutaneous (under the skin)
+                                  </li>
+                                  <li>
+                                    <strong>Injection Site:</strong> Abdominal
+                                    fat or other localized fatty areas
+                                  </li>
+                                  <li>
+                                    <strong>Best Times to Inject:</strong>
+                                    <ul>
+                                      <li>Morning on an empty stomach</li>
+                                      <li>
+                                        Pre-workout for enhanced fat oxidation
+                                      </li>
+                                      <li>
+                                        Avoid eating for 30-60 minutes after
+                                        injection for maximum effect
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Cycle Duration & Protocol:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Cycle Length:</strong> 4-8 weeks per cycle
-                          </li>
-                          <li>
-                            <strong>Post-Cycle:</strong> Take a break to prevent
-                            desensitization
-                          </li>
-                          <li>
-                            <strong>Repeatability:</strong> Safe to repeat with
-                            adequate breaks
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Cycle Duration & Protocol:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Cycle Length:</strong> 4-8 weeks per
+                                    cycle
+                                  </li>
+                                  <li>
+                                    <strong>Post-Cycle:</strong> Take a break to
+                                    prevent desensitization
+                                  </li>
+                                  <li>
+                                    <strong>Repeatability:</strong> Safe to
+                                    repeat with adequate breaks
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Benefits & Applications:
-                        </h4>
-                        <ul>
-                          <li>Rapid fat loss in stubborn areas</li>
-                          <li>Preserves lean muscle during calorie deficit</li>
-                          <li>Minimal effect on insulin or blood sugar</li>
-                          <li>Does not impact organ growth or IGF-1 levels</li>
-                          <li>
-                            Ideal for cutting phases and body recomposition
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Benefits & Applications:
+                                </h4>
+                                <ul>
+                                  <li>Rapid fat loss in stubborn areas</li>
+                                  <li>
+                                    Preserves lean muscle during calorie deficit
+                                  </li>
+                                  <li>
+                                    Minimal effect on insulin or blood sugar
+                                  </li>
+                                  <li>
+                                    Does not impact organ growth or IGF-1 levels
+                                  </li>
+                                  <li>
+                                    Ideal for cutting phases and body
+                                    recomposition
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Side Effects & Tolerability:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>
-                              Generally well-tolerated at standard doses
-                            </strong>
-                          </li>
-                          <li>
-                            <strong>Common (mild) side effects:</strong>
-                            <ul>
-                              <li>Injection site redness or irritation</li>
-                              <li>Mild headaches</li>
-                              <li>Occasional nausea or dizziness</li>
-                            </ul>
-                          </li>
-                          <li>
-                            <strong>Long-Term Use Risks:</strong>
-                            <ul>
-                              <li>
-                                Receptor desensitization if used continuously
-                              </li>
-                              <li>
-                                Effectiveness may plateau without proper cycling
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Side Effects & Tolerability:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>
+                                      Generally well-tolerated at standard doses
+                                    </strong>
+                                  </li>
+                                  <li>
+                                    <strong>Common (mild) side effects:</strong>
+                                    <ul>
+                                      <li>
+                                        Injection site redness or irritation
+                                      </li>
+                                      <li>Mild headaches</li>
+                                      <li>Occasional nausea or dizziness</li>
+                                    </ul>
+                                  </li>
+                                  <li>
+                                    <strong>Long-Term Use Risks:</strong>
+                                    <ul>
+                                      <li>
+                                        Receptor desensitization if used
+                                        continuously
+                                      </li>
+                                      <li>
+                                        Effectiveness may plateau without proper
+                                        cycling
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Compatibility & Stacking:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Commonly Stacked With:</strong>
-                            <ul>
-                              <li>
-                                CJC-1295 (No DAC) or Ipamorelin for synergistic
-                                GH release
-                              </li>
-                              <li>
-                                Clenbuterol (for advanced fat-burning stacks)
-                              </li>
-                              <li>Other peptides during cutting cycles</li>
-                            </ul>
-                          </li>
-                          <li>
-                            <strong>Why Stack?</strong>
-                            <ul>
-                              <li>Boosts fat oxidation and thermogenesis</li>
-                              <li>Enhances effects of natural GH pulses</li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Compatibility & Stacking:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Commonly Stacked With:</strong>
+                                    <ul>
+                                      <li>
+                                        CJC-1295 (No DAC) or Ipamorelin for
+                                        synergistic GH release
+                                      </li>
+                                      <li>
+                                        Clenbuterol (for advanced fat-burning
+                                        stacks)
+                                      </li>
+                                      <li>
+                                        Other peptides during cutting cycles
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <li>
+                                    <strong>Why Stack?</strong>
+                                    <ul>
+                                      <li>
+                                        Boosts fat oxidation and thermogenesis
+                                      </li>
+                                      <li>
+                                        Enhances effects of natural GH pulses
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Storage & Reconstitution:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Form:</strong> Lyophilized powder
-                          </li>
-                          <li>
-                            <strong>Reconstitution:</strong> Use bacteriostatic
-                            water (swirl gently)
-                          </li>
-                          <li>
-                            <strong>Storage:</strong>
-                            <ul>
-                              <li>Before mixing: Store in a cool, dry place</li>
-                              <li>
-                                After reconstitution: Refrigerate and use within
-                                2-3 weeks
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Storage & Reconstitution:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Form:</strong> Lyophilized powder
+                                  </li>
+                                  <li>
+                                    <strong>Reconstitution:</strong> Use
+                                    bacteriostatic water (swirl gently)
+                                  </li>
+                                  <li>
+                                    <strong>Storage:</strong>
+                                    <ul>
+                                      <li>
+                                        Before mixing: Store in a cool, dry
+                                        place
+                                      </li>
+                                      <li>
+                                        After reconstitution: Refrigerate and
+                                        use within 2-3 weeks
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <p className="mt-5">
-                          HGH Fragment 176-191 is a powerful fat-loss peptide
-                          designed to mimic the lipolytic portion of natural
-                          growth hormone without its side effects. When combined
-                          with a proper diet and training program, it can offer
-                          accelerated body fat reduction and improved body
-                          composition. Ideal for targeted cutting strategies,
-                          especially when cycled properly.
-                        </p>
+                                <p className="mt-5">
+                                  HGH Fragment 176-191 is a powerful fat-loss
+                                  peptide designed to mimic the lipolytic
+                                  portion of natural growth hormone without its
+                                  side effects. When combined with a proper diet
+                                  and training program, it can offer accelerated
+                                  body fat reduction and improved body
+                                  composition. Ideal for targeted cutting
+                                  strategies, especially when cycled properly.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
-                        <Courses />
+                      <div className="col-md-12 col-12 mt-4 mt-md-0">
+                        <div className="rounded d-flex align-items-center justify-content-center h-100">
+                          <div
+                            className="w-100 h-100 d-flex flex-column align-items-center justify-content-start"
+                            style={{
+                              opacity: 1,
+                              transition: "opacity 0.3s ease-in-out",
+                            }}
+                          >
+                            <div className="container p-0 my-3 mb-4">
+                              {/* <h4 className="mt-4 p-0">
+                                Injection Administration Guide :
+                              </h4> */}
+                            </div>
+                            <div className="video-wrapper">
+                              <img
+                                src="assets/images/medicine/video/pct.jpeg"
+                                onClick={openVideoModal}
+                                alt="Instagram video thumbnail"
+                              />
+                              <div
+                                className="video-play-button"
+                                onClick={openVideoModal}
+                              >
+                                <span className="play-icon"></span>
+                              </div>
+
+                              {isVideoOpen && (
+                                <div
+                                  className="custom-modal-overlay"
+                                  onClick={closeVideoModal}
+                                >
+                                  <div
+                                    className="custom-modal-content"
+                                    onClick={(e) => e.stopPropagation()}
+                                  >
+                                    <video
+                                      controls
+                                      width="100%"
+                                      height="100%"
+                                      autoPlay
+                                    >
+                                      <source
+                                        src="assets/images/medicine/video/pct.mp4"
+                                        type="video/mp4"
+                                      />
+                                      Your browser does not support the video
+                                      tag.
+                                    </video>
+                                    <button
+                                      className="modal-close bg-danger"
+                                      onClick={closeVideoModal}
+                                    >
+                                      <CloseButton variant="white" />
+                                    </button>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                            <div className="container my-4 p-0">
+                              <h4
+                                className="mb-4 text-uppercase"
+                                style={{ letterSpacing: "1px" }}
+                              >
+                                Important Notes:
+                              </h4>
+                              <div className="table-responsive w-100">
+                                <table className="table table-bordered border border-dark table-striped bg-white">
+                                  <thead className="table-light border border-dark">
+                                    <tr>
+                                      <th>Icon</th>
+                                      <th>Note</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Reconstitute with bacteriostatic water
+                                        (1–2 mL depending on preference and
+                                        dosing).
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Administer via subcutaneous injection,
+                                        preferably on an empty stomach before
+                                        cardio or sleep.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Common dose: 250–500 mcg per day, split
+                                        into 1–2 injections (morning and/or
+                                        night).
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Known for enhancing lipolysis (fat
+                                        breakdown) without the side effects of
+                                        full hGH.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Must be stored cold after reconstitution
+                                        — keep refrigerated and discard after
+                                        10–14 days.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Not suitable for bulking cycles —
+                                        benefits are primarily in fat loss and
+                                        metabolic improvement.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Avoid combining with insulin or GH
+                                        analogs without medical guidance.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <Courses />
           </div>
         </section>
       </main>

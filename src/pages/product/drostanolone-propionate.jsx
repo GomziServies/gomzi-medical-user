@@ -5,6 +5,8 @@ import { useLocation } from "react-router";
 import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
 import Courses from "../../components/courses";
+import ModalVideo from "react-modal-video";
+
 
 const DrostanolonePropionate = () => {
   const params = new URLSearchParams(window.location.search);
@@ -15,6 +17,18 @@ const DrostanolonePropionate = () => {
   const [productData, setProductData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const authorization = localStorage.getItem("fg_group_user_authorization");
+    const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [videoUrl, setVideoUrl] = useState("");
+
+  const openVideoModal = (url) => {
+    setIsVideoOpen(true);
+    setVideoUrl(url);
+  };
+
+  const closeVideoModal = () => {
+    setIsVideoOpen(false);
+    setVideoUrl("");
+  };
 
   const openModal = () => {
     setShowModal(true);
@@ -155,217 +169,348 @@ const DrostanolonePropionate = () => {
                         contact pharmacist
                       </button>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-12">
-                <div className="product-desc-wrap">
-                  <ul className="nav nav-tabs" id="myTabTwo" role="tablist">
-                    <li className="nav-item">
-                      <button
-                        className="nav-link active"
-                        id="description-tab"
-                        data-bs-toggle="tab"
-                        data-bs-target="#description"
-                        role="tab"
-                        aria-controls="description"
-                        aria-selected="true"
-                      >
-                        Description
-                      </button>
-                    </li>
-                  </ul>
-                  <div className="tab-content" id="myTabContentTwo">
-                    <div
-                      className="tab-pane fade show active"
-                      id="description"
-                      role="tabpanel"
-                      aria-labelledby="description-tab"
-                    >
-                      <div>
-                        <h4 className="m-5 mb-3 mx-0">
-                          Pharmacology & Mechanism of Action:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Type:</strong> Injectable anabolic steroid
-                            (DHT-derived)
-                          </li>
-                          <li>
-                            <strong>Half-Life:</strong> ~2.5 days (Propionate
-                            ester)
-                          </li>
-                          <li>
-                            <strong>Mechanism of Action:</strong>
-                            <ul>
-                              <li>
-                                Binds to androgen receptors to stimulate protein
-                                synthesis and muscle growth
-                              </li>
-                              <li>
-                                Does not aromatize into estrogen, reducing risk
-                                of water retention and gynecomastia
-                              </li>
-                              <li>
-                                Exhibits anti-estrogenic effects—can mitigate
-                                estrogenic side effects of other steroids
-                              </li>
-                              <li>
-                                Derived from dihydrotestosterone (DHT),
-                                contributing to muscle hardness and density
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                    <div className="row">
+                      <div className="col-md-12 col-12">
+                        <div className="product-desc-wrap">
+                          {/* <ul
+                            className="nav nav-tabs"
+                            id="myTabTwo"
+                            role="tablist"
+                          >
+                            <li className="nav-item">
+                              <button
+                                className="nav-link active"
+                                id="description-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#description"
+                                role="tab"
+                                aria-controls="description"
+                                aria-selected="true"
+                              >
+                                Description
+                              </button>
+                            </li>
+                          </ul> */}
+                          <div className="tab-content" id="myTabContentTwo">
+                            <div
+                              className="tab-pane fade show active"
+                              id="description"
+                              role="tabpanel"
+                              aria-labelledby="description-tab"
+                            >
+                              <div>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Pharmacology & Mechanism of Action:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Type:</strong> Injectable anabolic
+                                    steroid (DHT-derived)
+                                  </li>
+                                  <li>
+                                    <strong>Half-Life:</strong> ~2.5 days
+                                    (Propionate ester)
+                                  </li>
+                                  <li>
+                                    <strong>Mechanism of Action:</strong>
+                                    <ul>
+                                      <li>
+                                        Binds to androgen receptors to stimulate
+                                        protein synthesis and muscle growth
+                                      </li>
+                                      <li>
+                                        Does not aromatize into estrogen,
+                                        reducing risk of water retention and
+                                        gynecomastia
+                                      </li>
+                                      <li>
+                                        Exhibits anti-estrogenic effects—can
+                                        mitigate estrogenic side effects of
+                                        other steroids
+                                      </li>
+                                      <li>
+                                        Derived from dihydrotestosterone (DHT),
+                                        contributing to muscle hardness and
+                                        density
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Dosage & Administration:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Typical Dose Range:</strong>
-                            <ul>
-                              <li>
-                                Men: 300-600 mg per week (divided into EOD
-                                injections)
-                              </li>
-                              <li>
-                                Women: 50-100 mg per week (used with caution)
-                              </li>
-                            </ul>
-                          </li>
-                          <li>
-                            <strong>Timing:</strong> Injected every other day
-                            due to short ester
-                          </li>
-                          <li>
-                            <strong>Cycle Length:</strong> 6-10 weeks
-                          </li>
-                          <li>
-                            <strong>PCT Required:</strong> Yes, post-cycle
-                            therapy is necessary to restore natural testosterone
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Dosage & Administration:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Typical Dose Range:</strong>
+                                    <ul>
+                                      <li>
+                                        Men: 300-600 mg per week (divided into
+                                        EOD injections)
+                                      </li>
+                                      <li>
+                                        Women: 50-100 mg per week (used with
+                                        caution)
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <li>
+                                    <strong>Timing:</strong> Injected every
+                                    other day due to short ester
+                                  </li>
+                                  <li>
+                                    <strong>Cycle Length:</strong> 6-10 weeks
+                                  </li>
+                                  <li>
+                                    <strong>PCT Required:</strong> Yes,
+                                    post-cycle therapy is necessary to restore
+                                    natural testosterone
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Primary Uses & Benefits:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Muscle Hardening:</strong> Creates a dry,
-                            dense, vascular appearance
-                          </li>
-                          <li>
-                            <strong>Cutting Cycles:</strong> Helps retain lean
-                            muscle mass during calorie deficits
-                          </li>
-                          <li>
-                            <strong>Minimal Water Retention:</strong> No
-                            bloating or puffiness
-                          </li>
-                          <li>
-                            <strong>Anti-Estrogenic Effects:</strong> Lowers
-                            estrogen-related risks when stacked
-                          </li>
-                          <li>
-                            <strong>Increased Muscle Density:</strong>{" "}
-                            Especially effective for pre-contest or lean
-                            athletes
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Primary Uses & Benefits:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Muscle Hardening:</strong> Creates a
+                                    dry, dense, vascular appearance
+                                  </li>
+                                  <li>
+                                    <strong>Cutting Cycles:</strong> Helps
+                                    retain lean muscle mass during calorie
+                                    deficits
+                                  </li>
+                                  <li>
+                                    <strong>Minimal Water Retention:</strong> No
+                                    bloating or puffiness
+                                  </li>
+                                  <li>
+                                    <strong>Anti-Estrogenic Effects:</strong>{" "}
+                                    Lowers estrogen-related risks when stacked
+                                  </li>
+                                  <li>
+                                    <strong>Increased Muscle Density:</strong>{" "}
+                                    Especially effective for pre-contest or lean
+                                    athletes
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">Side Effects & Risks:</h4>
-                        <ul>
-                          <li>
-                            <strong>Androgenic Side Effects:</strong>
-                            <ul>
-                              <li>
-                                Acne, oily skin, hair loss (especially in those
-                                prone to male-pattern baldness)
-                              </li>
-                              <li>Increased libido or aggression</li>
-                            </ul>
-                          </li>
-                          <li>
-                            <strong>Female-Specific Risks:</strong>
-                            <ul>
-                              <li>
-                                Potential for virilization (deep voice, hair
-                                growth, menstrual disruption)
-                              </li>
-                            </ul>
-                          </li>
-                          <li>
-                            <strong>Cardiovascular Health:</strong>
-                            <ul>
-                              <li>
-                                May negatively impact cholesterol (lower HDL)
-                              </li>
-                              <li>Monitor blood pressure and lipid levels</li>
-                            </ul>
-                          </li>
-                          <li>
-                            <strong>Liver Toxicity:</strong>
-                            <ul>
-                              <li>
-                                No hepatotoxicity (safe for liver in injectable
-                                form)
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Side Effects & Risks:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Androgenic Side Effects:</strong>
+                                    <ul>
+                                      <li>
+                                        Acne, oily skin, hair loss (especially
+                                        in those prone to male-pattern baldness)
+                                      </li>
+                                      <li>Increased libido or aggression</li>
+                                    </ul>
+                                  </li>
+                                  <li>
+                                    <strong>Female-Specific Risks:</strong>
+                                    <ul>
+                                      <li>
+                                        Potential for virilization (deep voice,
+                                        hair growth, menstrual disruption)
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <li>
+                                    <strong>Cardiovascular Health:</strong>
+                                    <ul>
+                                      <li>
+                                        May negatively impact cholesterol (lower
+                                        HDL)
+                                      </li>
+                                      <li>
+                                        Monitor blood pressure and lipid levels
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <li>
+                                    <strong>Liver Toxicity:</strong>
+                                    <ul>
+                                      <li>
+                                        No hepatotoxicity (safe for liver in
+                                        injectable form)
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">Stacking Options:</h4>
-                        <ul>
-                          <li>
-                            <strong>Cutting Stack:</strong> Drostanolone +
-                            Testosterone Propionate + Winstrol
-                          </li>
-                          <li>
-                            <strong>Pre-Contest Stack:</strong> Drostanolone +
-                            Trenbolone + Anavar
-                          </li>
-                          <li>
-                            <strong>Mild Stack:</strong> Drostanolone +
-                            Primobolan
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Stacking Options:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Cutting Stack:</strong> Drostanolone
+                                    + Testosterone Propionate + Winstrol
+                                  </li>
+                                  <li>
+                                    <strong>Pre-Contest Stack:</strong>{" "}
+                                    Drostanolone + Trenbolone + Anavar
+                                  </li>
+                                  <li>
+                                    <strong>Mild Stack:</strong> Drostanolone +
+                                    Primobolan
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">Cycle Support & PCT:</h4>
-                        <ul>
-                          <li>
-                            <strong>Cycle Support:</strong> Support
-                            cardiovascular health with omega-3s and regular
-                            bloodwork
-                          </li>
-                          <li>
-                            <strong>PCT (Post-Cycle Therapy):</strong> 4-6 weeks
-                            of Clomid or Nolvadex to restore natural
-                            testosterone levels
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Cycle Support & PCT:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Cycle Support:</strong> Support
+                                    cardiovascular health with omega-3s and
+                                    regular bloodwork
+                                  </li>
+                                  <li>
+                                    <strong>PCT (Post-Cycle Therapy):</strong>{" "}
+                                    4-6 weeks of Clomid or Nolvadex to restore
+                                    natural testosterone levels
+                                  </li>
+                                </ul>
 
-                        <p className="mt-5">
-                          Drostanolone Propionate (Masteron) is a DHT-derived
-                          injectable steroid prized for its muscle-hardening,
-                          anti-estrogenic, and non-bloating properties. It is
-                          widely used in cutting and contest preparation cycles,
-                          especially among lean users aiming for maximum
-                          definition. While not extremely anabolic on its own,
-                          it stacks effectively and delivers a polished
-                          physique. Proper PCT and cardiovascular monitoring are
-                          essential for safe and effective use.
-                        </p>
+                                <p className="mt-5">
+                                  Drostanolone Propionate (Masteron) is a
+                                  DHT-derived injectable steroid prized for its
+                                  muscle-hardening, anti-estrogenic, and
+                                  non-bloating properties. It is widely used in
+                                  cutting and contest preparation cycles,
+                                  especially among lean users aiming for maximum
+                                  definition. While not extremely anabolic on
+                                  its own, it stacks effectively and delivers a
+                                  polished physique. Proper PCT and
+                                  cardiovascular monitoring are essential for
+                                  safe and effective use.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
-                        <Courses />
+                      <div className="col-md-12 col-12 mt-4 mt-md-0">
+                        <div className="rounded d-flex align-items-center justify-content-center h-100">
+                          <div
+                            className="w-100 h-100 d-flex flex-column align-items-center justify-content-start"
+                            style={{
+                              opacity: 1,
+                              transition: "opacity 0.3s ease-in-out",
+                            }}
+                          >
+                            <div className="container p-0 my-3 mb-4">
+                              {/* <h4 className="mt-4 p-0">
+                                Injection Administration Guide :
+                              </h4> */}
+                            </div>
+                            <div className="video-wrapper">
+                              <img
+                              src="assets\images\medicine\video\testosterone-propionate.jpeg"
+                                onClick={() => openVideoModal("AHrD91N0DaU")}
+                              />
+                              <div
+                                className="video-play-button"
+                                onClick={() => openVideoModal("AHrD91N0DaU")}
+                              >
+                                <span className="play-icon"></span>
+                              </div>
+
+                              <ModalVideo
+                                channel="youtube"
+                                isOpen={isVideoOpen}
+                                videoId={videoUrl}
+                                onClose={closeVideoModal}
+                              />
+                            </div>
+                            <div className="container my-4 p-0">
+                              <h4
+                                className="mb-4 text-uppercase"
+                                style={{ letterSpacing: "1px" }}
+                              >
+                                Important Notes:
+                              </h4>
+                              <div className="table-responsive w-100">
+                                <table className="table table-bordered border border-dark table-striped bg-white">
+                                  <thead className="table-light border border-dark">
+                                    <tr>
+                                      <th>Icon</th>
+                                      <th>Note</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Inject intramuscularly — commonly every
+                                        other day due to short ester
+                                        (propionate).
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Standard dose: 100–150 mg every other
+                                        day for men; not typically used by women
+                                        due to virilization risk.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Ideal for cutting phases — promotes
+                                        lean, hard muscle appearance and reduces
+                                        water retention.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Does not aromatize — no estrogenic side
+                                        effects like gynecomastia or bloating.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        May suppress natural testosterone — PCT
+                                        (Post Cycle Therapy) is recommended.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Should not be used in bulking cycles —
+                                        minimal weight gain but helps refine
+                                        physique.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Use under professional guidance. Regular
+                                        blood work advised to monitor
+                                        cholesterol and liver markers.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <Courses />
           </div>
         </section>
       </main>

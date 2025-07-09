@@ -5,6 +5,8 @@ import { useLocation } from "react-router";
 import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
 import Courses from "../../components/courses";
+import ModalVideo from "react-modal-video";
+import { CloseButton } from "react-bootstrap";
 
 const TestosteroneUndecanoateAndriole = () => {
   const params = new URLSearchParams(window.location.search);
@@ -15,6 +17,18 @@ const TestosteroneUndecanoateAndriole = () => {
   const [productData, setProductData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const authorization = localStorage.getItem("fg_group_user_authorization");
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [videoUrl, setVideoUrl] = useState("");
+
+  const openVideoModal = (url) => {
+    setIsVideoOpen(true);
+    setVideoUrl(url);
+  };
+
+  const closeVideoModal = () => {
+    setIsVideoOpen(false);
+    setVideoUrl("");
+  };
 
   const openModal = () => {
     setShowModal(true);
@@ -159,207 +173,367 @@ const TestosteroneUndecanoateAndriole = () => {
                         contact pharmacist
                       </button>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-12">
-                <div className="product-desc-wrap">
-                  <ul className="nav nav-tabs" id="myTabTwo" role="tablist">
-                    <li className="nav-item">
-                      <button
-                        className="nav-link active"
-                        id="description-tab"
-                        data-bs-toggle="tab"
-                        data-bs-target="#description"
-                        role="tab"
-                        aria-controls="description"
-                        aria-selected="true"
-                      >
-                        Description
-                      </button>
-                    </li>
-                  </ul>
-                  <div className="tab-content" id="myTabContentTwo">
-                    <div
-                      className="tab-pane fade show active"
-                      id="description"
-                      role="tabpanel"
-                      aria-labelledby="description-tab"
-                    >
-                      <div>
-                        <h4 className="m-5 mb-3 mx-0">
-                          Mechanism of Absorption:
-                        </h4>
-                        <ul>
-                          <li>
-                            Unlike traditional oral steroids, Testosterone
-                            Undecanoate is absorbed via the intestinal lymphatic
-                            system when taken with dietary fat.
-                          </li>
-                          <li>
-                            This route of absorption helps avoid rapid liver
-                            breakdown and makes it a safer oral alternative for
-                            long-term testosterone therapy.
-                          </li>
-                          <li>
-                            However, its bioavailability can be inconsistent and
-                            highly dependent on meal composition and fat
-                            content.
-                          </li>
-                        </ul>
+                    <div className="row">
+                      <div className="col-md-12 col-12">
+                        <div className="product-desc-wrap">
+                          {/* <ul
+                            className="nav nav-tabs"
+                            id="myTabTwo"
+                            role="tablist"
+                          >
+                            <li className="nav-item">
+                              <button
+                                className="nav-link active"
+                                id="description-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#description"
+                                role="tab"
+                                aria-controls="description"
+                                aria-selected="true"
+                              >
+                                Description
+                              </button>
+                            </li>
+                          </ul> */}
+                          <div className="tab-content" id="myTabContentTwo">
+                            <div
+                              className="tab-pane fade show active"
+                              id="description"
+                              role="tabpanel"
+                              aria-labelledby="description-tab"
+                            >
+                              <div>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Mechanism of Absorption:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    Unlike traditional oral steroids,
+                                    Testosterone Undecanoate is absorbed via the
+                                    intestinal lymphatic system when taken with
+                                    dietary fat.
+                                  </li>
+                                  <li>
+                                    This route of absorption helps avoid rapid
+                                    liver breakdown and makes it a safer oral
+                                    alternative for long-term testosterone
+                                    therapy.
+                                  </li>
+                                  <li>
+                                    However, its bioavailability can be
+                                    inconsistent and highly dependent on meal
+                                    composition and fat content.
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">Primary Uses:</h4>
-                        <ul>
-                          <li>
-                            <strong>Hormone Replacement Therapy (HRT):</strong>
-                            <br />
-                            Commonly prescribed to treat hypogonadism and other
-                            testosterone deficiencies in men.
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Mild Performance Enhancement:</strong>
-                            <br />
-                            Sometimes used off-label by athletes looking for a
-                            mild anabolic effect, though it is far less potent
-                            than injectable testosterone and rarely used in
-                            serious bodybuilding cycles.
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">Primary Uses:</h4>
+                                <ul>
+                                  <li>
+                                    <strong>
+                                      Hormone Replacement Therapy (HRT):
+                                    </strong>
+                                    <br />
+                                    Commonly prescribed to treat hypogonadism
+                                    and other testosterone deficiencies in men.
+                                  </li>
+                                  <br />
+                                  <li>
+                                    <strong>
+                                      Mild Performance Enhancement:
+                                    </strong>
+                                    <br />
+                                    Sometimes used off-label by athletes looking
+                                    for a mild anabolic effect, though it is far
+                                    less potent than injectable testosterone and
+                                    rarely used in serious bodybuilding cycles.
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Administration & Intake Timing:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Oral Capsule Form:</strong> Often dosed at
-                            80-160 mg/day, depending on medical or personal
-                            goals
-                          </li>
-                          <li>
-                            <strong>
-                              Best Taken With Meals Containing Fat:
-                            </strong>{" "}
-                            Dietary fats are essential to enhance lymphatic
-                            absorption
-                          </li>
-                          <li>
-                            <strong>Dosing Schedule:</strong>
-                            <ul>
-                              <li>
-                                Typically taken in divided doses (morning and
-                                evening) to maintain consistent testosterone
-                                levels throughout the day
-                              </li>
-                              <li>
-                                Taking it with a high-fat meal can significantly
-                                increase its effectiveness and minimize GI upset
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Administration & Intake Timing:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Oral Capsule Form:</strong> Often
+                                    dosed at 80-160 mg/day, depending on medical
+                                    or personal goals
+                                  </li>
+                                  <li>
+                                    <strong>
+                                      Best Taken With Meals Containing Fat:
+                                    </strong>{" "}
+                                    Dietary fats are essential to enhance
+                                    lymphatic absorption
+                                  </li>
+                                  <li>
+                                    <strong>Dosing Schedule:</strong>
+                                    <ul>
+                                      <li>
+                                        Typically taken in divided doses
+                                        (morning and evening) to maintain
+                                        consistent testosterone levels
+                                        throughout the day
+                                      </li>
+                                      <li>
+                                        Taking it with a high-fat meal can
+                                        significantly increase its effectiveness
+                                        and minimize GI upset
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Potential Side Effects:
-                        </h4>
-                        <p>
-                          Oral Testosterone Undecanoate is better tolerated than
-                          many other orals, but side effects can still occur,
-                          especially with long-term or high-dose use:
-                        </p>
-                        <ul>
-                          <li>
-                            <strong>Androgenic Effects:</strong>
-                            <ul>
-                              <li>
-                                Mild acne, oily skin, or hair thinning,
-                                particularly in individuals sensitive to DHT
-                                (dihydrotestosterone)
-                              </li>
-                              <li>
-                                Less aggressive than injectable testosterone in
-                                its androgenic impact
-                              </li>
-                            </ul>
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Estrogenic Effects (Rare):</strong>
-                            <ul>
-                              <li>
-                                Some water retention or mild gynecomastia may
-                                occur due to aromatization, though this is
-                                uncommon at therapeutic doses
-                              </li>
-                            </ul>
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Gastrointestinal Discomfort:</strong>
-                            <ul>
-                              <li>
-                                Can cause nausea, bloating, or stomach pain if
-                                taken on an empty stomach
-                              </li>
-                              <li>
-                                To avoid this, it should always be consumed with
-                                food, ideally meals rich in healthy fats
-                              </li>
-                            </ul>
-                          </li>
-                          <br />
-                          <li>
-                            <strong>
-                              Suppression of Natural Testosterone Production:
-                            </strong>
-                            <ul>
-                              <li>
-                                Prolonged use leads to HPTA suppression
-                                (Hypothalamic-Pituitary-Testicular Axis),
-                                reducing natural testosterone production
-                              </li>
-                              <li>
-                                Upon cessation, post-cycle therapy (PCT) may be
-                                required depending on dosage and duration
-                              </li>
-                            </ul>
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Inconsistent Bioavailability:</strong>
-                            <ul>
-                              <li>
-                                One of the main drawbacks is the variable
-                                absorption rate, making consistent hormone
-                                levels harder to maintain compared to injectable
-                                forms
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Potential Side Effects:
+                                </h4>
+                                <p>
+                                  Oral Testosterone Undecanoate is better
+                                  tolerated than many other orals, but side
+                                  effects can still occur, especially with
+                                  long-term or high-dose use:
+                                </p>
+                                <ul>
+                                  <li>
+                                    <strong>Androgenic Effects:</strong>
+                                    <ul>
+                                      <li>
+                                        Mild acne, oily skin, or hair thinning,
+                                        particularly in individuals sensitive to
+                                        DHT (dihydrotestosterone)
+                                      </li>
+                                      <li>
+                                        Less aggressive than injectable
+                                        testosterone in its androgenic impact
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <br />
+                                  <li>
+                                    <strong>Estrogenic Effects (Rare):</strong>
+                                    <ul>
+                                      <li>
+                                        Some water retention or mild
+                                        gynecomastia may occur due to
+                                        aromatization, though this is uncommon
+                                        at therapeutic doses
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <br />
+                                  <li>
+                                    <strong>
+                                      Gastrointestinal Discomfort:
+                                    </strong>
+                                    <ul>
+                                      <li>
+                                        Can cause nausea, bloating, or stomach
+                                        pain if taken on an empty stomach
+                                      </li>
+                                      <li>
+                                        To avoid this, it should always be
+                                        consumed with food, ideally meals rich
+                                        in healthy fats
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <br />
+                                  <li>
+                                    <strong>
+                                      Suppression of Natural Testosterone
+                                      Production:
+                                    </strong>
+                                    <ul>
+                                      <li>
+                                        Prolonged use leads to HPTA suppression
+                                        (Hypothalamic-Pituitary-Testicular
+                                        Axis), reducing natural testosterone
+                                        production
+                                      </li>
+                                      <li>
+                                        Upon cessation, post-cycle therapy (PCT)
+                                        may be required depending on dosage and
+                                        duration
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <br />
+                                  <li>
+                                    <strong>
+                                      Inconsistent Bioavailability:
+                                    </strong>
+                                    <ul>
+                                      <li>
+                                        One of the main drawbacks is the
+                                        variable absorption rate, making
+                                        consistent hormone levels harder to
+                                        maintain compared to injectable forms
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <p className="mt-5">
-                          Oral Testosterone Undecanoate provides a convenient
-                          and liver-friendly oral testosterone option, ideal for
-                          those seeking testosterone replacement without
-                          injections. While it lacks the potency of injectables
-                          for performance enhancement, its ease of use and
-                          reduced liver toxicity make it a valuable option for
-                          therapeutic purposes. Careful attention to timing,
-                          dietary fat intake, and dosage consistency is
-                          essential to maximize its effectiveness and minimize
-                          side effects.
-                        </p>
+                                <p className="mt-5">
+                                  Oral Testosterone Undecanoate provides a
+                                  convenient and liver-friendly oral
+                                  testosterone option, ideal for those seeking
+                                  testosterone replacement without injections.
+                                  While it lacks the potency of injectables for
+                                  performance enhancement, its ease of use and
+                                  reduced liver toxicity make it a valuable
+                                  option for therapeutic purposes. Careful
+                                  attention to timing, dietary fat intake, and
+                                  dosage consistency is essential to maximize
+                                  its effectiveness and minimize side effects.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
-                        <Courses />
+                      <div className="col-md-12 col-12 mt-4 mt-md-0">
+                        <div className="rounded d-flex align-items-center justify-content-center h-100">
+                          <div
+                            className="w-100 h-100 d-flex flex-column align-items-center justify-content-start"
+                            style={{
+                              opacity: 1,
+                              transition: "opacity 0.3s ease-in-out",
+                            }}
+                          >
+                            <div className="container p-0 my-3 mb-4">
+                              {/* <h4 className="mt-4 p-0">
+                                Injection Administration Guide :
+                              </h4> */}
+                            </div>
+                            <div className="video-wrapper">
+                              <img
+                                src="assets/images/medicine/video/pct.jpeg"
+                                onClick={openVideoModal}
+                                alt="Instagram video thumbnail"
+                              />
+                              <div
+                                className="video-play-button"
+                                onClick={openVideoModal}
+                              >
+                                <span className="play-icon"></span>
+                              </div>
+
+                              {isVideoOpen && (
+                                <div
+                                  className="custom-modal-overlay"
+                                  onClick={closeVideoModal}
+                                >
+                                  <div
+                                    className="custom-modal-content"
+                                    onClick={(e) => e.stopPropagation()}
+                                  >
+                                    <video
+                                      controls
+                                      width="100%"
+                                      height="100%"
+                                      autoPlay
+                                    >
+                                      <source
+                                        src="assets/images/medicine/video/pct.mp4"
+                                        type="video/mp4"
+                                      />
+                                      Your browser does not support the video
+                                      tag.
+                                    </video>
+                                    <button
+                                      className="modal-close bg-danger"
+                                      onClick={closeVideoModal}
+                                    >
+                                      <CloseButton variant="white" />
+                                    </button>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                            <div className="container my-4 p-0">
+                              <h4
+                                className="mb-4 text-uppercase"
+                                style={{ letterSpacing: "1px" }}
+                              >
+                                Important Notes:
+                              </h4>
+                              <div className="table-responsive w-100">
+                                <table className="table table-bordered border border-dark table-striped bg-white">
+                                  <thead className="table-light border border-dark">
+                                    <tr>
+                                      <th>Icon</th>
+                                      <th>Note</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Take capsules **with a meal containing
+                                        fat** to ensure proper absorption of the
+                                        medication.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Swallow capsules whole — do not crush,
+                                        chew, or open them.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Follow your prescribed dose exactly.
+                                        Typical dosing is 120–160 mg/day
+                                        initially.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Blood tests may be required to monitor
+                                        testosterone levels and liver function
+                                        during use.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Do not take on an empty stomach —
+                                        bioavailability is significantly reduced
+                                        without dietary fat.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Store capsules at room temperature, away
+                                        from moisture and direct sunlight.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Report any side effects like mood
+                                        changes, breast tenderness, or
+                                        difficulty breathing to your healthcare
+                                        provider.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <Courses />
           </div>
         </section>
       </main>

@@ -5,6 +5,8 @@ import { useLocation } from "react-router";
 import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
 import Courses from "../../components/courses";
+import ModalVideo from "react-modal-video";
+import { CloseButton } from "react-bootstrap";
 
 const TestosteroneCypionate = () => {
   const params = new URLSearchParams(window.location.search);
@@ -15,6 +17,18 @@ const TestosteroneCypionate = () => {
   const [productData, setProductData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const authorization = localStorage.getItem("fg_group_user_authorization");
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [videoUrl, setVideoUrl] = useState("");
+
+  const openVideoModal = (url) => {
+    setIsVideoOpen(true);
+    setVideoUrl(url);
+  };
+
+  const closeVideoModal = () => {
+    setIsVideoOpen(false);
+    setVideoUrl("");
+  };
 
   const openModal = () => {
     setShowModal(true);
@@ -157,196 +171,358 @@ const TestosteroneCypionate = () => {
                         contact pharmacist
                       </button>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-12">
-                <div className="product-desc-wrap">
-                  <ul className="nav nav-tabs" id="myTabTwo" role="tablist">
-                    <li className="nav-item">
-                      <button
-                        className="nav-link active"
-                        id="description-tab"
-                        data-bs-toggle="tab"
-                        data-bs-target="#description"
-                        role="tab"
-                        aria-controls="description"
-                        aria-selected="true"
-                      >
-                        Description
-                      </button>
-                    </li>
-                  </ul>
-                  <div className="tab-content" id="myTabContentTwo">
-                    <div
-                      className="tab-pane fade show active"
-                      id="description"
-                      role="tabpanel"
-                      aria-labelledby="description-tab"
-                    >
-                      <div>
-                        <h4 className="m-5 mb-3 mx-0">Pharmacokinetics:</h4>
-                        <ul>
-                          <li>
-                            <strong>Half-Life:</strong> Approximately 8 to 10
-                            days
-                            <br />
-                            Testosterone Cypionate has one of the longer
-                            half-lives among injectable testosterone esters.
-                            This allows for less frequent injections while still
-                            maintaining relatively stable hormone levels.
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Esters & Absorption:</strong>
-                            <br />
-                            The cypionate ester slows the release of
-                            testosterone into the bloodstream after
-                            intramuscular injection, enabling sustained anabolic
-                            effects and hormonal balance over an extended
-                            period.
-                          </li>
-                        </ul>
-
-                        <h4 className="m-5 mb-3 mx-0">
-                          Recommended Injection Frequency:
-                        </h4>
-                        <p className="m-0">
-                          Due to its extended release, Testosterone Cypionate
-                          can be administered once a week or every other week,
-                          depending on the user's goals and whether it's being
-                          used therapeutically or for performance enhancement.
-                        </p>
-
-                        <h4 className="m-5 mb-3 mx-0">
-                          Dosage Guidelines (Weekly):
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Beginner Users:</strong> 300-500 mg
-                            <br />
-                            Ideal for first-time users aiming for moderate
-                            muscle growth and strength improvement.
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Intermediate Users:</strong> 500-750 mg
-                            <br />
-                            Provides enhanced anabolic effects for those with
-                            prior cycle experience.
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Advanced Users:</strong> 750-1000 mg
-                            <br />
-                            High doses are reserved for experienced users
-                            pursuing maximum muscle gain.
-                          </li>
-                          <br />
-                          <li>
-                            <strong>HRT (Hormone Replacement Therapy):</strong>{" "}
-                            100-200 mg every 1-2 weeks
-                            <br />
-                            Prescribed to men with low testosterone levels to
-                            restore and maintain hormonal health.
-                          </li>
-                          <br />
-                        </ul>
-
-                        <h4 className="m-5 mb-3 mx-0">Injection Sites:</h4>
-                        <p>
-                          Administered via intramuscular injection, typical
-                          injection areas include:
-                          <ul className="mt-4">
-                            <li>
-                              <strong>Gluteus (Buttocks):</strong> Preferred for
-                              larger doses due to muscle size.
+                    <div className="row">
+                      <div className="col-md-12 col-12">
+                        <div className="product-desc-wrap">
+                          {/* <ul
+                            className="nav nav-tabs"
+                            id="myTabTwo"
+                            role="tablist"
+                          >
+                            <li className="nav-item">
+                              <button
+                                className="nav-link active"
+                                id="description-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#description"
+                                role="tab"
+                                aria-controls="description"
+                                aria-selected="true"
+                              >
+                                Description
+                              </button>
                             </li>
-                            <br />
-                            <li>
-                              <strong>Deltoids (Shoulders):</strong> More
-                              suitable for smaller volumes or
-                              self-administration with proper technique.
-                            </li>
-                            <br />
-                          </ul>
-                        </p>
+                          </ul> */}
+                          <div className="tab-content" id="myTabContentTwo">
+                            <div
+                              className="tab-pane fade show active"
+                              id="description"
+                              role="tabpanel"
+                              aria-labelledby="description-tab"
+                            >
+                              <div>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Pharmacokinetics:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Half-Life:</strong> Approximately 8
+                                    to 10 days
+                                    <br />
+                                    Testosterone Cypionate has one of the longer
+                                    half-lives among injectable testosterone
+                                    esters. This allows for less frequent
+                                    injections while still maintaining
+                                    relatively stable hormone levels.
+                                  </li>
+                                  <br />
+                                  <li>
+                                    <strong>Esters & Absorption:</strong>
+                                    <br />
+                                    The cypionate ester slows the release of
+                                    testosterone into the bloodstream after
+                                    intramuscular injection, enabling sustained
+                                    anabolic effects and hormonal balance over
+                                    an extended period.
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Potential Side Effects:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Estrogenic Effects:</strong>
-                            <ul>
-                              <li>Water retention</li>
-                              <li>
-                                Gynecomastia (male breast tissue development)
-                              </li>
-                            </ul>
-                            <p>
-                              These are caused by the aromatization of
-                              testosterone into estrogen. Aromatase inhibitors
-                              may be used to manage these effects.
-                            </p>
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Androgenic Effects:</strong>
-                            <ul>
-                              <li>Acne</li>
-                              <li>
-                                Hair loss (in genetically predisposed
-                                individuals)
-                              </li>
-                              <li>Increased body hair growth</li>
-                            </ul>
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Hematological Effects:</strong>
-                            <ul>
-                              <li>
-                                Increased hematocrit levels (higher red blood
-                                cell count), which can lead to thicker blood and
-                                increased cardiovascular strain if not
-                                monitored. Regular blood tests are recommended
-                                during extended use.
-                              </li>
-                            </ul>
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Psychological & Endocrine Effects:</strong>
-                            <ul>
-                              <li>Mood swings or increased aggression</li>
-                              <li>
-                                Suppression of the body's natural testosterone
-                                production, often requiring post-cycle therapy
-                                (PCT) after discontinuation.
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Recommended Injection Frequency:
+                                </h4>
+                                <p className="m-0">
+                                  Due to its extended release, Testosterone
+                                  Cypionate can be administered once a week or
+                                  every other week, depending on the user's
+                                  goals and whether it's being used
+                                  therapeutically or for performance
+                                  enhancement.
+                                </p>
 
-                        <p className="mt-5">
-                          Testosterone Cypionate is a widely used and effective
-                          option for both medical testosterone replacement and
-                          athletic performance enhancement. With its long
-                          half-life and steady hormone release, it offers
-                          convenience and reliable results when used responsibly
-                          under proper guidance.
-                        </p>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Dosage Guidelines (Weekly):
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Beginner Users:</strong> 300-500 mg
+                                    <br />
+                                    Ideal for first-time users aiming for
+                                    moderate muscle growth and strength
+                                    improvement.
+                                  </li>
+                                  <br />
+                                  <li>
+                                    <strong>Intermediate Users:</strong> 500-750
+                                    mg
+                                    <br />
+                                    Provides enhanced anabolic effects for those
+                                    with prior cycle experience.
+                                  </li>
+                                  <br />
+                                  <li>
+                                    <strong>Advanced Users:</strong> 750-1000 mg
+                                    <br />
+                                    High doses are reserved for experienced
+                                    users pursuing maximum muscle gain.
+                                  </li>
+                                  <br />
+                                  <li>
+                                    <strong>
+                                      HRT (Hormone Replacement Therapy):
+                                    </strong>{" "}
+                                    100-200 mg every 1-2 weeks
+                                    <br />
+                                    Prescribed to men with low testosterone
+                                    levels to restore and maintain hormonal
+                                    health.
+                                  </li>
+                                  <br />
+                                </ul>
 
-                        <Courses />
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Injection Sites:
+                                </h4>
+                                <p>
+                                  Administered via intramuscular injection,
+                                  typical injection areas include:
+                                  <ul className="mt-4">
+                                    <li>
+                                      <strong>Gluteus (Buttocks):</strong>{" "}
+                                      Preferred for larger doses due to muscle
+                                      size.
+                                    </li>
+                                    <br />
+                                    <li>
+                                      <strong>Deltoids (Shoulders):</strong>{" "}
+                                      More suitable for smaller volumes or
+                                      self-administration with proper technique.
+                                    </li>
+                                    <br />
+                                  </ul>
+                                </p>
+
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Potential Side Effects:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Estrogenic Effects:</strong>
+                                    <ul>
+                                      <li>Water retention</li>
+                                      <li>
+                                        Gynecomastia (male breast tissue
+                                        development)
+                                      </li>
+                                    </ul>
+                                    <p>
+                                      These are caused by the aromatization of
+                                      testosterone into estrogen. Aromatase
+                                      inhibitors may be used to manage these
+                                      effects.
+                                    </p>
+                                  </li>
+                                  <br />
+                                  <li>
+                                    <strong>Androgenic Effects:</strong>
+                                    <ul>
+                                      <li>Acne</li>
+                                      <li>
+                                        Hair loss (in genetically predisposed
+                                        individuals)
+                                      </li>
+                                      <li>Increased body hair growth</li>
+                                    </ul>
+                                  </li>
+                                  <br />
+                                  <li>
+                                    <strong>Hematological Effects:</strong>
+                                    <ul>
+                                      <li>
+                                        Increased hematocrit levels (higher red
+                                        blood cell count), which can lead to
+                                        thicker blood and increased
+                                        cardiovascular strain if not monitored.
+                                        Regular blood tests are recommended
+                                        during extended use.
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <br />
+                                  <li>
+                                    <strong>
+                                      Psychological & Endocrine Effects:
+                                    </strong>
+                                    <ul>
+                                      <li>
+                                        Mood swings or increased aggression
+                                      </li>
+                                      <li>
+                                        Suppression of the body's natural
+                                        testosterone production, often requiring
+                                        post-cycle therapy (PCT) after
+                                        discontinuation.
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
+
+                                <p className="mt-5">
+                                  Testosterone Cypionate is a widely used and
+                                  effective option for both medical testosterone
+                                  replacement and athletic performance
+                                  enhancement. With its long half-life and
+                                  steady hormone release, it offers convenience
+                                  and reliable results when used responsibly
+                                  under proper guidance.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="col-md-12 col-12 mt-4 mt-md-0">
+                        <div className="rounded d-flex align-items-center justify-content-center h-100">
+                          <div
+                            className="w-100 h-100 d-flex flex-column align-items-center justify-content-start"
+                            style={{
+                              opacity: 1,
+                              transition: "opacity 0.3s ease-in-out",
+                            }}
+                          >
+                            <div className="container p-0 my-3 mb-4">
+                              {/* <h4 className="mt-4 p-0">
+                                Injection Administration Guide :
+                              </h4> */}
+                            </div>
+                            <div className="video-wrapper">
+                              <img
+                                src="assets/images/medicine/video/pct.jpeg"
+                                onClick={openVideoModal}
+                                alt="Instagram video thumbnail"
+                              />
+                              <div
+                                className="video-play-button"
+                                onClick={openVideoModal}
+                              >
+                                <span className="play-icon"></span>
+                              </div>
+
+                              {isVideoOpen && (
+                                <div
+                                  className="custom-modal-overlay"
+                                  onClick={closeVideoModal}
+                                >
+                                  <div
+                                    className="custom-modal-content"
+                                    onClick={(e) => e.stopPropagation()}
+                                  >
+                                    <video
+                                      controls
+                                      width="100%"
+                                      height="100%"
+                                      autoPlay
+                                    >
+                                      <source
+                                        src="assets/images/medicine/video/pct.mp4"
+                                        type="video/mp4"
+                                      />
+                                      Your browser does not support the video
+                                      tag.
+                                    </video>
+                                    <button
+                                      className="modal-close bg-danger"
+                                      onClick={closeVideoModal}
+                                    >
+                                      <CloseButton variant="white" />
+                                    </button>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                            <div className="container my-4 p-0">
+                              <h4
+                                className="mb-4 text-uppercase"
+                                style={{ letterSpacing: "1px" }}
+                              >
+                                Important Notes:
+                              </h4>
+                              <div className="table-responsive w-100">
+                                <table className="table table-bordered border border-dark table-striped bg-white">
+                                  <thead className="table-light border border-dark">
+                                    <tr>
+                                      <th>Icon</th>
+                                      <th>Note</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Intended for **intramuscular (IM)**
+                                        injection only, commonly in the gluteal
+                                        muscle.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Long-acting ester; injection frequency
+                                        is typically **once every 5–7 days**.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Monitor testosterone levels to optimize
+                                        dose and frequency.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Warm the vial slightly and inject slowly
+                                        to reduce discomfort.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Ensure vials are stored at room
+                                        temperature and not exposed to light or
+                                        moisture.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Risk of **gynecomastia, acne, water
+                                        retention, or hair loss** may occur;
+                                        monitor side effects.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Regular blood work advised:
+                                        **hematocrit, lipids, PSA, liver
+                                        function**.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            <Courses />
           </div>
         </section>
       </main>

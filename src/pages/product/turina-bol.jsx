@@ -5,6 +5,9 @@ import { useLocation } from "react-router";
 import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
 import Courses from "../../components/courses";
+import ModalVideo from "react-modal-video";
+
+
 
 const TurinaBol = () => {
   const params = new URLSearchParams(window.location.search);
@@ -15,6 +18,18 @@ const TurinaBol = () => {
   const [productData, setProductData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const authorization = localStorage.getItem("fg_group_user_authorization");
+    const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [videoUrl, setVideoUrl] = useState("");
+
+  const openVideoModal = (url) => {
+    setIsVideoOpen(true);
+    setVideoUrl(url);
+  };
+
+  const closeVideoModal = () => {
+    setIsVideoOpen(false);
+    setVideoUrl("");
+  };
 
   const openModal = () => {
     setShowModal(true);
@@ -169,231 +184,363 @@ const TurinaBol = () => {
                         contact pharmacist
                       </button>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-12">
-                <div className="product-desc-wrap">
-                  <ul className="nav nav-tabs" id="myTabTwo" role="tablist">
-                    <li className="nav-item">
-                      <button
-                        className="nav-link active"
-                        id="description-tab"
-                        data-bs-toggle="tab"
-                        data-bs-target="#description"
-                        role="tab"
-                        aria-controls="description"
-                        aria-selected="true"
-                      >
-                        Description
-                      </button>
-                    </li>
-                  </ul>
-                  <div className="tab-content" id="myTabContentTwo">
-                    <div
-                      className="tab-pane fade show active"
-                      id="description"
-                      role="tabpanel"
-                      aria-labelledby="description-tab"
-                    >
-                      <div>
-                        <h4 className="m-5 mb-3 mx-0">Pharmacology:</h4>
-                        <ul>
-                          <li>
-                            <strong>Half-Life:</strong> Approximately 16 hours,
-                            allowing for once-daily dosing
-                          </li>
-                          <li>
-                            <strong>Chemical Structure:</strong> A modified form
-                            of Dianabol with a chlorine atom at the 4th carbon
-                            position, which reduces its estrogenic and
-                            androgenic properties
-                          </li>
-                          <li>
-                            <strong>Anabolic to Androgenic Ratio:</strong> High
-                            anabolic activity with very low androgenic effects,
-                            making it well-tolerated by many users
-                          </li>
-                        </ul>
+                    <div className="row">
+                      <div className="col-md-12 col-12">
+                        <div className="product-desc-wrap">
+                          {/* <ul
+                            className="nav nav-tabs"
+                            id="myTabTwo"
+                            role="tablist"
+                          >
+                            <li className="nav-item">
+                              <button
+                                className="nav-link active"
+                                id="description-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#description"
+                                role="tab"
+                                aria-controls="description"
+                                aria-selected="true"
+                              >
+                                Description
+                              </button>
+                            </li>
+                          </ul> */}
+                          <div className="tab-content" id="myTabContentTwo">
+                            <div
+                              className="tab-pane fade show active"
+                              id="description"
+                              role="tabpanel"
+                              aria-labelledby="description-tab"
+                            >
+                              <div>
+                                <h4 className="m-5 mb-3 mx-0">Pharmacology:</h4>
+                                <ul>
+                                  <li>
+                                    <strong>Half-Life:</strong> Approximately 16
+                                    hours, allowing for once-daily dosing
+                                  </li>
+                                  <li>
+                                    <strong>Chemical Structure:</strong> A
+                                    modified form of Dianabol with a chlorine
+                                    atom at the 4th carbon position, which
+                                    reduces its estrogenic and androgenic
+                                    properties
+                                  </li>
+                                  <li>
+                                    <strong>
+                                      Anabolic to Androgenic Ratio:
+                                    </strong>{" "}
+                                    High anabolic activity with very low
+                                    androgenic effects, making it well-tolerated
+                                    by many users
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">Primary Uses:</h4>
-                        <ul>
-                          <li>
-                            <strong>Cutting Cycles & Recomposition:</strong>
-                            <ul>
-                              <li>
-                                Promotes dry, quality muscle gains with little
-                                to no bloating
-                              </li>
-                              <li>
-                                Enhances muscle hardness, vascularity, and
-                                endurance
-                              </li>
-                            </ul>
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Lean Bulking:</strong>
-                            <ul>
-                              <li>
-                                Unlike Dianabol, Turinabol builds muscle slowly
-                                and steadily, with minimal fat or water gain
-                              </li>
-                              <li>
-                                Ideal for athletes who need strength without
-                                significant weight gain
-                              </li>
-                            </ul>
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Performance Enhancement:</strong>
-                            <ul>
-                              <li>
-                                Increases strength, speed, and recovery with a
-                                low risk of excessive mass accumulation
-                              </li>
-                              <li>
-                                Historically used by Olympic athletes for covert
-                                performance boosts
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">Primary Uses:</h4>
+                                <ul>
+                                  <li>
+                                    <strong>
+                                      Cutting Cycles & Recomposition:
+                                    </strong>
+                                    <ul>
+                                      <li>
+                                        Promotes dry, quality muscle gains with
+                                        little to no bloating
+                                      </li>
+                                      <li>
+                                        Enhances muscle hardness, vascularity,
+                                        and endurance
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <br />
+                                  <li>
+                                    <strong>Lean Bulking:</strong>
+                                    <ul>
+                                      <li>
+                                        Unlike Dianabol, Turinabol builds muscle
+                                        slowly and steadily, with minimal fat or
+                                        water gain
+                                      </li>
+                                      <li>
+                                        Ideal for athletes who need strength
+                                        without significant weight gain
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <br />
+                                  <li>
+                                    <strong>Performance Enhancement:</strong>
+                                    <ul>
+                                      <li>
+                                        Increases strength, speed, and recovery
+                                        with a low risk of excessive mass
+                                        accumulation
+                                      </li>
+                                      <li>
+                                        Historically used by Olympic athletes
+                                        for covert performance boosts
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Administration & Intake Timing:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Typical Dosage (Men):</strong> 20-50 mg per
-                            day
-                          </li>
-                          <li>
-                            <strong>Typical Dosage (Women):</strong> 5-10 mg per
-                            day (low virilization risk at proper doses)
-                          </li>
-                          <li>
-                            <strong>Intake Schedule:</strong>
-                            <ul>
-                              <li>
-                                Due to its long half-life, it can be taken once
-                                daily
-                              </li>
-                              <li>
-                                Best taken with meals to improve absorption and
-                                reduce gastrointestinal discomfort
-                              </li>
-                              <li>
-                                Some users split doses morning and evening for
-                                further blood level stability
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Administration & Intake Timing:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Typical Dosage (Men):</strong> 20-50
+                                    mg per day
+                                  </li>
+                                  <li>
+                                    <strong>Typical Dosage (Women):</strong>{" "}
+                                    5-10 mg per day (low virilization risk at
+                                    proper doses)
+                                  </li>
+                                  <li>
+                                    <strong>Intake Schedule:</strong>
+                                    <ul>
+                                      <li>
+                                        Due to its long half-life, it can be
+                                        taken once daily
+                                      </li>
+                                      <li>
+                                        Best taken with meals to improve
+                                        absorption and reduce gastrointestinal
+                                        discomfort
+                                      </li>
+                                      <li>
+                                        Some users split doses morning and
+                                        evening for further blood level
+                                        stability
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Potential Side Effects:
-                        </h4>
-                        <p>
-                          Turinabol is often praised for its mildness, but side
-                          effects can still occur, especially at higher doses or
-                          with prolonged use:
-                        </p>
-                        <ul>
-                          <li>
-                            <strong>Liver Toxicity (Mild to Moderate):</strong>
-                            <ul>
-                              <li>
-                                As a 17-alpha alkylated compound, Tbol is orally
-                                active but still hepatotoxic
-                              </li>
-                              <li>
-                                Though milder than Dianabol or Anadrol, it
-                                requires liver support supplements and regular
-                                bloodwork during use
-                              </li>
-                              <li>Recommended cycle length: 6-8 weeks</li>
-                            </ul>
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Androgenic Effects (Low):</strong>
-                            <ul>
-                              <li>
-                                Lower incidence of acne, hair loss, and
-                                aggression compared to Dianabol
-                              </li>
-                              <li>
-                                Still possible at higher doses or in sensitive
-                                individuals
-                              </li>
-                              <li>
-                                Women may experience mild virilization symptoms
-                                if dosed too high or used for too long
-                              </li>
-                            </ul>
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Cardiovascular Impact:</strong>
-                            <ul>
-                              <li>
-                                Like many oral steroids, Tbol can negatively
-                                affect cholesterol
-                              </li>
-                              <li>
-                                May reduce HDL (good cholesterol) and increase
-                                LDL (bad cholesterol)
-                              </li>
-                              <li>
-                                Users are advised to maintain a heart-healthy
-                                diet, include cardio, and consider
-                                cholesterol-support supplements
-                              </li>
-                            </ul>
-                          </li>
-                          <br />
-                          <li>
-                            <strong>Testosterone Suppression:</strong>
-                            <ul>
-                              <li>
-                                Turinabol suppresses natural testosterone
-                                production, especially after several weeks of
-                                use
-                              </li>
-                              <li>
-                                A proper post-cycle therapy (PCT) is necessary
-                                to help restore natural hormonal balance after
-                                discontinuation
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Potential Side Effects:
+                                </h4>
+                                <p>
+                                  Turinabol is often praised for its mildness,
+                                  but side effects can still occur, especially
+                                  at higher doses or with prolonged use:
+                                </p>
+                                <ul>
+                                  <li>
+                                    <strong>
+                                      Liver Toxicity (Mild to Moderate):
+                                    </strong>
+                                    <ul>
+                                      <li>
+                                        As a 17-alpha alkylated compound, Tbol
+                                        is orally active but still hepatotoxic
+                                      </li>
+                                      <li>
+                                        Though milder than Dianabol or Anadrol,
+                                        it requires liver support supplements
+                                        and regular bloodwork during use
+                                      </li>
+                                      <li>
+                                        Recommended cycle length: 6-8 weeks
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <br />
+                                  <li>
+                                    <strong>Androgenic Effects (Low):</strong>
+                                    <ul>
+                                      <li>
+                                        Lower incidence of acne, hair loss, and
+                                        aggression compared to Dianabol
+                                      </li>
+                                      <li>
+                                        Still possible at higher doses or in
+                                        sensitive individuals
+                                      </li>
+                                      <li>
+                                        Women may experience mild virilization
+                                        symptoms if dosed too high or used for
+                                        too long
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <br />
+                                  <li>
+                                    <strong>Cardiovascular Impact:</strong>
+                                    <ul>
+                                      <li>
+                                        Like many oral steroids, Tbol can
+                                        negatively affect cholesterol
+                                      </li>
+                                      <li>
+                                        May reduce HDL (good cholesterol) and
+                                        increase LDL (bad cholesterol)
+                                      </li>
+                                      <li>
+                                        Users are advised to maintain a
+                                        heart-healthy diet, include cardio, and
+                                        consider cholesterol-support supplements
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <br />
+                                  <li>
+                                    <strong>Testosterone Suppression:</strong>
+                                    <ul>
+                                      <li>
+                                        Turinabol suppresses natural
+                                        testosterone production, especially
+                                        after several weeks of use
+                                      </li>
+                                      <li>
+                                        A proper post-cycle therapy (PCT) is
+                                        necessary to help restore natural
+                                        hormonal balance after discontinuation
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <p className="mt-5">
-                          Turinabol (Tbol) is a versatile and mild oral anabolic
-                          steroid ideal for those seeking lean gains, muscle
-                          definition, and performance enhancement without the
-                          pronounced side effects associated with stronger or
-                          more androgenic compounds. While not as dramatic in
-                          its effects as Dianabol, it offers a safer and more
-                          predictable experience, especially when liver health
-                          and estrogen management are concerns. Turinabol is
-                          often considered a beginner-friendly oral steroid, but
-                          it should still be used with discipline, proper
-                          dosing, and appropriate PCT planning.
-                        </p>
+                                <p className="mt-5">
+                                  Turinabol (Tbol) is a versatile and mild oral
+                                  anabolic steroid ideal for those seeking lean
+                                  gains, muscle definition, and performance
+                                  enhancement without the pronounced side
+                                  effects associated with stronger or more
+                                  androgenic compounds. While not as dramatic in
+                                  its effects as Dianabol, it offers a safer and
+                                  more predictable experience, especially when
+                                  liver health and estrogen management are
+                                  concerns. Turinabol is often considered a
+                                  beginner-friendly oral steroid, but it should
+                                  still be used with discipline, proper dosing,
+                                  and appropriate PCT planning.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
-                        <Courses />
+                      <div className="col-md-12 col-12 mt-4 mt-md-0">
+                        <div className="rounded d-flex align-items-center justify-content-center h-100">
+                          <div
+                            className="w-100 h-100 d-flex flex-column align-items-center justify-content-start"
+                            style={{
+                              opacity: 1,
+                              transition: "opacity 0.3s ease-in-out",
+                            }}
+                          >
+                            <div className="container p-0 my-3 mb-4">
+                              {/* <h4 className="mt-4 p-0">
+                                Injection Administration Guide :
+                              </h4> */}
+                            </div>
+                            <div className="video-wrapper">
+                              <img
+                              src="assets\images\medicine\video\testosterone-propionate.jpeg"
+                                onClick={() => openVideoModal("AHrD91N0DaU")}
+                              />
+                              <div
+                                className="video-play-button"
+                                onClick={() => openVideoModal("AHrD91N0DaU")}
+                              >
+                                <span className="play-icon"></span>
+                              </div>
+
+                              <ModalVideo
+                                channel="youtube"
+                                isOpen={isVideoOpen}
+                                videoId={videoUrl}
+                                onClose={closeVideoModal}
+                              />
+                            </div>
+                            <div className="container my-4 p-0">
+                              <h4
+                                className="mb-4 text-uppercase"
+                                style={{ letterSpacing: "1px" }}
+                              >
+                                Important Notes:
+                              </h4>
+                              <div className="table-responsive w-100">
+                                <table className="table table-bordered border border-dark table-striped bg-white">
+                                  <thead className="table-light border border-dark">
+                                    <tr>
+                                      <th>Icon</th>
+                                      <th>Note</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Take Turinabol orally with or without
+                                        food, at the same time daily.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Dosage should be based on research
+                                        protocol or guided by a healthcare
+                                        expert.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Monitor liver function if used for
+                                        prolonged periods — oral steroids are
+                                        hepatotoxic.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Stay hydrated and maintain a balanced
+                                        diet during use.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Do not exceed recommended dosage —
+                                        higher doses increase risk of side
+                                        effects.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Post-cycle therapy (PCT) is recommended
+                                        after a cycle to restore hormonal
+                                        balance.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Not intended for minors, pregnant women,
+                                        or individuals with liver/kidney
+                                        conditions.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <Courses />
           </div>
         </section>
       </main>

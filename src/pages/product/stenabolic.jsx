@@ -5,6 +5,9 @@ import { useLocation } from "react-router";
 import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
 import Courses from "../../components/courses";
+import ModalVideo from "react-modal-video";
+import { CloseButton } from "react-bootstrap";
+
 
 const Stenabolic = () => {
   const params = new URLSearchParams(window.location.search);
@@ -15,6 +18,18 @@ const Stenabolic = () => {
   const [productData, setProductData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const authorization = localStorage.getItem("fg_group_user_authorization");
+    const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [videoUrl, setVideoUrl] = useState("");
+
+  const openVideoModal = (url) => {
+    setIsVideoOpen(true);
+    setVideoUrl(url);
+  };
+
+  const closeVideoModal = () => {
+    setIsVideoOpen(false);
+    setVideoUrl("");
+  };
 
   const openModal = () => {
     setShowModal(true);
@@ -156,185 +171,342 @@ const Stenabolic = () => {
                         contact pharmacist
                       </button>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-12">
-                <div className="product-desc-wrap">
-                  <ul className="nav nav-tabs" id="myTabTwo" role="tablist">
-                    <li className="nav-item">
-                      <button
-                        className="nav-link active"
-                        id="description-tab"
-                        data-bs-toggle="tab"
-                        data-bs-target="#description"
-                        role="tab"
-                        aria-controls="description"
-                        aria-selected="true"
-                      >
-                        Description
-                      </button>
-                    </li>
-                  </ul>
-                  <div className="tab-content" id="myTabContentTwo">
-                    <div
-                      className="tab-pane fade show active"
-                      id="description"
-                      role="tabpanel"
-                      aria-labelledby="description-tab"
-                    >
-                      <div>
-                        <h4 className="m-5 mb-3 mx-0">
-                          Pharmacology & Mechanism of Action:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Type:</strong> Non-hormonal oral compound
-                            (REV-ERBa agonist)
-                          </li>
-                          <li>
-                            <strong>Half-Life:</strong> 4-6 hours
-                          </li>
-                          <li>
-                            <strong>Mechanism of Action:</strong>
-                            <ul>
-                              <li>
-                                Activates REV-ERBa proteins which regulate
-                                circadian rhythm and metabolism
-                              </li>
-                              <li>
-                                Boosts mitochondrial activity in muscle tissue
-                              </li>
-                              <li>
-                                Increases fat oxidation and reduces glucose
-                                storage
-                              </li>
-                              <li>
-                                Mimics effects of endurance training at the
-                                cellular level
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                    <div className="row">
+                      <div className="col-md-12 col-12">
+                        <div className="product-desc-wrap">
+                          {/* <ul
+                            className="nav nav-tabs"
+                            id="myTabTwo"
+                            role="tablist"
+                          >
+                            <li className="nav-item">
+                              <button
+                                className="nav-link active"
+                                id="description-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#description"
+                                role="tab"
+                                aria-controls="description"
+                                aria-selected="true"
+                              >
+                                Description
+                              </button>
+                            </li>
+                          </ul> */}
+                          <div className="tab-content" id="myTabContentTwo">
+                            <div
+                              className="tab-pane fade show active"
+                              id="description"
+                              role="tabpanel"
+                              aria-labelledby="description-tab"
+                            >
+                              <div>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Pharmacology & Mechanism of Action:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Type:</strong> Non-hormonal oral
+                                    compound (REV-ERBa agonist)
+                                  </li>
+                                  <li>
+                                    <strong>Half-Life:</strong> 4-6 hours
+                                  </li>
+                                  <li>
+                                    <strong>Mechanism of Action:</strong>
+                                    <ul>
+                                      <li>
+                                        Activates REV-ERBa proteins which
+                                        regulate circadian rhythm and metabolism
+                                      </li>
+                                      <li>
+                                        Boosts mitochondrial activity in muscle
+                                        tissue
+                                      </li>
+                                      <li>
+                                        Increases fat oxidation and reduces
+                                        glucose storage
+                                      </li>
+                                      <li>
+                                        Mimics effects of endurance training at
+                                        the cellular level
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Dosage & Administration:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Typical Dose Range:</strong> 10-30 mg per
-                            day
-                          </li>
-                          <li>
-                            <strong>Beginner Dose:</strong> 10-20 mg
-                          </li>
-                          <li>
-                            <strong>Advanced Users:</strong> 30 mg
-                          </li>
-                          <li>
-                            <strong>Frequency:</strong> 2-3 times daily (due to
-                            short half-life)
-                          </li>
-                          <li>
-                            <strong>Cycle Length:</strong> 6-8 weeks recommended
-                          </li>
-                          <li>
-                            <strong>PCT:</strong> Not required (non-hormonal)
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Dosage & Administration:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Typical Dose Range:</strong> 10-30
+                                    mg per day
+                                  </li>
+                                  <li>
+                                    <strong>Beginner Dose:</strong> 10-20 mg
+                                  </li>
+                                  <li>
+                                    <strong>Advanced Users:</strong> 30 mg
+                                  </li>
+                                  <li>
+                                    <strong>Frequency:</strong> 2-3 times daily
+                                    (due to short half-life)
+                                  </li>
+                                  <li>
+                                    <strong>Cycle Length:</strong> 6-8 weeks
+                                    recommended
+                                  </li>
+                                  <li>
+                                    <strong>PCT:</strong> Not required
+                                    (non-hormonal)
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Primary Uses & Benefits:
-                        </h4>
-                        <ul>
-                          <li>
-                            Fat Burning - promotes increased fat metabolism and
-                            energy expenditure
-                          </li>
-                          <li>
-                            Endurance Boost - enhances aerobic capacity and
-                            workout stamina
-                          </li>
-                          <li>
-                            Metabolic Regulation - supports healthy blood sugar
-                            and cholesterol levels
-                          </li>
-                          <li>
-                            Non-Stimulant - increases alertness and energy
-                            without CNS stimulation
-                          </li>
-                          <li>
-                            Body Recomposition - aids in fat loss while
-                            preserving lean muscle
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Primary Uses & Benefits:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    Fat Burning - promotes increased fat
+                                    metabolism and energy expenditure
+                                  </li>
+                                  <li>
+                                    Endurance Boost - enhances aerobic capacity
+                                    and workout stamina
+                                  </li>
+                                  <li>
+                                    Metabolic Regulation - supports healthy
+                                    blood sugar and cholesterol levels
+                                  </li>
+                                  <li>
+                                    Non-Stimulant - increases alertness and
+                                    energy without CNS stimulation
+                                  </li>
+                                  <li>
+                                    Body Recomposition - aids in fat loss while
+                                    preserving lean muscle
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">Side Effects & Risks:</h4>
-                        <ul>
-                          <li>
-                            <strong>Short-Term Effects:</strong>
-                            <ul>
-                              <li>Mild fatigue at higher doses</li>
-                              <li>Occasional headaches or dizziness</li>
-                              <li>
-                                Muscle cramps (usually related to hydration
-                                levels)
-                              </li>
-                            </ul>
-                          </li>
-                          <li>
-                            <strong>No Hormonal Suppression:</strong> Does not
-                            impact testosterone or estrogen
-                          </li>
-                          <li>
-                            <strong>Liver Consideration:</strong> Mild liver
-                            stress possible at very high doses
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Side Effects & Risks:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Short-Term Effects:</strong>
+                                    <ul>
+                                      <li>Mild fatigue at higher doses</li>
+                                      <li>Occasional headaches or dizziness</li>
+                                      <li>
+                                        Muscle cramps (usually related to
+                                        hydration levels)
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <li>
+                                    <strong>No Hormonal Suppression:</strong>{" "}
+                                    Does not impact testosterone or estrogen
+                                  </li>
+                                  <li>
+                                    <strong>Liver Consideration:</strong> Mild
+                                    liver stress possible at very high doses
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">Stacking Options:</h4>
-                        <ul>
-                          <li>
-                            <strong>Cutting Stack:</strong> SR9009 + Cardarine
-                            (GW-501516) or Ostarine (MK-2866)
-                          </li>
-                          <li>
-                            <strong>Endurance Stack:</strong> SR9009 + Ligandrol
-                            (LGD-4033)
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Stacking Options:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Cutting Stack:</strong> SR9009 +
+                                    Cardarine (GW-501516) or Ostarine (MK-2866)
+                                  </li>
+                                  <li>
+                                    <strong>Endurance Stack:</strong> SR9009 +
+                                    Ligandrol (LGD-4033)
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">Cycle Support & PCT:</h4>
-                        <ul>
-                          <li>
-                            <strong>Cycle Support:</strong> Not required
-                          </li>
-                          <li>
-                            <strong>PCT:</strong> Not necessary due to
-                            non-hormonal nature
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Cycle Support & PCT:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Cycle Support:</strong> Not required
+                                  </li>
+                                  <li>
+                                    <strong>PCT:</strong> Not necessary due to
+                                    non-hormonal nature
+                                  </li>
+                                </ul>
 
-                        <p className="mt-5">
-                          Stenabolic (SR9009) is a versatile, non-hormonal
-                          performance enhancer known for boosting endurance, fat
-                          oxidation, and metabolic health. It's ideal for
-                          cutting phases, athletic performance, or improving
-                          body composition without affecting hormone levels. Due
-                          to its short half-life, multiple doses per day ensure
-                          the best results with minimal side effects.
-                        </p>
+                                <p className="mt-5">
+                                  Stenabolic (SR9009) is a versatile,
+                                  non-hormonal performance enhancer known for
+                                  boosting endurance, fat oxidation, and
+                                  metabolic health. It's ideal for cutting
+                                  phases, athletic performance, or improving
+                                  body composition without affecting hormone
+                                  levels. Due to its short half-life, multiple
+                                  doses per day ensure the best results with
+                                  minimal side effects.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
-                        <Courses /> 
+                      <div className="col-md-12 col-12 mt-4 mt-md-0">
+                        <div className="rounded d-flex align-items-center justify-content-center h-100">
+                          <div
+                            className="w-100 h-100 d-flex flex-column align-items-center justify-content-start"
+                            style={{
+                              opacity: 1,
+                              transition: "opacity 0.3s ease-in-out",
+                            }}
+                          >
+                            <div className="container p-0 my-3 mb-4">
+                              {/* <h4 className="mt-4 p-0">
+                                Injection Administration Guide :
+                              </h4> */}
+                            </div>
+                            <div className="video-wrapper">
+                              <img
+                                src="assets/images/medicine/video/diet.jpeg"
+                                onClick={openVideoModal}
+                                alt="Instagram video thumbnail"
+                              />
+                              <div
+                                className="video-play-button"
+                                onClick={openVideoModal}
+                              >
+                                <span className="play-icon"></span>
+                              </div>
 
+                              {isVideoOpen && (
+                                <div
+                                  className="custom-modal-overlay"
+                                  onClick={closeVideoModal}
+                                >
+                                  <div
+                                    className="custom-modal-content"
+                                    onClick={(e) => e.stopPropagation()}
+                                  >
+                                    <video
+                                      controls
+                                      width="100%"
+                                      height="100%"
+                                      autoPlay
+                                    >
+                                      <source
+                                        src="assets/images/medicine/video/diet.mp4"
+                                        type="video/mp4"
+                                      />
+                                      Your browser does not support the video
+                                      tag.
+                                    </video>
+                                    <button
+                                      className="modal-close bg-danger"
+                                      onClick={closeVideoModal}
+                                    >
+                                      <CloseButton variant="white"/>
+                                    </button>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                            <div className="container my-4 p-0">
+                              <h4
+                                className="mb-4 text-uppercase"
+                                style={{ letterSpacing: "1px" }}
+                              >
+                                Important Notes:
+                              </h4>
+                              <div className="table-responsive w-100">
+                                <table className="table table-bordered border border-dark table-striped bg-white">
+                                  <thead className="table-light border border-dark">
+                                    <tr>
+                                      <th>Icon</th>
+                                      <th>Note</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        SR9009 is strictly for laboratory
+                                        research use only. Not approved for
+                                        human consumption.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Store capsules in a cool, dry place away
+                                        from direct sunlight or moisture.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Use gloves and avoid direct contact with
+                                        the substance when handling for
+                                        analytical research.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Label all samples clearly and store them
+                                        safely to avoid cross-contamination.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Dispose of unused or expired compounds
+                                        according to laboratory safety
+                                        protocols.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Do not ingest. This compound is not
+                                        evaluated or approved by regulatory
+                                        authorities for medical use.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Avoid exposure to children, pets, or
+                                        unauthorized individuals.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        In case of accidental ingestion or
+                                        exposure, contact poison control or a
+                                        medical professional immediately.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <Courses />
           </div>
         </section>
       </main>

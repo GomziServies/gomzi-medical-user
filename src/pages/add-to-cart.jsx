@@ -753,9 +753,10 @@ function AddToCart() {
                                 <img
                                   src={`https://files.fggroup.in/${product.display_image}`}
                                   alt="product"
+                                  className="rounded"
                                 />
                               </span>
-                            </td>
+                              </td>
                             <td className="product__name">
                               <span className="text-dark">{product.name}</span>
                             </td>

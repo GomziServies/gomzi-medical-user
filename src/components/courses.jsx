@@ -6,26 +6,26 @@ const Courses = () => {
     {
       id: 1,
       title: "Offline Anabolic Androgenic Steroids Masterclass",
-      image: "assets/images/course/aas-new.webp",
+      image: "assets/images/course/offline-aas.webp",
       type: "offline",
       duration: "1 Month",
       features: [
         "Offline class",
         "Recorded Video and Hard Copy of Books",
-        "For More Details send whatsapp message",
+        "Lifetime Video Access",
       ],
       path: "https://fggroup.in/fgiit/anabolic-steroids-course",
     },
     {
       id: 2,
       title: "Online Offline Anabolic Androgenic Steroids Masterclass",
-      image: "assets/images/course/aas-new.webp",
+      image: "assets/images/course/online-aas.webp",
       type: "online",
       duration: "1 Month",
       features: [
         "Live Zoom classes",
         "Recorded Video and Hard Copy of Books",
-        "For More Details send whatsapp message",
+        "Lifetime Video Access",
       ],
       path: "https://fggroup.in/fgiit/anabolic-steroid-testosterone",
     },
@@ -36,7 +36,6 @@ const Courses = () => {
       type: "flexible",
       duration: "1 month",
       features: [
-        "Most affordable fitness course ever",
         "learn whenever and wherever you want",
         "Distance Learning Certificate",
         "Lifetime Video Access",
@@ -47,12 +46,11 @@ const Courses = () => {
 
   return (
     <div className="container">
-      <div className="row g-3 justify-content-center align-items-stretch">
-        <h4 className="m-5 mb-4 mx-0">Course :</h4>
-
+      <div className="row justify-content-center align-items-stretch">
+        <h4 className="m-5 mb-2 mx-0">Course :</h4>
         {courses.map((course, idx) => (
           <div
-            className="col-12 col-sm-6 col-md-4 col-lg-4 d-flex"
+            className="col-12 col-sm-6 col-md-4 col-lg-4 mt-3"
             key={course.id}
           >
             <div className="course-card d-flex flex-column w-100">

@@ -548,7 +548,7 @@ function Home() {
                 </div>
               ))}
             </div>
-            <div className="py-10 px-5 text-center m-5">
+            {/* <div className="py-10 px-5 text-center m-5">
               <h2 className="text-2xl font-bold text-red-600 mb-5 fs-1">
                 KNOW YOUR STACK
               </h2>
@@ -572,7 +572,7 @@ function Home() {
                   </Link>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             <div className="row justify-content-center">
               <div className="col-md-6 mt-5 mb-4">

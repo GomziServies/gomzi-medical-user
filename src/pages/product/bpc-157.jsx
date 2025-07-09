@@ -5,6 +5,8 @@ import { useLocation } from "react-router";
 import LoginModal from "../../assets/js/popup/login";
 import { axiosInstance } from "../../assets/js/config/api";
 import Courses from "../../components/courses";
+import ModalVideo from "react-modal-video";
+
 
 const BPC157 = () => {
   const params = new URLSearchParams(window.location.search);
@@ -15,6 +17,18 @@ const BPC157 = () => {
   const [productData, setProductData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const authorization = localStorage.getItem("fg_group_user_authorization");
+    const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [videoUrl, setVideoUrl] = useState("");
+
+  const openVideoModal = (url) => {
+    setIsVideoOpen(true);
+    setVideoUrl(url);
+  };
+
+  const closeVideoModal = () => {
+    setIsVideoOpen(false);
+    setVideoUrl("");
+  };
 
   const openModal = () => {
     setShowModal(true);
@@ -156,214 +170,354 @@ const BPC157 = () => {
                         contact pharmacist
                       </button>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-12">
-                <div className="product-desc-wrap">
-                  <ul className="nav nav-tabs" id="myTabTwo" role="tablist">
-                    <li className="nav-item">
-                      <button
-                        className="nav-link active"
-                        id="description-tab"
-                        data-bs-toggle="tab"
-                        data-bs-target="#description"
-                        role="tab"
-                        aria-controls="description"
-                        aria-selected="true"
-                      >
-                        Description
-                      </button>
-                    </li>
-                  </ul>
-                  <div className="tab-content" id="myTabContentTwo">
-                    <div
-                      className="tab-pane fade show active"
-                      id="description"
-                      role="tabpanel"
-                      aria-labelledby="description-tab"
-                    >
-                      <div>
-                        <h4 className="m-5 mb-3 mx-0">
-                          Pharmacology & Classification:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Type:</strong> Synthetic peptide
-                          </li>
-                          <li>
-                            <strong>Class:</strong> Body protective compound /
-                            healing peptide
-                          </li>
-                          <li>
-                            <strong>Half-Life:</strong> Estimated to be several
-                            hours (not fully defined in humans)
-                          </li>
-                          <li>
-                            <strong>Mechanism of Action:</strong> Enhances
-                            angiogenesis, increases collagen synthesis, and
-                            accelerates tissue regeneration and repair
-                          </li>
-                        </ul>
+                    <div className="row">
+                      <div className="col-md-12 col-12">
+                        <div className="product-desc-wrap">
+                          {/* <ul
+                            className="nav nav-tabs"
+                            id="myTabTwo"
+                            role="tablist"
+                          >
+                            <li className="nav-item">
+                              <button
+                                className="nav-link active"
+                                id="description-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#description"
+                                role="tab"
+                                aria-controls="description"
+                                aria-selected="true"
+                              >
+                                Description
+                              </button>
+                            </li>
+                          </ul> */}
+                          <div className="tab-content" id="myTabContentTwo">
+                            <div
+                              className="tab-pane fade show active"
+                              id="description"
+                              role="tabpanel"
+                              aria-labelledby="description-tab"
+                            >
+                              <div>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Pharmacology & Classification:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Type:</strong> Synthetic peptide
+                                  </li>
+                                  <li>
+                                    <strong>Class:</strong> Body protective
+                                    compound / healing peptide
+                                  </li>
+                                  <li>
+                                    <strong>Half-Life:</strong> Estimated to be
+                                    several hours (not fully defined in humans)
+                                  </li>
+                                  <li>
+                                    <strong>Mechanism of Action:</strong>{" "}
+                                    Enhances angiogenesis, increases collagen
+                                    synthesis, and accelerates tissue
+                                    regeneration and repair
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Dosage & Administration:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Typical Dose:</strong> 200-500 mcg per
-                            injection
-                          </li>
-                          <li>
-                            <strong>Maximum Dose:</strong> 500 mcg
-                          </li>
-                          <li>
-                            <strong>Frequency:</strong>
-                            <ul>
-                              <li>Once daily</li>
-                              <li>Every other day in some healing phases</li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Dosage & Administration:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Typical Dose:</strong> 200-500 mcg
+                                    per injection
+                                  </li>
+                                  <li>
+                                    <strong>Maximum Dose:</strong> 500 mcg
+                                  </li>
+                                  <li>
+                                    <strong>Frequency:</strong>
+                                    <ul>
+                                      <li>Once daily</li>
+                                      <li>
+                                        Every other day in some healing phases
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Administration Timing & Method:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Injection Type:</strong>
-                            <ul>
-                              <li>Subcutaneous (abdominal fat)</li>
-                              <li>
-                                Localized near injury site (e.g., joint, tendon)
-                              </li>
-                            </ul>
-                          </li>
-                          <li>
-                            <strong>Best Times to Inject:</strong>
-                            <ul>
-                              <li>Morning or evening based on preference</li>
-                              <li>Post-injury or post-workout</li>
-                            </ul>
-                          </li>
-                          <li>
-                            <strong>Injection Notes:</strong>
-                            <ul>
-                              <li>Use insulin syringes for accurate dosing</li>
-                              <li>
-                                Rotate injection sites to avoid irritation
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Administration Timing & Method:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Injection Type:</strong>
+                                    <ul>
+                                      <li>Subcutaneous (abdominal fat)</li>
+                                      <li>
+                                        Localized near injury site (e.g., joint,
+                                        tendon)
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <li>
+                                    <strong>Best Times to Inject:</strong>
+                                    <ul>
+                                      <li>
+                                        Morning or evening based on preference
+                                      </li>
+                                      <li>Post-injury or post-workout</li>
+                                    </ul>
+                                  </li>
+                                  <li>
+                                    <strong>Injection Notes:</strong>
+                                    <ul>
+                                      <li>
+                                        Use insulin syringes for accurate dosing
+                                      </li>
+                                      <li>
+                                        Rotate injection sites to avoid
+                                        irritation
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Cycle Duration & Recommendations:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Cycle Length:</strong>
-                            <ul>
-                              <li>2-4 weeks typical depending on injury</li>
-                              <li>
-                                Chronic issues may require longer or repeated
-                                cycles
-                              </li>
-                            </ul>
-                          </li>
-                          <li>
-                            <strong>Repeatability:</strong>
-                            <ul>
-                              <li>Safe to repeat after a short break</li>
-                              <li>
-                                Used as maintenance therapy for chronic
-                                conditions
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Cycle Duration & Recommendations:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Cycle Length:</strong>
+                                    <ul>
+                                      <li>
+                                        2-4 weeks typical depending on injury
+                                      </li>
+                                      <li>
+                                        Chronic issues may require longer or
+                                        repeated cycles
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <li>
+                                    <strong>Repeatability:</strong>
+                                    <ul>
+                                      <li>
+                                        Safe to repeat after a short break
+                                      </li>
+                                      <li>
+                                        Used as maintenance therapy for chronic
+                                        conditions
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Benefits & Applications:
-                        </h4>
-                        <ul>
-                          <li>Accelerates muscle, tendon, ligament healing</li>
-                          <li>Improves joint function & mobility</li>
-                          <li>Reduces inflammation</li>
-                          <li>
-                            Supports gut health (e.g., IBS, ulcers, leaky gut)
-                          </li>
-                          <li>
-                            Promotes blood vessel regeneration (angiogenesis)
-                          </li>
-                          <li>Speeds wound healing & post-surgical recovery</li>
-                          <li>
-                            Potential neuroprotective effects (nerve repair)
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Benefits & Applications:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    Accelerates muscle, tendon, ligament healing
+                                  </li>
+                                  <li>Improves joint function & mobility</li>
+                                  <li>Reduces inflammation</li>
+                                  <li>
+                                    Supports gut health (e.g., IBS, ulcers,
+                                    leaky gut)
+                                  </li>
+                                  <li>
+                                    Promotes blood vessel regeneration
+                                    (angiogenesis)
+                                  </li>
+                                  <li>
+                                    Speeds wound healing & post-surgical
+                                    recovery
+                                  </li>
+                                  <li>
+                                    Potential neuroprotective effects (nerve
+                                    repair)
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">Side Effects:</h4>
-                        <ul>
-                          <li>
-                            <strong>Injection Site Irritation:</strong> Mild
-                            redness, swelling, or discomfort
-                          </li>
-                          <li>
-                            <strong>Dizziness or Headache:</strong> Rare and
-                            dose-dependent
-                          </li>
-                          <li>
-                            <strong>Fatigue or Nausea:</strong> Very uncommon;
-                            usually transient
-                          </li>
-                          <li>
-                            <strong>
-                              No Known Hormonal Suppression or Toxicity
-                            </strong>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">Side Effects:</h4>
+                                <ul>
+                                  <li>
+                                    <strong>Injection Site Irritation:</strong>{" "}
+                                    Mild redness, swelling, or discomfort
+                                  </li>
+                                  <li>
+                                    <strong>Dizziness or Headache:</strong> Rare
+                                    and dose-dependent
+                                  </li>
+                                  <li>
+                                    <strong>Fatigue or Nausea:</strong> Very
+                                    uncommon; usually transient
+                                  </li>
+                                  <li>
+                                    <strong>
+                                      No Known Hormonal Suppression or Toxicity
+                                    </strong>
+                                  </li>
+                                </ul>
 
-                        <h4 className="m-5 mb-3 mx-0">
-                          Compatibility & Stacking:
-                        </h4>
-                        <ul>
-                          <li>
-                            <strong>Commonly Stacked With:</strong>
-                            <ul>
-                              <li>TB-500 (Thymosin Beta-4)</li>
-                              <li>GHRP-6 or Ipamorelin</li>
-                              <li>GH secretagogues or CJC-1295 (No-DAC)</li>
-                            </ul>
-                          </li>
-                          <li>
-                            <strong>Why Stack?</strong>
-                            <ul>
-                              <li>
-                                Enhance systemic and localized healing and
-                                recovery
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
+                                <h4 className="m-5 mb-3 mx-0">
+                                  Compatibility & Stacking:
+                                </h4>
+                                <ul>
+                                  <li>
+                                    <strong>Commonly Stacked With:</strong>
+                                    <ul>
+                                      <li>TB-500 (Thymosin Beta-4)</li>
+                                      <li>GHRP-6 or Ipamorelin</li>
+                                      <li>
+                                        GH secretagogues or CJC-1295 (No-DAC)
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <li>
+                                    <strong>Why Stack?</strong>
+                                    <ul>
+                                      <li>
+                                        Enhance systemic and localized healing
+                                        and recovery
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
 
-                        <p className="mt-5">
-                          BPC-157 is a powerful, multi-functional peptide
-                          favored for its regenerative effects across muscle,
-                          joint, gut, and nerve tissue. Its low side effect
-                          profile and broad healing potential make it an ideal
-                          choice for athletes, biohackers, and those recovering
-                          from injuries or inflammation-related conditions.
-                        </p>
+                                <p className="mt-5">
+                                  BPC-157 is a powerful, multi-functional
+                                  peptide favored for its regenerative effects
+                                  across muscle, joint, gut, and nerve tissue.
+                                  Its low side effect profile and broad healing
+                                  potential make it an ideal choice for
+                                  athletes, biohackers, and those recovering
+                                  from injuries or inflammation-related
+                                  conditions.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
-                        <Courses />
+                      <div className="col-md-12 col-12 mt-4 mt-md-0">
+                        <div className="rounded d-flex align-items-center justify-content-center h-100">
+                          <div
+                            className="w-100 h-100 d-flex flex-column align-items-center justify-content-start"
+                            style={{
+                              opacity: 1,
+                              transition: "opacity 0.3s ease-in-out",
+                            }}
+                          >
+                            <div className="container p-0 my-3 mb-4">
+                              {/* <h4 className="mt-4 p-0">
+                                Injection Administration Guide :
+                              </h4> */}
+                            </div>
+                            <div className="video-wrapper">
+                              <img
+                                src="assets\images\medicine\video\sustanon-250.jpeg"
+                                onClick={() => openVideoModal("VpV3E9pcxko")}
+                              />
+                              <div
+                                className="video-play-button"
+                                onClick={() => openVideoModal("VpV3E9pcxko")}
+                              >
+                                <span className="play-icon"></span>
+                              </div>
+                            </div>
+
+                            <ModalVideo
+                              channel="youtube"
+                              isOpen={isVideoOpen}
+                              videoId={videoUrl}
+                              onClose={closeVideoModal}
+                            />
+                            <div className="container my-4 p-0">
+                              <h4
+                                className="mb-4 text-uppercase"
+                                style={{ letterSpacing: "1px" }}
+                              >
+                                Important Notes:
+                              </h4>
+                              <div className="table-responsive w-100">
+                                <table className="table table-bordered border border-dark table-striped bg-white">
+                                  <thead className="table-light border border-dark">
+                                    <tr>
+                                      <th>Icon</th>
+                                      <th>Note</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Reconstitute 5mg vial with 1–2 mL
+                                        bacteriostatic water for subcutaneous or
+                                        localized injection.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Common dose: 250–500 mcg per day,
+                                        typically split between morning and
+                                        evening or injected near injury site.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        Promotes healing of joints, tendons,
+                                        muscles, nerves, and even the gut
+                                        lining.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>✅</td>
+                                      <td>
+                                        No known side effects or toxicity in
+                                        research so far. No hormonal
+                                        suppression.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Research compound – not FDA-approved for
+                                        human consumption. Use under expert
+                                        supervision.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Store in the refrigerator after
+                                        reconstitution. Discard after 14 days if
+                                        not used.
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>⚠️</td>
+                                      <td>
+                                        Not a replacement for surgery or medical
+                                        treatment of serious injuries.
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <Courses />
           </div>
         </section>
       </main>
