@@ -643,22 +643,22 @@ function AddToCart() {
     }
   };
 
-  const getProductData = async () => {
-    try {
-      const response = await publicAxiosInstance.get("/medical-product/get");
-      const AllProduct = response.data.data;
-      if (AllProduct) {
-        setProductData(AllProduct);
-      }
-    } catch (error) {
-      console.error("Error in getProductData:", error);
-    }
-  };
+  // const getProductData = async () => {
+  //   try {
+  //     const response = await publicAxiosInstance.get("/medical-product/get");
+  //     const AllProduct = response.data.data;
+  //     if (AllProduct) {
+  //       setProductData(AllProduct);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error in getProductData:", error);
+  //   }
+  // };
 
-  useEffect(() => {
-    getProductData();
-  }, []);
-
+  // useEffect(() => {
+  //   getProductData();
+  // }, []);
+  
   return (
     <>
       <Helmet>
@@ -725,7 +725,7 @@ function AddToCart() {
       <LoaderComponent />
       {showModal && <LoginModal onClose={closeModal} />}
       {(loading || loading1) && <LoadingComponent />}
-      {/* <NutritionHeader productDataGet={productDataGet} /> */}
+      <NutritionHeader />
       <button className="scroll-top scroll-to-target" data-target="html">
         <i className="fas fa-angle-up"></i>
       </button>
@@ -809,12 +809,12 @@ function AddToCart() {
                   {productDataGet.length === 0 && (
                     <h5 className="text-center mt-3">No items found</h5>
                   )}
-                  <div className="text-center">
+                  <div className="text-center mt-5">
                     <button
                       onClick={handleAddToCart}
                       className="cart-btn text-white m-0"
                     >
-                      Checkout
+                      contact pharmacist
                     </button>
                   </div>
                 </div>
@@ -824,9 +824,13 @@ function AddToCart() {
         </div>
       </main>
       <div>
-        <div className="section-title text-center mb-60 ">
-          <h1 className="title">Other Product</h1>
-        </div>
+        {productDataGet?.length != 42 ? (
+          <div className="section-title text-center mb-60 ">
+            <h1 className="title">Other Product</h1>
+          </div>
+        ) : (
+          ""
+        )}
         <div className="container">
           <div className="row">
             {product

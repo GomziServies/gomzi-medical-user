@@ -66,7 +66,7 @@ const UserInfo = () => {
             onClick={toggleUserMenu}
             style={{ cursor: "pointer"}}
           >
-            Hi, {userInfo.user.last_name} &nbsp; <IoPersonSharp style={{color:'#86c33a',fontSize:'25px'}}/>
+            Hi, {userInfo.user.first_name} &nbsp; <IoPersonSharp style={{color:'#86c33a',fontSize:'25px'}}/>
           </li>
           {isUserMenuVisible && (
             <ul>

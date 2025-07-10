@@ -8,24 +8,24 @@ const Product = () => {
   const [productData, setProductData] = useState([]);
   const [cardLoader, setcardLoader] = useState(false);
 
-  const getProductData = async () => {
-    setcardLoader(true);
-    try {
-      const response = await publicAxiosInstance.get("/medical-product/get");
-      const userData = response.data.data;
-      if (userData) {
-        setProductData(userData);
-      }
-    } catch (error) {
-      console.error("Error in getProductData:", error);
-    } finally {
-      setcardLoader(false);
-    }
-  };
+  // const getProductData = async () => {
+  //   setcardLoader(true);
+  //   try {
+  //     const response = await publicAxiosInstance.get("/medical-product/get");
+  //     const userData = response.data.data;
+  //     if (userData) {
+  //       setProductData(userData);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error in getProductData:", error);
+  //   } finally {
+  //     setcardLoader(false);
+  //   }
+  // };
 
-  useEffect(() => {
-    getProductData();
-  }, []);
+  // useEffect(() => {
+  //   getProductData();
+  // }, []);
 
 const product = [
     {

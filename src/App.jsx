@@ -57,12 +57,14 @@ import Stenabolic from "./pages/product/stenabolic";
 import MK677 from "./pages/product/mk-677";
 import YK11 from "./pages/product/yk-11";
 import ACP105 from "./pages/product/acp-105";
+import UserProfile from "./pages/profile";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/user/profile" element={<UserProfile />} />
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/product" element={<Product />} />
         <Route path="/add-to-cart" element={<AddToCart />} />

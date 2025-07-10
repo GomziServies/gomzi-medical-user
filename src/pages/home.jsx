@@ -448,22 +448,22 @@ function Home() {
     }
   }, [authorization]);
 
-  const getProductData = async () => {
-    try {
-      const response = await publicAxiosInstance.get("/medical-product/get");
-      const userData = response.data.data;
+  // const getProductData = async () => {
+  //   try {
+  //     const response = await publicAxiosInstance.get("/medical-product/get");
+  //     const userData = response.data.data;
 
-      if (userData) {
-        setProductData(userData);
-      }
-    } catch (error) {
-      console.error("Error in getProductData:", error);
-    }
-  };
+  //     if (userData) {
+  //       setProductData(userData);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error in getProductData:", error);
+  //   }
+  // };
 
-  useEffect(() => {
-    getProductData();
-  }, []);
+  // useEffect(() => {
+  //   getProductData();
+  // }, []);
 
   const fetchProductCartData = async () => {
     try {
