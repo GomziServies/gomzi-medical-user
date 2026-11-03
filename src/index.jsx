@@ -1,3 +1,4 @@
+import './crm/setup'; // FG Group CRM tracking (cookie banner + visitor tracker)
 import React, { Suspense, lazy, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
